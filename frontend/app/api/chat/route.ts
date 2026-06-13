@@ -18,7 +18,7 @@ export async function POST(req: NextRequest) {
     model: 'models/gemini-embedding-2',
     contents: question,
   })
-  const embedding = (embedResult.embeddings ?? [])[0]?.values ?? []
+  const embedding = ((embedResult as any).embeddings ?? [])[0]?.values ?? []
 
   const { data: patches, error } = await supabase.rpc('match_patches', {
     query_embedding: embedding,
