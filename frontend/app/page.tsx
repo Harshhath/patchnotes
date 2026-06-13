@@ -4,6 +4,7 @@ import { useEffect, useState, useMemo, useCallback } from 'react'
 import { supabase, Patch } from '@/lib/supabase'
 import Link from 'next/link'
 import Image from "next/image"
+import ChatWidget from '@/components/ChatWidget'
 
 const TAG_COLORS: Record<string, string> = {
   'agent-buff':  'bg-emerald-500/15 text-emerald-300 border-emerald-500/25',
@@ -366,6 +367,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <ChatWidget />
     </div>
   )
 }
