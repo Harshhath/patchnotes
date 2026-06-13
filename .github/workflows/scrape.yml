@@ -32,7 +32,7 @@ jobs:
 
       - name: Push to Supabase
         env:
-          DATABASE_URL: ${{ secrets.SUPABASE_URL }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
         run: python database.py
 
       - name: Commit updated hash + JSON files
