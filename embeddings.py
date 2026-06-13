@@ -1,26 +1,24 @@
 """
 embeddings.py — generates embeddings for all patches and stores them in Supabase
-Run once to populate, then add to GitHub Actions workflow to keep updated.
 """
 
 import os
 import json
 import time
 import psycopg2
-import google.generativeai as genai
+from google import genai
 from dotenv import load_dotenv
 
 load_dotenv()
 
-genai.configure(api_key=os.environ["GEMINI_API_KEY"])
+client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 
 def get_embedding(text):
-    result = genai.embed_content(
-        model="models/text-embedding-004",
-        content=text,
-        task_type="retrieval_document"
+    result = client.models.embed_content(
+        model="gemini-embedding-exp-03-07",
+        contents=text
     )
-    return result["embedding"]
+    return result.embeddings[0].values
 
 def main():
     conn = psycopg2.connect(os.environ["DATABASE_URL"])
@@ -40,7 +38,7 @@ def main():
             )
             conn.commit()
             print(f"  ✓ {title}")
-            time.sleep(0.5)  # avoid rate limiting
+            time.sleep(0.5)
         except Exception as e:
             print(f"  ERROR {title}: {e}")
 
