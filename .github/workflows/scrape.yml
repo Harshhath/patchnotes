@@ -30,24 +30,9 @@ jobs:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         run: python scraper.py
 
-      - name: Debug DATABASE_URL        # ← ADD THIS
-        run: |
-          if [ -z "$DATABASE_URL" ]; then
-            echo "DATABASE_URL is EMPTY or not set"
-          else
-            echo "DATABASE_URL is set (first 20 chars): ${DATABASE_URL:0:20}"
-          fi
-        env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
-
-      - name: Push to Supabase          # ← THEN THIS
-        env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
-        run: python database.py 
-
       - name: Push to Supabase
         env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          DATABASE_URL: ${{ secrets.SUPABASE_URL }}
         run: python database.py
 
       - name: Commit updated hash + JSON files
