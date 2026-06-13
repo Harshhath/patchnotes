@@ -15,7 +15,7 @@ client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 
 def get_embedding(text):
     result = client.models.embed_content(
-        model="gemini-embedding-exp-03-07",
+        model="models/gemini-embedding-2",
         contents=text
     )
     return result.embeddings[0].values
