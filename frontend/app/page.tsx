@@ -2,7 +2,6 @@
 
 import { useEffect, useState, useMemo, useCallback } from 'react'
 import { supabase, Patch } from '@/lib/supabase'
-import Link from 'next/link'
 import Image from "next/image"
 import ChatWidget from '@/components/ChatWidget'
 
@@ -170,7 +169,7 @@ export default function Home() {
   const [selectedTags, setSelectedTags] = useState<string[]>([])
 
   useEffect(() => {
-    supabase.from('patches').select('id, game, title, date, summary, tags').order('date', { ascending: false })
+    supabase.from('patches').select('id, game, title, url, date, summary, tags').order('date', { ascending: false })
       .then(({ data }) => { setPatches((data as Patch[]) ?? []); setLoading(false) })
   }, [])
 
@@ -322,7 +321,7 @@ export default function Home() {
             ) : filtered.length === 0 ? (
               <div className="text-center py-20 text-sm" style={{ color: 'rgba(255,255,255,0.3)' }}>No patches match your filters.</div>
             ) : filtered.map((patch) => (
-              <Link key={patch.id} href={`/patch/${patch.id}`} className="block group">
+              <a key={patch.id} href={patch.url} target="_blank" rel="noopener noreferrer" className="block group">
                 <div className="relative rounded-xl border p-5 transition-all duration-200 overflow-hidden cursor-pointer"
                   style={{ background: 'rgba(255,255,255,0.02)', borderColor: 'rgba(255,255,255,0.07)' }}
                   onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(255,70,85,0.3)'; e.currentTarget.style.background = 'rgba(255,70,85,0.04)' }}
@@ -362,7 +361,7 @@ export default function Home() {
                     )}
                   </div>
                 </div>
-              </Link>
+                </a>
             ))}
           </div>
         </div>
