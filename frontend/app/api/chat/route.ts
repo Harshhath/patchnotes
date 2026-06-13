@@ -18,7 +18,7 @@ export async function POST(req: NextRequest) {
     model: 'models/gemini-embedding-2',
     contents: question,
   })
-  const embedding = embedResult.embeddings[0].values
+  const embedding = (embedResult.embeddings ?? [])[0]?.values ?? []
 
   const { data: patches, error } = await supabase.rpc('match_patches', {
     query_embedding: embedding,
@@ -26,12 +26,9 @@ export async function POST(req: NextRequest) {
   })
   if (error) return NextResponse.json({ error: error.message }, { status: 500 })
 
-    console.log('Found patches:', patches?.map((p: any) => p.title))
-    console.log('Sample content:', patches?.[0]?.content?.slice(0, 200))
-
-    const context = patches.map((p: any) =>
-        `Patch: ${p.title} (${p.date})\n${p.content ?? JSON.stringify(p.summary)}`
-      ).join('\n\n')
+  const context = (patches ?? []).map((p: any) =>
+    `Patch: ${p.title} (${p.date})\n${p.content ?? JSON.stringify(p.summary)}`
+  ).join('\n\n')
 
   const completion = await groq.chat.completions.create({
     model: 'llama-3.3-70b-versatile',
