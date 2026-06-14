@@ -17,9 +17,9 @@ interface ChatWidgetProps {
   exampleQuestion?: string
 }
 
-function useAnimatedText(text: string) {
-  const [cursor, setCursor] = useState(0)
-  const [startingCursor, setStartingCursor] = useState(0)
+function useAnimatedText(text: string, shouldAnimate: boolean, onDone?: () => void) {
+  const [cursor, setCursor] = useState(shouldAnimate ? 0 : text.length)
+  const [startingCursor, setStartingCursor] = useState(shouldAnimate ? 0 : text.length)
   const [prevText, setPrevText] = useState(text)
 
   if (prevText !== text) {
@@ -28,20 +28,35 @@ function useAnimatedText(text: string) {
   }
 
   useEffect(() => {
+    if (!shouldAnimate) {
+      setCursor(text.length)
+      return
+    }
     const chars = text.split('')
     const controls = animate(startingCursor, chars.length, {
-      duration: chars.length * 0.05,
+      duration: chars.length * 0.03,
       ease: 'linear',
       onUpdate(latest) { setCursor(Math.floor(latest)) },
+      onComplete() { onDone?.() },
     })
     return () => controls.stop()
-  }, [startingCursor, text])
+  }, [startingCursor, text, shouldAnimate])
 
   return text.split('').slice(0, cursor).join('')
 }
 
-function AssistantMessage({ text, accent }: { text: string; accent: string }) {
-  const animated = useAnimatedText(text)
+function AssistantMessage({
+  text,
+  accent,
+  isLatest,
+  onAnimationDone,
+}: {
+  text: string
+  accent: string
+  isLatest: boolean
+  onAnimationDone: () => void
+}) {
+  const animated = useAnimatedText(text, isLatest, onAnimationDone)
   return <span>{animated}</span>
 }
 
@@ -56,10 +71,11 @@ export default function ChatWidget({
   subtitle = 'Ask anything about Valorant patches',
   exampleQuestion = '"When did Neon get nerfed?"',
 }: ChatWidgetProps) {
-  const [open, setOpen]         = useState(false)
-  const [input, setInput]       = useState('')
-  const [messages, setMessages] = useState<Message[]>([])
-  const [loading, setLoading]   = useState(false)
+  const [open, setOpen]           = useState(false)
+  const [input, setInput]         = useState('')
+  const [messages, setMessages]   = useState<Message[]>([])
+  const [loading, setLoading]     = useState(false)
+  const [animatedIds, setAnimatedIds] = useState<Set<number>>(new Set())
   const bottomRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -150,7 +166,14 @@ export default function ChatWidget({
                 color: m.role === 'user' ? accent : 'rgba(255,255,255,0.8)',
               }}>
                 {m.role === 'assistant'
-                  ? <AssistantMessage text={m.text} accent={accent} />
+                  ? (
+                    <AssistantMessage
+                      text={m.text}
+                      accent={accent}
+                      isLatest={i === messages.length - 1 && !animatedIds.has(i)}
+                      onAnimationDone={() => setAnimatedIds((s) => new Set(s).add(i))}
+                    />
+                  )
                   : m.text}
               </div>
             ))}
