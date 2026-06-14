@@ -316,7 +316,9 @@ export default function CS2Home() {
                         </span>
                         <span className="text-xs" style={{ color: 'rgba(255,255,255,0.3)' }}>{formatDate(patch.date)}</span>
                       </div>
-                      <span className="text-sm" style={{ color: 'rgba(255,255,255,0.2)' }}>→</span>
+                      {patches[0]?.id === patch.id && (
+                        <Image src="/star.png" alt="Current patch" width={40} height={40} />
+                      )}
                     </div>
                     <h2 className="text-lg font-bold leading-tight" style={{ color: 'rgba(255,255,255,0.88)' }}>{patch.title}</h2>
                     {patch.summary?.length > 0 && (
@@ -338,6 +340,9 @@ export default function CS2Home() {
                         ))}
                       </div>
                     )}
+                    <div className="flex justify-end">
+                      <span className="text-sm" style={{ color: 'rgba(255,255,255,0.2)' }}>→</span>
+                    </div>
                   </div>
                 </div>
               </a>

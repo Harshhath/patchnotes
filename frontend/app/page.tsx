@@ -211,7 +211,7 @@ export default function Home() {
 
       {/* Header — title only, no stats */}
       <header className="relative z-20 border-b"
-        style={{ borderColor: 'rgba(255,70,85,0.15)', background: 'rgba(15,25,35,0.97)', backdropFilter: 'blur(20px)' }}>
+        style={{ borderColor: 'rgba(255,70,85,0.15)', background: 'rgba(13,15,18,0.97)', backdropFilter: 'blur(20px)' }}>
         <div className="max-w-7xl mx-auto px-8 py-5">
           <div className="flex items-center gap-2 mb-1">
             <ValorantLogo size={22} />
@@ -331,7 +331,7 @@ export default function Home() {
                   onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.07)'; e.currentTarget.style.background = 'rgba(255,255,255,0.02)' }}>
                   <div className="absolute left-0 top-0 bottom-0 w-[3px] rounded-l-xl opacity-0 group-hover:opacity-100 transition-opacity"
                     style={{ background: 'linear-gradient(to bottom, #ff4655, #bd3944)' }} />
-                  <div className="flex flex-col gap-3">
+                    <div className="flex flex-col gap-3">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
                         <span className="text-[10px] font-black tracking-[0.2em] uppercase px-2 py-0.5 rounded"
@@ -340,7 +340,9 @@ export default function Home() {
                         </span>
                         <span className="text-xs" style={{ color: 'rgba(255,255,255,0.3)' }}>{formatDate(patch.date)}</span>
                       </div>
-                      <span className="text-sm" style={{ color: 'rgba(255,255,255,0.2)' }}>→</span>
+                      {patches[0]?.id === patch.id && (
+                        <Image src="/star.png" alt="Current patch" width={40} height={40} />
+                      )}
                     </div>
                     <h2 className="text-lg font-bold leading-tight" style={{ color: 'rgba(255,255,255,0.88)' }}>{patch.title}</h2>
                     {patch.summary?.length > 0 && (
@@ -362,6 +364,9 @@ export default function Home() {
                         ))}
                       </div>
                     )}
+                    <div className="flex justify-end">
+                      <span className="text-sm" style={{ color: 'rgba(255,255,255,0.2)' }}>→</span>
+                    </div>
                   </div>
                 </div>
                 </a>
