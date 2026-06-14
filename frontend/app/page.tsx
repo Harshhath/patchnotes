@@ -169,8 +169,11 @@ export default function Home() {
   const [selectedTags, setSelectedTags] = useState<string[]>([])
 
   useEffect(() => {
-    supabase.from('patches').select('id, game, title, url, date, summary, tags').order('date', { ascending: false })
-      .then(({ data }) => { setPatches((data as Patch[]) ?? []); setLoading(false) })
+    supabase.from('patches').select('id, game, title, url, date, summary, tags')
+    .eq('game', 'Valorant')
+    .order('date', { ascending: false })
+    .then(({ data }) => { setPatches((data as Patch[]) ?? []); setLoading(false) })
+    .catch((error) => { console.error('Error fetching patches:', error); setLoading(false) })
   }, [])
 
   const filtered = useMemo(() => patches.filter((p) => {
