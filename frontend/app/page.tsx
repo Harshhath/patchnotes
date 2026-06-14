@@ -170,10 +170,13 @@ export default function Home() {
 
   useEffect(() => {
     supabase.from('patches').select('id, game, title, url, date, summary, tags')
-    .eq('game', 'Valorant')
-    .order('date', { ascending: false })
-    .then(({ data }) => { setPatches((data as Patch[]) ?? []); setLoading(false) })
-    .catch((error) => { console.error('Error fetching patches:', error); setLoading(false) })
+      .eq('game', 'Valorant')
+      .order('date', { ascending: false })
+      .then(({ data, error }) => {
+        if (error) console.error('Error fetching patches:', error)
+        setPatches((data as Patch[]) ?? [])
+        setLoading(false)
+      })
   }, [])
 
   const filtered = useMemo(() => patches.filter((p) => {
