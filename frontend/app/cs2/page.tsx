@@ -3,6 +3,7 @@
 import { useEffect, useState, useMemo, useCallback } from 'react'
 import { supabase, Patch } from '@/lib/supabase'
 import Image from "next/image"
+import ChatWidget from '@/components/ChatWidget'
 
 const TAG_COLORS: Record<string, string> = {
   'bug-fix':       'bg-zinc-500/15 text-zinc-300 border-zinc-500/25',
@@ -344,6 +345,16 @@ export default function CS2Home() {
           </div>
         </div>
       </div>
+      <ChatWidget
+      game="CS2"
+      accent="#f0a500"
+      accentRgb="240,165,0"
+      bgColor="#07101D"
+      borderColor="rgba(240,165,0,0.2)"
+      title="ASK PATCHBOT"
+      subtitle="Ask anything about CS2 patches"
+      exampleQuestion='"weapon changes?"'
+      />
     </div>
   )
 }

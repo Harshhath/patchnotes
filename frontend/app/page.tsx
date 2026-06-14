@@ -366,7 +366,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <ChatWidget />
+      <ChatWidget game="Valorant" />
     </div>
   )
 }
