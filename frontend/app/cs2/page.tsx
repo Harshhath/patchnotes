@@ -201,12 +201,23 @@ export default function CS2Home() {
 
       <header className="relative z-20 border-b"
         style={{ borderColor: `rgba(${ACCENT_RGB},0.15)`, background: 'rgba(13,15,18,0.97)', backdropFilter: 'blur(20px)' }}>
-        <div className="max-w-7xl mx-auto px-8 py-5">
-          <div className="flex items-center gap-2 mb-1">
-            <CS2Logo size={22} />
-            <span className="text-[10px] font-bold tracking-[0.25em] uppercase" style={{ color: ACCENT }}>Counter-Strike 2</span>
+        <div className="max-w-7xl mx-auto px-8 py-5 flex items-center gap-4">
+        <a href="/" title="Home" style={{ position: 'fixed', top: 12, left: 16, zIndex: 100 }}>
+          <Image
+            src="/sukuna.png"
+            alt="Home"
+            width={89}
+            height={89}
+            className="hover:opacity-80 transition-opacity"
+          />
+        </a>
+          <div>
+            <div className="flex items-center gap-2 mb-1">
+              <CS2Logo size={24} />
+              <span className="text-[10px] font-bold tracking-[0.25em] uppercase" style={{ color: ACCENT }}>Counter-Strike 2</span>
+            </div>
+            <h1 className="text-4xl font-black tracking-tight" style={{ color: ACCENT }}>PATCHNOTES</h1>
           </div>
-          <h1 className="text-4xl font-black tracking-tight" style={{ color: ACCENT }}>PATCHNOTES</h1>
         </div>
       </header>
 

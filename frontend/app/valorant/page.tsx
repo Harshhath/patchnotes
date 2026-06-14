@@ -213,6 +213,10 @@ export default function Home() {
       </div>
 
       {/* Header — title only, no stats */}
+      <a href="/" title="Home" style={{ position: 'fixed', top: 12, left: 16, zIndex: 100 }}>
+        <Image src="/sukuna.png" alt="Home" width={89} height={89} className="hover:opacity-80 transition-opacity" />
+      </a>
+
       <header className="relative z-20 border-b"
         style={{ borderColor: 'rgba(255,70,85,0.15)', background: 'rgba(13,15,18,0.97)', backdropFilter: 'blur(20px)' }}>
         <div className="max-w-7xl mx-auto px-8 py-5">
