@@ -3,32 +3,29 @@
 import { useEffect, useState, useMemo, useCallback } from 'react'
 import { supabase, Patch } from '@/lib/supabase'
 import Image from "next/image"
-import ChatWidget from '@/components/ChatWidget'
 
 const TAG_COLORS: Record<string, string> = {
-  'agent-buff':  'bg-emerald-500/15 text-emerald-300 border-emerald-500/25',
-  'agent-nerf':  'bg-red-500/15 text-red-300 border-red-500/25',
-  'weapon-buff': 'bg-sky-500/15 text-sky-300 border-sky-500/25',
-  'weapon-nerf': 'bg-orange-500/15 text-orange-300 border-orange-500/25',
-  'map-change':  'bg-violet-500/15 text-violet-300 border-violet-500/25',
-  'bug-fix':     'bg-yellow-500/15 text-yellow-300 border-yellow-500/25',
-  'economy':     'bg-cyan-500/15 text-cyan-300 border-cyan-500/25',
-  'performance': 'bg-pink-500/15 text-pink-300 border-pink-500/25',
-  'new-feature': 'bg-indigo-500/15 text-indigo-300 border-indigo-500/25',
-  'premier':     'bg-teal-500/15 text-teal-300 border-teal-500/25',
+  'bug-fix':       'bg-zinc-500/15 text-zinc-300 border-zinc-500/25',
+  'ui-change':     'bg-indigo-500/15 text-indigo-300 border-indigo-500/25',
+  'performance':   'bg-purple-500/15 text-purple-300 border-purple-500/25',
+  'new-feature':   'bg-sky-500/15 text-sky-300 border-sky-500/25',
+  'map-change':    'bg-blue-500/15 text-blue-300 border-blue-500/25',
+  'gameplay':      'bg-amber-500/15 text-amber-300 border-amber-500/25',
+  'weapon-change': 'bg-orange-500/15 text-orange-300 border-orange-500/25',
+  'anti-cheat':    'bg-red-500/15 text-red-300 border-red-500/25',
+  'animation':     'bg-pink-500/15 text-pink-300 border-pink-500/25',
 }
 
 const ALL_TAGS = [
-  { label: 'Agent Buff',   value: 'agent-buff' },
-  { label: 'Agent Nerf',   value: 'agent-nerf' },
-  { label: 'Weapon Buff',  value: 'weapon-buff' },
-  { label: 'Weapon Nerf',  value: 'weapon-nerf' },
-  { label: 'Map Change',   value: 'map-change' },
-  { label: 'Bug Fix',      value: 'bug-fix' },
-  { label: 'Economy',      value: 'economy' },
-  { label: 'Performance',  value: 'performance' },
-  { label: 'New Feature',  value: 'new-feature' },
-  { label: 'Premier',      value: 'premier' },
+  { label: 'Bug Fix',       value: 'bug-fix' },
+  { label: 'UI Change',     value: 'ui-change' },
+  { label: 'Performance',   value: 'performance' },
+  { label: 'New Feature',   value: 'new-feature' },
+  { label: 'Map Change',    value: 'map-change' },
+  { label: 'Gameplay',      value: 'gameplay' },
+  { label: 'Weapon Change', value: 'weapon-change' },
+  { label: 'Anti-Cheat',    value: 'anti-cheat' },
+  { label: 'Animation',     value: 'animation' },
 ]
 
 const DATE_PRESETS = [
@@ -45,15 +42,14 @@ const MONTHS = [
 ]
 const DAY_NAMES = ['Mo','Tu','We','Th','Fr','Sa','Su']
 
-function toInputDate(d: Date) {
-  return d.toISOString().split('T')[0]
-}
+const ACCENT = '#f0a500'
+const ACCENT_RGB = '240,165,0'
+
+function toInputDate(d: Date) { return d.toISOString().split('T')[0] }
 
 function formatDate(dateStr: string) {
   if (!dateStr) return ''
-  return new Date(dateStr).toLocaleDateString('en-US', {
-    year: 'numeric', month: 'short', day: 'numeric',
-  })
+  return new Date(dateStr).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
 }
 
 function formatShort(dateStr: string) {
@@ -62,26 +58,20 @@ function formatShort(dateStr: string) {
 }
 
 function sameDay(a: Date, b: Date) {
-  return (
-    a.getFullYear() === b.getFullYear() &&
-    a.getMonth()    === b.getMonth()    &&
-    a.getDate()     === b.getDate()
-  )
+  return a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate()
 }
 
 function isPresetActive(dateFrom: string, dateTo: string, days: number) {
   if (!dateFrom || !dateTo) return false
-  const from     = new Date(dateFrom)
+  const from = new Date(dateFrom)
   const expected = new Date()
   expected.setDate(expected.getDate() - days + 1)
   expected.setHours(0, 0, 0, 0)
   return Math.abs(from.getTime() - expected.getTime()) < 86400000
 }
 
-function ValorantLogo({ size = 22 }: { size?: number }) {
-  return (
-    <Image src="/valorant-logo1.png" alt="Valorant Logo" width={size} height={size} priority />
-  )
+function CS2Logo({ size = 22 }: { size?: number }) {
+  return <Image src="/cs2-logo.png" alt="CS2 Logo" width={size} height={size} priority />
 }
 
 function Calendar({ dateFrom, dateTo, onRange }: {
@@ -142,17 +132,17 @@ function Calendar({ dateFrom, dateTo, onRange }: {
           const isSelected = isStart || isEnd || isPicking
           let bg = 'transparent', color = current ? 'rgba(255,255,255,0.45)' : 'rgba(255,255,255,0.12)'
           let border = '1px solid transparent', borderRadius = '7px', fontWeight = 400
-          if (isSelected) { bg = '#ff4655'; color = '#fff'; border = '1px solid #ff4655'; fontWeight = 700 }
-          else if (inRange) { bg = 'rgba(255,70,85,0.1)'; color = 'rgba(255,255,255,0.65)'; borderRadius = '0px' }
+          if (isSelected) { bg = ACCENT; color = '#000'; border = `1px solid ${ACCENT}`; fontWeight = 700 }
+          else if (inRange) { bg = `rgba(${ACCENT_RGB},0.1)`; color = 'rgba(255,255,255,0.65)'; borderRadius = '0px' }
           if (isStart && endDate && !sameDay(startDate!, endDate)) borderRadius = '7px 0 0 7px'
           if (isEnd && startDate && !sameDay(startDate!, endDate)) borderRadius = '0 7px 7px 0'
           return (
             <div key={i} onClick={() => current && pickDay(date)}
               style={{ textAlign: 'center', fontSize: 11, padding: '5px 2px', borderRadius, cursor: current ? 'pointer' : 'default', background: bg, color, border, fontWeight, position: 'relative', transition: 'all .1s' }}
-              onMouseEnter={(e) => { if (!current || isSelected || inRange) return; e.currentTarget.style.background = 'rgba(255,70,85,0.1)'; e.currentTarget.style.color = 'rgba(255,255,255,0.8)'; e.currentTarget.style.borderColor = 'rgba(255,70,85,0.25)' }}
+              onMouseEnter={(e) => { if (!current || isSelected || inRange) return; e.currentTarget.style.background = `rgba(${ACCENT_RGB},0.1)`; e.currentTarget.style.color = 'rgba(255,255,255,0.8)'; e.currentTarget.style.borderColor = `rgba(${ACCENT_RGB},0.25)` }}
               onMouseLeave={(e) => { if (!current || isSelected || inRange) return; e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'rgba(255,255,255,0.45)'; e.currentTarget.style.borderColor = 'transparent' }}>
               {date.getDate()}
-              {isToday && !isSelected && <span style={{ position: 'absolute', bottom: 2, left: '50%', transform: 'translateX(-50%)', width: 3, height: 3, borderRadius: '50%', background: '#ff4655' }} />}
+              {isToday && !isSelected && <span style={{ position: 'absolute', bottom: 2, left: '50%', transform: 'translateX(-50%)', width: 3, height: 3, borderRadius: '50%', background: ACCENT }} />}
             </div>
           )
         })}
@@ -161,7 +151,7 @@ function Calendar({ dateFrom, dateTo, onRange }: {
   )
 }
 
-export default function Home() {
+export default function CS2Home() {
   const [patches,      setPatches]      = useState<Patch[]>([])
   const [loading,      setLoading]      = useState(true)
   const [dateFrom,     setDateFrom]     = useState('')
@@ -169,7 +159,9 @@ export default function Home() {
   const [selectedTags, setSelectedTags] = useState<string[]>([])
 
   useEffect(() => {
-    supabase.from('patches').select('id, game, title, url, date, summary, tags').order('date', { ascending: false })
+    supabase.from('patches').select('id, game, title, url, date, summary, tags')
+      .eq('game', 'CS2')
+      .order('date', { ascending: false })
       .then(({ data }) => { setPatches((data as Patch[]) ?? []); setLoading(false) })
   }, [])
 
@@ -199,49 +191,41 @@ export default function Home() {
   const activePreset = DATE_PRESETS.find(({ days }) => isPresetActive(dateFrom, dateTo, days))
 
   return (
-    <div style={{ background: '#0f1923', minHeight: '100vh', color: '#fff' }}>
+    <div style={{ background: '#07101D', minHeight: '100vh', color: '#fff' }}>
 
       <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
-        <div className="absolute -top-60 -left-60 w-96 h-96 rounded-full opacity-10" style={{ background: 'radial-gradient(circle, #ff4655 0%, transparent 65%)' }} />
-        <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full opacity-5" style={{ background: 'radial-gradient(circle, #1e3a5f 0%, transparent 70%)' }} />
+        <div className="absolute -top-60 -left-60 w-96 h-96 rounded-full opacity-10" style={{ background: `radial-gradient(circle, ${ACCENT} 0%, transparent 65%)` }} />
+        <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full opacity-5" style={{ background: 'radial-gradient(circle, #1a1a2e 0%, transparent 70%)' }} />
       </div>
 
-      {/* Header — title only, no stats */}
       <header className="relative z-20 border-b"
-        style={{ borderColor: 'rgba(255,70,85,0.15)', background: 'rgba(15,25,35,0.97)', backdropFilter: 'blur(20px)' }}>
+        style={{ borderColor: `rgba(${ACCENT_RGB},0.15)`, background: 'rgba(13,15,18,0.97)', backdropFilter: 'blur(20px)' }}>
         <div className="max-w-7xl mx-auto px-8 py-5">
           <div className="flex items-center gap-2 mb-1">
-            <ValorantLogo size={22} />
-            <span className="text-[10px] font-bold tracking-[0.25em] uppercase" style={{ color: '#ff4655' }}>Valorant</span>
+            <CS2Logo size={22} />
+            <span className="text-[10px] font-bold tracking-[0.25em] uppercase" style={{ color: ACCENT }}>Counter-Strike 2</span>
           </div>
-          <h1 className="text-4xl font-black tracking-tight" style={{ color: '#ff4655' }}>
-            PATCHNOTES
-          </h1>
+          <h1 className="text-4xl font-black tracking-tight" style={{ color: ACCENT }}>PATCHNOTES</h1>
         </div>
       </header>
 
       <div className="relative z-10 max-w-7xl mx-auto px-8 py-8 flex gap-8">
 
-        {/* ── SIDEBAR ── */}
         <aside className="w-60 shrink-0 space-y-4 sticky top-8 self-start">
 
-          {/* "FILTERS" row — this is the alignment anchor */}
           <div className="flex items-center justify-between">
-            <span className="text-[11px] font-bold tracking-[0.2em] uppercase"
-              style={{ color: 'rgba(255,255,255,0.35)' }}>Filters</span>
+            <span className="text-[11px] font-bold tracking-[0.2em] uppercase" style={{ color: 'rgba(255,255,255,0.35)' }}>Filters</span>
             {hasFilters && (
               <button onClick={() => { setDateFrom(''); setDateTo(''); setSelectedTags([]) }}
-                className="text-[11px] font-semibold" style={{ color: '#ff4655' }}>
-                Clear all
-              </button>
+                className="text-[11px] font-semibold" style={{ color: ACCENT }}>Clear all</button>
             )}
           </div>
 
-          <div className="rounded-xl border p-4" style={{ background: 'rgba(255,255,255,0.02)', borderColor: 'rgba(255,255,255,0.07)' }}>
+          <div className="rounded-xl border p-4" style={{ background: '#07101D', borderColor: 'rgba(255,255,255,0.07)' }}>
             <div className="flex items-center justify-between mb-3">
               <p className="text-[10px] font-bold tracking-[0.15em] uppercase" style={{ color: 'rgba(255,255,255,0.3)' }}>Date Range</p>
               {(dateFrom || dateTo) && (
-                <button onClick={() => { setDateFrom(''); setDateTo('') }} className="text-[10px] font-semibold" style={{ color: 'rgba(255,70,85,0.8)' }}>Clear</button>
+                <button onClick={() => { setDateFrom(''); setDateTo('') }} className="text-[10px] font-semibold" style={{ color: `rgba(${ACCENT_RGB},0.8)` }}>Clear</button>
               )}
             </div>
             <div className="space-y-1 mb-4">
@@ -250,9 +234,9 @@ export default function Home() {
                 return (
                   <button key={days} onClick={() => applyPreset(days)}
                     className="w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium transition-all text-left"
-                    style={{ background: active ? 'rgba(255,70,85,0.14)' : 'transparent', border: `1px solid ${active ? 'rgba(255,70,85,0.3)' : 'transparent'}`, color: active ? '#ff8a93' : 'rgba(255,255,255,0.45)' }}>
+                    style={{ background: active ? `rgba(${ACCENT_RGB},0.14)` : 'transparent', border: `1px solid ${active ? `rgba(${ACCENT_RGB},0.3)` : 'transparent'}`, color: active ? ACCENT : 'rgba(255,255,255,0.45)' }}>
                     <span>{label}</span>
-                    <span style={{ width: 16, height: 16, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 9, flexShrink: 0, background: active ? '#ff4655' : 'transparent', border: `1px solid ${active ? '#ff4655' : 'rgba(255,255,255,0.15)'}`, color: '#fff' }}>
+                    <span style={{ width: 16, height: 16, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 9, flexShrink: 0, background: active ? ACCENT : 'transparent', border: `1px solid ${active ? ACCENT : 'rgba(255,255,255,0.15)'}`, color: '#000' }}>
                       {active ? '✓' : ''}
                     </span>
                   </button>
@@ -264,29 +248,29 @@ export default function Home() {
             <Calendar dateFrom={dateFrom} dateTo={dateTo} onRange={handleRange} />
             {(dateFrom || dateTo) && (
               <div style={{ display: 'flex', gap: 8, marginTop: 12 }}>
-                <div style={{ flex: 1, background: 'rgba(255,70,85,0.08)', border: '1px solid rgba(255,70,85,0.18)', borderRadius: 9, padding: '6px 8px', textAlign: 'center' }}>
+                <div style={{ flex: 1, background: `rgba(${ACCENT_RGB},0.08)`, border: `1px solid rgba(${ACCENT_RGB},0.18)`, borderRadius: 9, padding: '6px 8px', textAlign: 'center' }}>
                   <p style={{ fontSize: 9, fontWeight: 700, letterSpacing: '.1em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.25)', marginBottom: 2 }}>From</p>
-                  <p style={{ fontSize: 11, fontWeight: 600, color: '#ff8a93' }}>{formatShort(dateFrom)}</p>
+                  <p style={{ fontSize: 11, fontWeight: 600, color: ACCENT }}>{formatShort(dateFrom)}</p>
                 </div>
                 <span style={{ color: 'rgba(255,255,255,0.2)', fontSize: 11, alignSelf: 'center' }}>→</span>
-                <div style={{ flex: 1, background: 'rgba(255,70,85,0.08)', border: '1px solid rgba(255,70,85,0.18)', borderRadius: 9, padding: '6px 8px', textAlign: 'center' }}>
+                <div style={{ flex: 1, background: `rgba(${ACCENT_RGB},0.08)`, border: `1px solid rgba(${ACCENT_RGB},0.18)`, borderRadius: 9, padding: '6px 8px', textAlign: 'center' }}>
                   <p style={{ fontSize: 9, fontWeight: 700, letterSpacing: '.1em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.25)', marginBottom: 2 }}>To</p>
-                  <p style={{ fontSize: 11, fontWeight: 600, color: '#ff8a93' }}>{dateTo ? formatShort(dateTo) : '—'}</p>
+                  <p style={{ fontSize: 11, fontWeight: 600, color: ACCENT }}>{dateTo ? formatShort(dateTo) : '—'}</p>
                 </div>
               </div>
             )}
           </div>
 
-          <div className="rounded-xl border p-4 space-y-1" style={{ background: 'rgba(255,255,255,0.02)', borderColor: 'rgba(255,255,255,0.07)' }}>
+          <div className="rounded-xl border p-4 space-y-1" style={{ background: '#07101D', borderColor: 'rgba(255,255,255,0.07)' }}>
             <p className="text-[10px] font-bold tracking-[0.15em] uppercase mb-3" style={{ color: 'rgba(255,255,255,0.3)' }}>Change Type</p>
             {ALL_TAGS.map(({ label, value }) => {
               const active = selectedTags.includes(value)
               return (
                 <button key={value} onClick={() => toggleTag(value)}
                   className="w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium transition-all text-left"
-                  style={{ background: active ? 'rgba(255,70,85,0.12)' : 'transparent', border: `1px solid ${active ? 'rgba(255,70,85,0.3)' : 'transparent'}`, color: active ? '#ff8a93' : 'rgba(255,255,255,0.45)' }}>
+                  style={{ background: active ? `rgba(${ACCENT_RGB},0.12)` : 'transparent', border: `1px solid ${active ? `rgba(${ACCENT_RGB},0.3)` : 'transparent'}`, color: active ? ACCENT : 'rgba(255,255,255,0.45)' }}>
                   <span>{label}</span>
-                  {active && <span style={{ color: '#ff4655', fontSize: 10 }}>✓</span>}
+                  {active && <span style={{ color: ACCENT, fontSize: 10 }}>✓</span>}
                 </button>
               )
             })}
@@ -294,27 +278,21 @@ export default function Home() {
 
           {hasFilters && (
             <div className="rounded-xl border px-4 py-3 text-xs"
-              style={{ background: 'rgba(255,70,85,0.06)', borderColor: 'rgba(255,70,85,0.2)', color: 'rgba(255,255,255,0.45)' }}>
+              style={{ background: `rgba(${ACCENT_RGB},0.06)`, borderColor: `rgba(${ACCENT_RGB},0.2)`, color: 'rgba(255,255,255,0.45)' }}>
               <span className="font-bold" style={{ color: '#fff' }}>{filtered.length}</span> of {patches.length} patches
-              {activePreset && <span className="block mt-0.5" style={{ color: 'rgba(255,70,85,0.7)', fontSize: 10 }}>{activePreset.label}</span>}
+              {activePreset && <span className="block mt-0.5" style={{ color: `rgba(${ACCENT_RGB},0.7)`, fontSize: 10 }}>{activePreset.label}</span>}
             </div>
           )}
         </aside>
 
-        {/* ── PATCH LIST ── */}
         <div className="flex-1 min-w-0">
-
-          {/* Stats row — aligns with "FILTERS" label on the left */}
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-6 text-sm" style={{ color: 'rgba(255,255,255,0.3)' }}>
-              <span>
-                <span className="font-bold" style={{ color: 'rgba(255,255,255,0.7)' }}>{patches.length}</span> patches indexed
-              </span>
-              <span><span className="font-bold" style={{ color: '#ff4655' }}>AI</span> summaries</span>
+              <span><span className="font-bold" style={{ color: 'rgba(255,255,255,0.7)' }}>{patches.length}</span> patches indexed</span>
+              <span><span className="font-bold" style={{ color: ACCENT }}>AI</span> summaries</span>
             </div>
           </div>
 
-          {/* Cards */}
           <div className="space-y-3">
             {loading ? (
               <div className="text-center py-20 text-sm" style={{ color: 'rgba(255,255,255,0.3)' }}>Loading patches...</div>
@@ -323,16 +301,16 @@ export default function Home() {
             ) : filtered.map((patch) => (
               <a key={patch.id} href={patch.url} target="_blank" rel="noopener noreferrer" className="block group">
                 <div className="relative rounded-xl border p-5 transition-all duration-200 overflow-hidden cursor-pointer"
-                  style={{ background: 'rgba(255,255,255,0.02)', borderColor: 'rgba(255,255,255,0.07)' }}
-                  onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(255,70,85,0.3)'; e.currentTarget.style.background = 'rgba(255,70,85,0.04)' }}
+                  style={{ background: '#07101D', borderColor: 'rgba(255,255,255,0.07)' }}
+                  onMouseEnter={(e) => { e.currentTarget.style.borderColor = `rgba(${ACCENT_RGB},0.3)`; e.currentTarget.style.background = `rgba(${ACCENT_RGB},0.04)` }}
                   onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.07)'; e.currentTarget.style.background = 'rgba(255,255,255,0.02)' }}>
                   <div className="absolute left-0 top-0 bottom-0 w-[3px] rounded-l-xl opacity-0 group-hover:opacity-100 transition-opacity"
-                    style={{ background: 'linear-gradient(to bottom, #ff4655, #bd3944)' }} />
+                    style={{ background: `linear-gradient(to bottom, ${ACCENT}, #b87d00)` }} />
                   <div className="flex flex-col gap-3">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
                         <span className="text-[10px] font-black tracking-[0.2em] uppercase px-2 py-0.5 rounded"
-                          style={{ background: 'rgba(255,70,85,0.15)', color: '#ff4655', border: '1px solid rgba(255,70,85,0.25)' }}>
+                          style={{ background: `rgba(${ACCENT_RGB},0.15)`, color: ACCENT, border: `1px solid rgba(${ACCENT_RGB},0.25)` }}>
                           {patch.game}
                         </span>
                         <span className="text-xs" style={{ color: 'rgba(255,255,255,0.3)' }}>{formatDate(patch.date)}</span>
@@ -344,7 +322,7 @@ export default function Home() {
                       <ul className="space-y-1.5">
                         {patch.summary.slice(0, 3).map((point, i) => (
                           <li key={i} className="flex gap-2.5 text-sm" style={{ color: 'rgba(255,255,255,0.45)' }}>
-                            <span className="shrink-0 mt-1.5 w-1 h-1 rounded-full" style={{ background: '#ff4655' }} />
+                            <span className="shrink-0 mt-1.5 w-1 h-1 rounded-full" style={{ background: ACCENT }} />
                             {point}
                           </li>
                         ))}
@@ -361,12 +339,11 @@ export default function Home() {
                     )}
                   </div>
                 </div>
-                </a>
+              </a>
             ))}
           </div>
         </div>
       </div>
-      <ChatWidget />
     </div>
   )
 }

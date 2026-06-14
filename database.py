@@ -19,6 +19,7 @@ ROOT = Path(__file__).resolve().parent
 # Add new game JSON files here as you add more games
 PATCH_FILES = [
     ROOT / "patches_valorant.json",
+    ROOT / "patches_cs2.json",
     # ROOT / "patches_lol.json",
 ]
 
