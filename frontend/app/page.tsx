@@ -122,12 +122,12 @@ export default function HomePage() {
               }}
             >
               {/* Logo + name */}
-              <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
                 <Image
                   src={game.logo}
                   alt={game.id}
-                  width={isFront ? 140 : 110}
-                  height={36}
+                  width={isFront ? 120 : 100}
+                  height={30}
                   style={{ objectFit: "contain", objectPosition: "left" }}
                 />
                 <span style={{
