@@ -37,7 +37,12 @@ const STACK_POS = [
   { x: 28, y: 20, scale: 0.94, z: 1, skew: -6, opacity: 0.68 },
 ];
 
-const SPRING = { type: "spring", stiffness: 340, damping: 30, mass: 0.9 };
+const SPRING = {
+  type: "spring" as const,
+  stiffness: 340,
+  damping: 30,
+  mass: 0.9,
+};
 
 export default function HomePage() {
   const router = useRouter();
