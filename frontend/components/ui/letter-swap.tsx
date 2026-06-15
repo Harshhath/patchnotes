@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import {
-  DynamicAnimationOptions,
+  AnimationOptions,
   motion,
   stagger,
   useAnimate,
