@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 const GAMES = [
   {
@@ -36,19 +37,19 @@ const STACK_POS = [
   { x: 28, y: 20, scale: 0.94, z: 1, skew: -6, opacity: 0.68 },
 ];
 
+const SPRING = { type: "spring", stiffness: 340, damping: 30, mass: 0.9 };
+
 export default function HomePage() {
   const router = useRouter();
   const [frontIndex, setFrontIndex] = useState(0);
-  const [animating, setAnimating] = useState(false);
+  const [isSwapping, setIsSwapping] = useState(false);
 
   const swap = useCallback(() => {
-    if (animating) return;
-    setAnimating(true);
-    setTimeout(() => {
-      setFrontIndex((i) => (i + 1) % GAMES.length);
-      setAnimating(false);
-    }, 220);
-  }, [animating]);
+    if (isSwapping) return;
+    setIsSwapping(true);
+    setFrontIndex((i) => (i + 1) % GAMES.length);
+    setTimeout(() => setIsSwapping(false), 350);
+  }, [isSwapping]);
 
   useEffect(() => {
     let cooldown = false;
@@ -56,7 +57,7 @@ export default function HomePage() {
       if (cooldown) return;
       cooldown = true;
       swap();
-      setTimeout(() => { cooldown = false; }, 600);
+      setTimeout(() => { cooldown = false; }, 400);
     };
     window.addEventListener("wheel", onWheel, { passive: true });
     return () => window.removeEventListener("wheel", onWheel);
@@ -66,7 +67,7 @@ export default function HomePage() {
 
   return (
     <main className="min-h-screen bg-[#0a0a0a] flex flex-col items-center justify-center px-6 overflow-hidden select-none">
-      {/* Header */}
+      {/* Header — unchanged */}
       <div className="text-center mb-16">
         <p className="text-[10px] tracking-[0.35em] uppercase text-white/20 mb-3 font-medium">
           *with RAG based AI chat bot
@@ -87,17 +88,27 @@ export default function HomePage() {
           const isFront = stackPos === 0;
 
           return (
-            <div
+            <motion.div
               key={game.id}
               onClick={isFront ? () => router.push(game.route) : swap}
+              // Framer animates between these values with a spring
+              animate={{
+                x: pos.x,
+                y: pos.y,
+                scale: pos.scale,
+                skewY: pos.skew,
+                opacity: pos.opacity,
+                zIndex: pos.z,
+              }}
+              transition={SPRING}
+              whileHover={isFront ? {
+                borderColor: game.borderHover,
+                boxShadow: `0 12px 48px ${game.glow}`,
+              } : {}}
               style={{
                 position: "absolute",
                 width: "22rem",
                 height: "11rem",
-                transform: `translate(${pos.x}px, ${pos.y}px) scale(${pos.scale}) skewY(${pos.skew}deg)`,
-                zIndex: pos.z,
-                opacity: animating ? 0.45 : pos.opacity,
-                transition: "transform 0.35s cubic-bezier(.4,0,.2,1), opacity 0.22s ease, box-shadow 0.25s ease",
                 cursor: "pointer",
                 background: game.bg,
                 border: `2px solid ${game.border}`,
@@ -108,20 +119,8 @@ export default function HomePage() {
                 justifyContent: "space-between",
                 boxSizing: "border-box",
               }}
-              onMouseEnter={(e) => {
-                if (!isFront) return;
-                const el = e.currentTarget as HTMLElement;
-                el.style.border = `2px solid ${game.borderHover}`;
-                el.style.boxShadow = `0 12px 48px ${game.glow}`;
-              }}
-              onMouseLeave={(e) => {
-                if (!isFront) return;
-                const el = e.currentTarget as HTMLElement;
-                el.style.border = `2px solid ${game.border}`;
-                el.style.boxShadow = "none";
-              }}
             >
-              {/* Logo + name */}
+              {/* Logo + name — unchanged */}
               <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
                 <Image
                   src={game.logo}
@@ -143,7 +142,7 @@ export default function HomePage() {
                 </span>
               </div>
 
-              {/* Tags — front card only */}
+              {/* Tags — front card only, unchanged */}
               {isFront && (
                 <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
                   {game.tags.map((tag) => (
@@ -165,7 +164,7 @@ export default function HomePage() {
                 </div>
               )}
 
-              {/* Bottom row */}
+              {/* Bottom row — unchanged */}
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                 <span style={{
                   fontSize: 9,
@@ -180,12 +179,12 @@ export default function HomePage() {
                   <span style={{ color: game.accent, fontSize: 18, lineHeight: 1 }}>→</span>
                 )}
               </div>
-            </div>
+            </motion.div>
           );
         })}
       </div>
 
-      {/* Hints */}
+      {/* Hints — unchanged */}
       <div className="mt-24 flex flex-col items-center gap-2">
         <button
           onClick={swap}

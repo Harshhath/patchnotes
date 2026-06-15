@@ -213,7 +213,7 @@ export default function Home() {
       </div>
 
       {/* Header — title only, no stats */}
-      <a href="/" title="Home" style={{ position: 'fixed', top: 12, left: 16, zIndex: 100 }}>
+      <a href="/" title="Home" style={{ position: 'fixed', top: 12, left: 2, zIndex: 100 }}>
         <Image src="/sukuna.png" alt="Home" width={89} height={89} className="hover:opacity-80 transition-opacity" />
       </a>
 
@@ -233,7 +233,7 @@ export default function Home() {
       <div className="relative z-10 max-w-7xl mx-auto px-8 py-8 flex gap-8">
 
         {/* ── SIDEBAR ── */}
-        <aside className="w-60 shrink-0 space-y-4 sticky top-8 self-start">
+        <aside className="w-60 shrink-0 space-y-4">
 
           {/* "FILTERS" row — this is the alignment anchor */}
           <div className="flex items-center justify-between">

@@ -202,7 +202,7 @@ export default function CS2Home() {
       <header className="relative z-20 border-b"
         style={{ borderColor: `rgba(${ACCENT_RGB},0.15)`, background: 'rgba(13,15,18,0.97)', backdropFilter: 'blur(20px)' }}>
         <div className="max-w-7xl mx-auto px-8 py-5 flex items-center gap-4">
-        <a href="/" title="Home" style={{ position: 'fixed', top: 12, left: 16, zIndex: 100 }}>
+        <a href="/" title="Home" style={{ position: 'fixed', top: 12, left: 2, zIndex: 100 }}>
           <Image
             src="/sukuna.png"
             alt="Home"
@@ -223,7 +223,7 @@ export default function CS2Home() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-8 py-8 flex gap-8">
 
-        <aside className="w-60 shrink-0 space-y-4 sticky top-8 self-start">
+      <aside className="w-60 shrink-0 space-y-4">
 
           <div className="flex items-center justify-between">
             <span className="text-[11px] font-bold tracking-[0.2em] uppercase" style={{ color: 'rgba(255,255,255,0.35)' }}>Filters</span>
