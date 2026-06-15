@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { LetterSwapPingPong } from "@/components/ui/letter-swap";
 
 const GAMES = [
   {
@@ -249,7 +250,11 @@ export default function HomePage() {
           *with RAG based AI chat bot
         </p>
         <h1 className="text-5xl font-black text-white tracking-tight mb-3">
-          PATCHNOTES
+          <LetterSwapPingPong
+            label="PATCHNOTES"
+            staggerFrom="center"
+            className="text-5xl font-black text-white tracking-tight"
+          />
         </h1>
         <p className="text-white/25 text-sm max-w-[240px] mx-auto leading-relaxed">
           Ask anything about patches, nerfs, buffs &amp; balance changes.
