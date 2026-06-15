@@ -202,15 +202,9 @@ export default function CS2Home() {
       <header className="relative z-20 border-b"
         style={{ borderColor: `rgba(${ACCENT_RGB},0.15)`, background: 'rgba(13,15,18,0.97)', backdropFilter: 'blur(20px)' }}>
         <div className="max-w-7xl mx-auto px-8 py-5 flex items-center gap-4">
-        <a href="/" title="Home" style={{ position: 'fixed', top: 12, left: 2, zIndex: 100 }}>
-          <Image
-            src="/sukuna.png"
-            alt="Home"
-            width={89}
-            height={89}
-            className="hover:opacity-80 transition-opacity"
-          />
-        </a>
+          <a href="/" title="Home" style={{ position: 'fixed', top: 12, left: 2, zIndex: 100 }}>
+            <Image src="/sukuna.png" alt="Home" width={89} height={89} className="hover:opacity-80 transition-opacity" />
+          </a>
           <div>
             <div className="flex items-center gap-2 mb-1">
               <CS2Logo size={24} />
@@ -223,7 +217,7 @@ export default function CS2Home() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-8 py-8 flex gap-8">
 
-      <aside className="w-60 shrink-0 space-y-4">
+        <aside className="w-60 shrink-0 space-y-4">
 
           <div className="flex items-center justify-between">
             <span className="text-[11px] font-bold tracking-[0.2em] uppercase" style={{ color: 'rgba(255,255,255,0.35)' }}>Filters</span>
@@ -233,6 +227,7 @@ export default function CS2Home() {
             )}
           </div>
 
+          {/* DATE RANGE CARD */}
           <div className="rounded-xl border p-4" style={{ background: `rgba(${ACCENT_RGB},0.04)`, borderColor: `rgba(${ACCENT_RGB},0.3)` }}>
             <div className="flex items-center justify-between mb-3">
               <p className="text-[10px] font-bold tracking-[0.15em] uppercase" style={{ color: 'rgba(255,255,255,0.3)' }}>Date Range</p>
@@ -240,24 +235,55 @@ export default function CS2Home() {
                 <button onClick={() => { setDateFrom(''); setDateTo('') }} className="text-[10px] font-semibold" style={{ color: `rgba(${ACCENT_RGB},0.8)` }}>Clear</button>
               )}
             </div>
+
+            {/* PRESET BUTTONS — with hover effect */}
             <div className="space-y-1 mb-4">
               {DATE_PRESETS.map(({ label, days }) => {
                 const active = isPresetActive(dateFrom, dateTo, days)
                 return (
-                  <button key={days} onClick={() => applyPreset(days)}
-                    className="w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium transition-all text-left"
-                    style={{ background: active ? `rgba(${ACCENT_RGB},0.14)` : 'transparent', border: `1px solid ${active ? `rgba(${ACCENT_RGB},0.3)` : 'transparent'}`, color: active ? ACCENT : 'rgba(255,255,255,0.45)' }}>
+                  <button
+                    key={days}
+                    onClick={() => applyPreset(days)}
+                    style={{
+                      width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                      padding: '8px 12px', borderRadius: 10, textAlign: 'left', fontSize: 12, fontWeight: 500,
+                      cursor: 'pointer', transition: 'all .1s',
+                      background: active ? `rgba(${ACCENT_RGB},0.14)` : 'transparent',
+                      border: `1px solid ${active ? `rgba(${ACCENT_RGB},0.3)` : 'transparent'}`,
+                      color: active ? ACCENT : 'rgba(255,255,255,0.45)',
+                    }}
+                    onMouseEnter={(e) => {
+                      if (active) return
+                      e.currentTarget.style.background = `rgba(${ACCENT_RGB},0.1)`
+                      e.currentTarget.style.color = 'rgba(255,255,255,0.8)'
+                      e.currentTarget.style.borderColor = `rgba(${ACCENT_RGB},0.25)`
+                    }}
+                    onMouseLeave={(e) => {
+                      if (active) return
+                      e.currentTarget.style.background = 'transparent'
+                      e.currentTarget.style.color = 'rgba(255,255,255,0.45)'
+                      e.currentTarget.style.borderColor = 'transparent'
+                    }}>
                     <span>{label}</span>
-                    <span style={{ width: 16, height: 16, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 9, flexShrink: 0, background: active ? ACCENT : 'transparent', border: `1px solid ${active ? ACCENT : 'rgba(255,255,255,0.15)'}`, color: '#000' }}>
+                    <span style={{
+                      width: 16, height: 16, borderRadius: '50%',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      fontSize: 9, flexShrink: 0,
+                      background: active ? ACCENT : 'transparent',
+                      border: `1px solid ${active ? ACCENT : 'rgba(255,255,255,0.15)'}`,
+                      color: '#000',
+                    }}>
                       {active ? '✓' : ''}
                     </span>
                   </button>
                 )
               })}
             </div>
+
             <div style={{ height: 1, background: 'rgba(255,255,255,0.07)', margin: '12px 0' }} />
             <p className="text-[10px] font-bold tracking-[0.15em] uppercase mb-3" style={{ color: 'rgba(255,255,255,0.2)' }}>Custom Range</p>
             <Calendar dateFrom={dateFrom} dateTo={dateTo} onRange={handleRange} />
+
             {(dateFrom || dateTo) && (
               <div style={{ display: 'flex', gap: 8, marginTop: 12 }}>
                 <div style={{ flex: 1, background: `rgba(${ACCENT_RGB},0.08)`, border: `1px solid rgba(${ACCENT_RGB},0.18)`, borderRadius: 9, padding: '6px 8px', textAlign: 'center' }}>
@@ -273,14 +299,35 @@ export default function CS2Home() {
             )}
           </div>
 
+          {/* CHANGE TYPE CARD */}
           <div className="rounded-xl border p-4 space-y-1" style={{ background: `rgba(${ACCENT_RGB},0.04)`, borderColor: `rgba(${ACCENT_RGB},0.3)` }}>
             <p className="text-[10px] font-bold tracking-[0.15em] uppercase mb-3" style={{ color: 'rgba(255,255,255,0.3)' }}>Change Type</p>
             {ALL_TAGS.map(({ label, value }) => {
               const active = selectedTags.includes(value)
               return (
-                <button key={value} onClick={() => toggleTag(value)}
-                  className="w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium transition-all text-left"
-                  style={{ background: active ? `rgba(${ACCENT_RGB},0.12)` : 'transparent', border: `1px solid ${active ? `rgba(${ACCENT_RGB},0.3)` : 'transparent'}`, color: active ? ACCENT : 'rgba(255,255,255,0.45)' }}>
+                <button
+                  key={value}
+                  onClick={() => toggleTag(value)}
+                  style={{
+                    width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                    padding: '8px 12px', borderRadius: 10, textAlign: 'left', fontSize: 12, fontWeight: 500,
+                    cursor: 'pointer', transition: 'all .1s',
+                    background: active ? `rgba(${ACCENT_RGB},0.12)` : 'transparent',
+                    border: `1px solid ${active ? `rgba(${ACCENT_RGB},0.3)` : 'transparent'}`,
+                    color: active ? ACCENT : 'rgba(255,255,255,0.45)',
+                  }}
+                  onMouseEnter={(e) => {
+                    if (active) return
+                    e.currentTarget.style.background = `rgba(${ACCENT_RGB},0.1)`
+                    e.currentTarget.style.color = 'rgba(255,255,255,0.8)'
+                    e.currentTarget.style.borderColor = `rgba(${ACCENT_RGB},0.25)`
+                  }}
+                  onMouseLeave={(e) => {
+                    if (active) return
+                    e.currentTarget.style.background = 'transparent'
+                    e.currentTarget.style.color = 'rgba(255,255,255,0.45)'
+                    e.currentTarget.style.borderColor = 'transparent'
+                  }}>
                   <span>{label}</span>
                   {active && <span style={{ color: ACCENT, fontSize: 10 }}>✓</span>}
                 </button>
@@ -361,15 +408,16 @@ export default function CS2Home() {
           </div>
         </div>
       </div>
+
       <ChatWidget
-      game="CS2"
-      accent="#f0a500"
-      accentRgb="240,165,0"
-      bgColor="#07101D"
-      borderColor="rgba(240,165,0,0.2)"
-      title="ASK PATCHBOT"
-      subtitle="Ask anything about CS2 patches"
-      exampleQuestion='"weapon changes?"'
+        game="CS2"
+        accent="#f0a500"
+        accentRgb="240,165,0"
+        bgColor="#07101D"
+        borderColor="rgba(240,165,0,0.2)"
+        title="ASK PATCHBOT"
+        subtitle="Ask anything about CS2 patches"
+        exampleQuestion='"weapon changes?"'
       />
     </div>
   )

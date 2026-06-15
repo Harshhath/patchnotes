@@ -57,7 +57,15 @@ function AssistantMessage({
   onAnimationDone: () => void
 }) {
   const animated = useAnimatedText(text, isLatest, onAnimationDone)
-  return <span>{animated}</span>
+  return (
+    <span>
+      {animated.split('\n').map((line, j) => (
+        <span key={j} style={{ display: 'block', marginBottom: 8, lineHeight: 1.6 }}>
+          {line}
+        </span>
+      ))}
+    </span>
+  )
 }
 
 export default function ChatWidget({
@@ -182,7 +190,11 @@ export default function ChatWidget({
                       onAnimationDone={() => setAnimatedIds((s) => new Set(s).add(i))}
                     />
                   )
-                  : m.text}
+                  : m.text.split('\n').map((line, j) => (
+                    <span key={j} style={{ display: 'block', marginBottom: 8, lineHeight: 1.5 }}>
+                      {line}
+                    </span>
+                  ))}
               </div>
             ))}
             {loading && (

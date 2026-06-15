@@ -3,6 +3,22 @@ import { createClient } from '@supabase/supabase-js'
 import { GoogleGenAI } from '@google/genai'
 import Groq from 'groq-sdk'
 
+// ── Rate limiting ──────────────────────────────────────────────────────────
+const rateLimitMap = new Map<string, { count: number; resetAt: number }>()
+function checkRateLimit(ip: string): boolean {
+  const now = Date.now()
+  const windowMs = 60 * 1000
+  const maxRequests = 10
+  const entry = rateLimitMap.get(ip)
+  if (!entry || now > entry.resetAt) {
+    rateLimitMap.set(ip, { count: 1, resetAt: now + windowMs })
+    return true
+  }
+  if (entry.count >= maxRequests) return false
+  entry.count++
+  return true
+}
+
 // ── Keyword → tag mapping ──────────────────────────────────────────────────
 const VALORANT_KEYWORD_TAGS: Record<string, string> = {
   'weapon': 'weapon-buff', 'gun': 'weapon-buff', 'rifle': 'weapon-buff',
@@ -41,7 +57,6 @@ const CS2_KEYWORD_TAGS: Record<string, string> = {
   'gameplay': 'gameplay', 'animation': 'animation',
 }
 
-// ── Query expansion terms per tag ──────────────────────────────────────────
 const TAG_EXPANSION: Record<string, string> = {
   'weapon-buff':   'weapon buff damage increase accuracy improvement gun upgrade',
   'weapon-nerf':   'weapon nerf damage reduction accuracy decrease gun downgrade',
@@ -68,18 +83,12 @@ function detectTag(question: string, game: string): string | null {
   return null
 }
 
-// ── Expand query with domain terms for better embedding ───────────────────
 function expandQuery(question: string, tag: string | null, game: string): string {
   const expansion = tag ? (TAG_EXPANSION[tag] ?? '') : ''
   return `${game} patch notes: ${question} ${expansion}`.trim()
 }
 
-// ── Rerank patches by combining similarity + tag match + recency ──────────
-function rerank(
-  patches: any[],
-  detectedTag: string | null,
-  question: string
-): any[] {
+function rerank(patches: any[], detectedTag: string | null, question: string): any[] {
   const lower = question.toLowerCase()
   const words = lower.split(/\s+/).filter((w) => w.length > 2)
   const now   = Date.now()
@@ -87,23 +96,11 @@ function rerank(
   return patches
     .map((p) => {
       let score = p.similarity ?? 0
-
-      // +0.15 if patch has the detected tag
-      if (detectedTag && Array.isArray(p.tags) && p.tags.includes(detectedTag)) {
-        score += 0.15
-      }
-
-      // +0.02 per question keyword found in title or summary
+      if (detectedTag && Array.isArray(p.tags) && p.tags.includes(detectedTag)) score += 0.15
       const haystack = `${p.title} ${JSON.stringify(p.summary ?? '')}`.toLowerCase()
-      for (const word of words) {
-        if (haystack.includes(word)) score += 0.02
-      }
-
-      // slight recency boost — newer patches score marginally higher
-      const age = now - new Date(p.date).getTime()
-      const ageYears = age / (1000 * 60 * 60 * 24 * 365)
+      for (const word of words) { if (haystack.includes(word)) score += 0.02 }
+      const ageYears = (now - new Date(p.date).getTime()) / (1000 * 60 * 60 * 24 * 365)
       score += Math.max(0, 0.05 - ageYears * 0.01)
-
       return { ...p, _score: score }
     })
     .sort((a, b) => b._score - a._score)
@@ -111,6 +108,12 @@ function rerank(
 }
 
 export async function POST(req: NextRequest) {
+  // ── Rate limit ─────────────────────────────────────────────────────────────
+  const ip = req.headers.get('x-forwarded-for') ?? 'unknown'
+  if (!checkRateLimit(ip)) {
+    return NextResponse.json({ error: 'Too many requests. Try again in a minute.' }, { status: 429 })
+  }
+
   const supabase = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.SUPABASE_SERVICE_KEY!
@@ -121,20 +124,16 @@ export async function POST(req: NextRequest) {
   const { question, game } = await req.json()
   if (!question) return NextResponse.json({ error: 'No question' }, { status: 400 })
 
-  const gameLabel  = game ?? 'Valorant'
+  const gameLabel   = game ?? 'Valorant'
   const detectedTag = detectTag(question, gameLabel)
-
-  // ── 1. Expand query before embedding ──────────────────────────────────────
   const expandedQuery = expandQuery(question, detectedTag, gameLabel)
 
-  // ── 2. Embed the expanded query ────────────────────────────────────────────
   const embedResult = await ai.models.embedContent({
     model: 'models/gemini-embedding-2',
     contents: expandedQuery,
   })
   const embedding = ((embedResult as any).embeddings ?? [])[0]?.values ?? []
 
-  // ── 3. Fetch more candidates so reranker has room to work ─────────────────
   let patches: any[] = []
   let error: any     = null
 
@@ -146,7 +145,6 @@ export async function POST(req: NextRequest) {
   patches = result.data ?? []
   error   = result.error
 
-  // fallback if game-filtered RPC doesn't exist
   if (error?.code === 'PGRST202') {
     const fallback = await supabase.rpc('match_patches', {
       query_embedding: embedding,
@@ -158,21 +156,18 @@ export async function POST(req: NextRequest) {
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 })
 
-  // ── 4. Rerank: tag match + keyword overlap + recency ──────────────────────
   const reranked = rerank(patches, detectedTag, question)
 
-  // ── 5. Build context ───────────────────────────────────────────────────────
   const context = reranked.map((p: any) =>
     `Patch: ${p.title} (${p.date})\nTags: ${JSON.stringify(p.tags)}\n${p.content ?? JSON.stringify(p.summary)}`
   ).join('\n\n')
 
-  // ── 6. LLM answer ─────────────────────────────────────────────────────────
   const completion = await groq.chat.completions.create({
     model: 'llama-3.3-70b-versatile',
     messages: [
       {
         role: 'system',
-        content: `You are a ${gameLabel} patch notes expert. Answer questions based only on the patch notes context provided. Be concise and specific. Always mention the patch version and date when referencing a change.`,
+        content: `You are a ${gameLabel} patch notes expert. Answer questions based only on the patch notes context provided. Be concise and specific. Always mention the patch version and date when referencing a change. When listing multiple patches or changes, format each one as a bullet point starting with "•".`,
       },
       {
         role: 'user',
