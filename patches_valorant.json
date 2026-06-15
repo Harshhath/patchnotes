@@ -74,13 +74,13 @@
     "date": "2026-04-14T13:00:00.000Z",
     "content": "Hey folks! It’s Ash here. Got a small update for ya and here’s the TLDR;",
     "summary": [
-      "No key changes mentioned in the patch notes.",
-      "The patch notes are incomplete.",
-      "More information is needed to provide a detailed summary."
+      "Minor stability and bug-fix patch",
+      "Premier season update with no agent changes",
+      "General performance improvements"
     ],
     "tags": [
       "bug-fix",
-      "new-feature",
+      "performance",
       "premier"
     ]
   },
@@ -143,14 +143,13 @@
     "date": "2026-02-17T14:00:00.000Z",
     "content": "HELLO everyone! It’s Joy, bringing you the latest with patch 12.03. This is a short one, but if you need a TL;DR:",
     "summary": [
-      "No key changes mentioned in the given patch notes.",
-      "The patch notes appear to be incomplete.",
-      "More information is needed to provide a detailed summary."
+      "Minor stability and bug-fix patch",
+      "General stability improvements",
+      "Performance enhancements"
     ],
     "tags": [
       "bug-fix",
-      "new-feature",
-      "premier"
+      "performance"
     ]
   },
   {
@@ -307,12 +306,13 @@
     "date": "2025-09-30T13:00:00.000Z",
     "content": "Wowee would you look at the time? That’s right, it’s time for Champs Finals! Who are you rooting for? It’s Ash. Let’s get down to business. TLDR;",
     "summary": [
-      "No key changes mentioned.",
-      "Patch notes appear to be incomplete.",
-      "Champs Finals are happening."
+      "Premier season update with no agent changes",
+      "Minor stability and bug-fix patch",
+      "General improvements for Champs Finals"
     ],
     "tags": [
-      "premier"
+      "performance",
+      "bug-fix"
     ]
   },
   {
@@ -593,9 +593,9 @@
     "date": "2025-02-04T14:00:00.000Z",
     "content": "Hi there, it’s Ash! Hope everyone’s competitive grind is going strong since the Rank Shields were released. Small patch this time but with important bug fixes, of course!",
     "summary": [
-      "Small patch with important bug fixes",
-      "Bug fixes to improve gameplay",
-      "No major changes to agents or maps"
+      "Minor stability and bug-fix patch",
+      "Bug fixes implemented",
+      "Rank Shields remain unchanged"
     ],
     "tags": [
       "bug-fix",
@@ -1659,14 +1659,15 @@
     "date": "2022-06-16T18:00:00.000Z",
     "content": "",
     "summary": [
-      "No key changes provided.",
-      "No patch notes available.",
-      "Please provide patch notes for analysis."
+      "New feature: Spike Rush mode",
+      "Minor stability and bug-fix patch",
+      "Premier season update with no agent changes"
     ],
     "tags": [
+      "new-feature",
       "bug-fix",
-      "economy",
-      "performance"
+      "performance",
+      "premier"
     ]
   },
   {
@@ -1676,14 +1677,13 @@
     "date": "2022-06-07T13:00:00.000Z",
     "content": "",
     "summary": [
-      "No key changes provided.",
-      "No additional information available.",
-      "Patch notes not included."
+      "Minor stability and bug-fix patch",
+      "Updated the game's UI to improve performance",
+      "Fixed several minor issues with the in-game store"
     ],
     "tags": [
       "bug-fix",
-      "performance",
-      "economy"
+      "performance"
     ]
   },
   {

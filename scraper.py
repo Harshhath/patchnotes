@@ -94,6 +94,33 @@ REQUEST_HEADERS = {
 
 groq_client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
 
+# ─────────────────────────────────────────────
+#  BAD SUMMARY DETECTION
+# ─────────────────────────────────────────────
+
+BAD_PHRASES = [
+    "no key changes",
+    "patch notes are incomplete",
+    "more information is needed",
+    "no changes mentioned",
+    "no major changes",
+    "unable to provide",
+    "not enough information",
+    "no specific changes",
+    "no details provided",
+]
+
+
+def is_bad_summary(patch):
+    """Returns True if the patch has no summary or its summary contains unhelpful filler text."""
+    summary = patch.get("summary", [])
+    if not summary:
+        return True
+    return any(
+        any(phrase in bullet.lower() for phrase in BAD_PHRASES)
+        for bullet in summary
+    )
+
 
 # ─────────────────────────────────────────────
 #  TITLE FILTER HELPER
@@ -113,11 +140,19 @@ def summarise_patch(patch, game_config):
     prompt = f"""You are a {game_config['groq_analyst']}. Analyse the patch note below and return ONLY a valid JSON object — no markdown, no backticks, no explanation, no extra text before or after.
 
 The JSON must have exactly these two fields:
-1. "summary": an array of 3-5 strings, each string being one bullet point describing a key change
-2. "tags": an array of 3-6 short lowercase tags from this list: {tags_list}
+1. "summary": an array of 3-5 strings, each string being one bullet point describing a key change.
+   - NEVER write "No key changes", "patch notes are incomplete", "more information is needed", or any similar filler phrase.
+   - If the patch content is light or brief, summarise what IS there — e.g. new features, bug fixes, mode updates, site launches, balance adjustments, Premier changes, or general stability improvements.
+   - If the content is truly minimal, describe the patch in plain terms such as "Minor stability and bug-fix patch", "Premier season update with no agent changes", or "Small maintenance patch with general improvements".
+   - Every patch has SOMETHING worth noting. Always produce 3 meaningful, specific bullet points.
+
+2. "tags": an array of 3-6 short lowercase tags chosen from this exact list: {tags_list}
+   - ALWAYS include "performance" if the patch has no major agent, weapon, or map changes.
+   - NEVER invent tags that are not in the list above.
+   - Pick the most relevant tags based on what is actually described.
 
 Example of the exact format to return:
-{{"summary": ["Key change one.", "Key change two.", "Key change three."], "tags": ["bug-fix", "new-feature"]}}
+{{"summary": ["Key change one.", "Key change two.", "Key change three."], "tags": ["bug-fix", "performance"]}}
 
 Title: {patch['title']}
 Date: {patch['date']}
@@ -147,7 +182,7 @@ def summarise_all(patches, game_config):
     total = len(patches)
     print(f"\nSummarising {total} patches with Groq...\n")
     for i, patch in enumerate(patches, start=1):
-        if patch.get("summary"):
+        if patch.get("summary") and not is_bad_summary(patch):
             print(f"  Skipping {i}/{total}: {patch['title']} (already summarised)")
             continue
         print(f"  Summarising {i}/{total}: {patch['title']}")
@@ -517,6 +552,19 @@ def run_game(game_key, game_config):
 
     patches = json.loads(output_file.read_text(encoding="utf-8"))
     patches = filter_by_date(patches, game_config)
+
+    # ── Re-queue patches with bad/missing summaries ───────────────
+    requeued = 0
+    for patch in patches:
+        if is_bad_summary(patch):
+            patch.pop("summary", None)
+            patch.pop("tags", None)
+            requeued += 1
+
+    if requeued:
+        print(f"\nRe-queuing {requeued} patch(es) with bad or missing summaries...")
+    # ─────────────────────────────────────────────────────────────
+
     patches = summarise_all(patches, game_config)
 
     output_file.write_text(
