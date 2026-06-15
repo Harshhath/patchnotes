@@ -12,7 +12,7 @@ import { debounce } from "lodash"
 interface TextProps {
   label: string
   reverse?: boolean
-  transition?: DynamicAnimationOptions
+  transition?: AnimationOptions
   staggerDuration?: number
   staggerFrom?: "first" | "last" | "center" | number
   className?: string
@@ -36,7 +36,7 @@ export function LetterSwapForward({
     if (blocked) return
     setBlocked(true)
 
-    const mergeTransition = (baseTransition: DynamicAnimationOptions) => ({
+    const mergeTransition = (baseTransition: AnimationOptions) => ({
       ...baseTransition,
       delay: stagger(staggerDuration, { from: staggerFrom }),
     })
@@ -92,7 +92,7 @@ export function LetterSwapPingPong({
   const [scope, animate] = useAnimate()
   const [isHovered, setIsHovered] = useState(false)
 
-  const mergeTransition = (baseTransition: DynamicAnimationOptions) => ({
+  const mergeTransition = (baseTransition: AnimationOptions) => ({
     ...baseTransition,
     delay: stagger(staggerDuration, { from: staggerFrom }),
   })
