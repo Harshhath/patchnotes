@@ -75,7 +75,7 @@ export default function ChatWidget({
   bgColor = '#0f1923',
   borderColor = 'rgba(255,70,85,0.2)',
   placeholder = 'Ask about a patch...',
-  title = 'ASK PATCHBOT',
+  title = 'PATCHBOT',
   subtitle = 'Ask anything about Valorant patches',
   exampleQuestion = '"When did Neon get nerfed?"',
 }: ChatWidgetProps) {
