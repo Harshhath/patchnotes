@@ -243,15 +243,16 @@ export default function HomePage() {
 
   useEffect(() => {
     let cooldown = false;
-    const onWheel = () => {
+    const onWheel = (e: WheelEvent) => {
       if (cooldown) return;
       cooldown = true;
-      swap();
+      const direction = e.deltaY > 0 ? 1 : -1;
+      setFrontIndex((i) => (i + direction + GAMES.length) % GAMES.length);
       setTimeout(() => { cooldown = false; }, 400);
     };
     window.addEventListener("wheel", onWheel, { passive: true });
     return () => window.removeEventListener("wheel", onWheel);
-  }, [swap]);
+  }, []);
 
   const order = GAMES.map((_, i) => (frontIndex + i) % GAMES.length);
 
