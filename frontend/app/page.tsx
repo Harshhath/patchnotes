@@ -33,11 +33,25 @@ const GAMES = [
     spotlightColor: "232,160,32",
     tags: ["Weapons", "Maps", "Economy"],
   },
+  {
+    id: "destiny2",
+    route: "/destiny2",
+    logo: "/d2-logo2.png",
+    sublabel: "Action MMO · Bungie",
+    accent: "#c8a951",
+    bg: "#0d1117",
+    border: "rgba(200,169,81,0.45)",
+    borderHover: "rgba(200,169,81,0.9)",
+    glow: "rgba(200,169,81,0.35)",
+    spotlightColor: "200,169,81",
+    tags: ["Subclass", "Weapons", "Raids"],
+  },
 ] as const;
 
 const STACK_POS = [
-  { x: 0,  y: 0,  scale: 1,    z: 2, skew: -6, opacity: 1    },
-  { x: 28, y: 20, scale: 0.94, z: 1, skew: -6, opacity: 0.68 },
+  { x: 0,  y: 0,  scale: 1,    z: 3, skew: -6, opacity: 1    },
+  { x: 28, y: 20, scale: 0.94, z: 2, skew: -6, opacity: 0.68 },
+  { x: 52, y: 38, scale: 0.88, z: 1, skew: -6, opacity: 0.38 },
 ];
 
 const SPRING_CONFIG = {
@@ -48,6 +62,12 @@ const SPRING_CONFIG = {
 };
 
 const TILT_SPRING = { stiffness: 300, damping: 25 };
+
+const GAME_LABELS: Record<string, string> = {
+  valorant: "Valorant",
+  cs2: "CS2",
+  destiny2: "Destiny 2",
+};
 
 function GameCard({
   game,
@@ -62,13 +82,11 @@ function GameCard({
 }) {
   const cardRef = useRef<HTMLDivElement>(null);
 
-  // Motion values for tilt
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [8, -8]), TILT_SPRING);
   const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-8, 8]), TILT_SPRING);
 
-  // Spotlight position
   const [spotlight, setSpotlight] = useState({ x: -999, y: -999, visible: false });
 
   function handleMouseMove(e: React.MouseEvent<HTMLDivElement>) {
@@ -135,7 +153,6 @@ function GameCard({
         whileHover={isFront ? { borderColor: game.borderHover } : {}}
         transition={{ duration: 0.2 }}
       >
-        {/* Spotlight radial gradient */}
         {isFront && (
           <div
             style={{
@@ -152,9 +169,7 @@ function GameCard({
           />
         )}
 
-        {/* Card content — above spotlight */}
         <div style={{ position: "relative", zIndex: 1, display: "flex", flexDirection: "column", height: "100%", justifyContent: "space-between" }}>
-          {/* Logo + name */}
           <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
             <Image
               src={game.logo}
@@ -172,11 +187,10 @@ function GameCard({
               whiteSpace: "nowrap",
               fontFamily: "Arial, sans-serif",
             }}>
-              {game.id === "valorant" ? "Valorant" : "CS2"}
+              {GAME_LABELS[game.id]}
             </span>
           </div>
 
-          {/* Tags — front card only */}
           {isFront && (
             <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
               {game.tags.map((tag) => (
@@ -195,7 +209,6 @@ function GameCard({
             </div>
           )}
 
-          {/* Bottom row */}
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
             <span style={{
               fontSize: 9,
@@ -244,7 +257,6 @@ export default function HomePage() {
 
   return (
     <main className="min-h-screen bg-[#0a0a0a] flex flex-col items-center justify-center px-6 overflow-hidden select-none">
-      {/* Header */}
       <div className="text-center mb-16">
         <p className="text-[10px] tracking-[0.35em] uppercase text-white/20 mb-3 font-medium">
           *with RAG based AI chat bot
@@ -261,7 +273,6 @@ export default function HomePage() {
         </p>
       </div>
 
-      {/* Card stack */}
       <div className="relative w-[22rem] h-52">
         {order.map((gameIdx, stackPos) => (
           <GameCard
@@ -274,7 +285,6 @@ export default function HomePage() {
         ))}
       </div>
 
-      {/* Hints */}
       <div className="mt-24 flex flex-col items-center gap-2">
         <button
           onClick={swap}

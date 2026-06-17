@@ -5,6 +5,7 @@ embeddings.py — generates embeddings for all patches and stores them in Supaba
 import os
 import json
 import time
+import random
 import psycopg2
 from google import genai
 from dotenv import load_dotenv
@@ -13,12 +14,21 @@ load_dotenv()
 
 client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 
-def get_embedding(text):
-    result = client.models.embed_content(
-        model="models/gemini-embedding-2",
-        contents=text
-    )
-    return result.embeddings[0].values
+def get_embedding(text, max_retries=5):
+    for attempt in range(max_retries):
+        try:
+            result = client.models.embed_content(
+                model="models/gemini-embedding-2",
+                contents=text
+            )
+            return result.embeddings[0].values
+        except Exception as e:
+            if "429" in str(e) and attempt < max_retries - 1:
+                wait = (2 ** attempt) + random.uniform(0, 1)
+                print(f"    Rate limited, retrying in {wait:.1f}s...")
+                time.sleep(wait)
+            else:
+                raise
 
 def main():
     conn = psycopg2.connect(os.environ["DATABASE_URL"])
@@ -38,7 +48,7 @@ def main():
             )
             conn.commit()
             print(f"  ✓ {title}")
-            time.sleep(0.5)
+            time.sleep(2)
         except Exception as e:
             print(f"  ERROR {title}: {e}")
 

@@ -1,24 +1,11 @@
 """
 scraper.py — multi-game patch note scraper
-
-To add a new game, add a new entry to the GAMES dict at the top of this file.
-Each game needs:
-  - name:         human-readable name (used in logs and the "game" field)
-  - type:         "riot" for Riot Next.js sites, "steam" for Steam ISteamNews API
-  - list_url:     the page that lists all patch note articles (riot only)
-  - steam_app_id: Steam app ID (steam only)
-  - base_url:     used to filter and resolve relative URLs (riot only)
-  - title_filter: string or list of strings — article title must match at least one
-  - output_file:  where to save the JSON for this game
-  - hash_file:    where to store the URL hash for change detection
-  - tags:         list of valid tags for the Groq prompt (game-specific)
-  - groq_analyst: short description of the analyst role for the Groq prompt
-  - date_from:    (optional) ISO date string — ignore patches before this date
 """
 
 import hashlib
 import json
 import os
+import re
 import time
 from datetime import datetime, timezone
 from pathlib import Path
@@ -34,6 +21,7 @@ load_dotenv()
 ROOT = Path(__file__).resolve().parent
 
 CS2_LAUNCH_DATE = "2023-09-27"
+D2_FROM_DATE    = "2022-01-01"
 
 # ─────────────────────────────────────────────
 #  GAME CONFIGS
@@ -68,20 +56,43 @@ GAMES = {
             "gameplay", "ui-change", "new-feature", "anti-cheat",
         ],
     },
-    # "lol": {
-    #     "name": "League of Legends",
-    #     "type": "riot",
-    #     "list_url": "https://www.leagueoflegends.com/en-us/news/game-updates/",
-    #     "base_url": "https://www.leagueoflegends.com",
-    #     "title_filter": "patch",
-    #     "output_file": ROOT / "patches_lol.json",
-    #     "hash_file": ROOT / "hash_lol.txt",
-    #     "groq_analyst": "League of Legends patch notes analyst",
-    #     "tags": [
-    #         "champion-buff", "champion-nerf", "item-change", "rune-change",
-    #         "bug-fix", "new-feature", "performance", "map-change",
-    #     ],
-    # },
+    "destiny2": {
+        "name": "Destiny 2",
+        "type": "bungie",
+        # Explicit list of patch slugs in version order (oldest → newest).
+        # Add new slugs here as Bungie publishes them.
+        "bungie_patch_slugs": [
+            "destiny_update_9_5_0_5",
+            "destiny_update_9_5_1",
+            "destiny_update_9_5_2",
+            "destiny_update_9_5_3",
+            "destiny_update_9_5_4",
+            "destiny_update_9_5_5",
+            "destiny_update_9_5_5_1",
+            "destiny_update_9_5_5_2",
+            "destiny_update_9_5_5_3",
+            "destiny_update_9_5_5_4",
+            "destiny_update_9_5_5_5",
+            "destiny_update_9_5_6_1",
+            "destiny_update_9_5_6_2",
+            "destiny_update_9_5_6_3",
+            "destiny_update_9_7_0",
+            "destiny_update_9_7_0_1",
+        ],
+        "output_file": ROOT / "patches_destiny2.json",
+        "hash_file":   ROOT / "hash_destiny2.txt",
+        "groq_analyst": "Destiny 2 patch notes analyst",
+        "tags": [
+            "weapon-buff", "weapon-nerf", "ability-change", "subclass-change",
+            "bug-fix", "new-feature", "raid-change", "pvp-change",
+            "economy", "performance",
+            "hunter", "titan", "warlock",
+            "gunslinger", "arcstrider", "nightstalker", "revenant", "threadrunner",
+            "sunbreaker", "striker", "sentinel", "behemoth", "berserker",
+            "dawnblade", "stormcaller", "voidwalker", "shadebinder", "broodweaver",
+            "prismatic",
+        ],
+    },
 }
 
 REQUEST_HEADERS = {
@@ -94,27 +105,24 @@ REQUEST_HEADERS = {
 
 groq_client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
 
+
 # ─────────────────────────────────────────────
 #  BAD SUMMARY DETECTION
 # ─────────────────────────────────────────────
 
 BAD_PHRASES = [
-    "no key changes",
-    "patch notes are incomplete",
-    "more information is needed",
-    "no changes mentioned",
-    "no major changes",
-    "unable to provide",
-    "not enough information",
-    "no specific changes",
-    "no details provided",
+    "no key changes", "no significant changes", "patch notes are incomplete",
+    "more information is needed", "further information is needed",
+    "no changes mentioned", "no major changes", "unable to provide",
+    "not enough information", "no specific changes", "no details provided",
+    "not fully provided", "accurately summarize",
 ]
 
-
 def is_bad_summary(patch):
-    """Returns True if the patch has no summary or its summary contains unhelpful filler text."""
     summary = patch.get("summary", [])
     if not summary:
+        return True
+    if len(summary) == 1 and summary[0].strip().startswith("{"):
         return True
     return any(
         any(phrase in bullet.lower() for phrase in BAD_PHRASES)
@@ -140,19 +148,23 @@ def summarise_patch(patch, game_config):
     prompt = f"""You are a {game_config['groq_analyst']}. Analyse the patch note below and return ONLY a valid JSON object — no markdown, no backticks, no explanation, no extra text before or after.
 
 The JSON must have exactly these two fields:
-1. "summary": an array of 3-5 strings, each string being one bullet point describing a key change.
-   - NEVER write "No key changes", "patch notes are incomplete", "more information is needed", or any similar filler phrase.
-   - If the patch content is light or brief, summarise what IS there — e.g. new features, bug fixes, mode updates, site launches, balance adjustments, Premier changes, or general stability improvements.
-   - If the content is truly minimal, describe the patch in plain terms such as "Minor stability and bug-fix patch", "Premier season update with no agent changes", or "Small maintenance patch with general improvements".
-   - Every patch has SOMETHING worth noting. Always produce 3 meaningful, specific bullet points.
+1. "summary": an array of 3-5 strings, each a bullet point describing a key change.
+   - NEVER write filler like "No key changes", "patch notes are incomplete", "more information is needed", or similar.
+   - Always produce 3 meaningful, specific bullet points based on what is actually written.
+   - If content is minimal, describe what IS there (bug fixes, stability, minor balance).
 
-2. "tags": an array of 3-6 short lowercase tags chosen from this exact list: {tags_list}
-   - ALWAYS include "performance" if the patch has no major agent, weapon, or map changes.
-   - NEVER invent tags that are not in the list above.
-   - Pick the most relevant tags based on what is actually described.
+2. "tags": an array of 3-8 short lowercase tags chosen ONLY from this exact list: {tags_list}
+   - WEAPON TAGS: include "weapon-buff" if ANY weapon has increased damage, range, handling, reload, or magazine. Include "weapon-nerf" if ANY weapon has decreased stats. Apply these even if only one weapon is affected.
+   - ABILITY TAGS: include "ability-change" if ANY ability, super, or grenade is modified — ALWAYS apply this alongside the specific subclass tag (e.g. "ability-change" + "gunslinger"). Never use only the subclass tag without "ability-change" when abilities are changed.
+   - SUBCLASS TAGS: include "subclass-change" if subclass mechanics, keywords, or verbs (e.g. Scorch, Suspend, Weaken) are changed at a systemic level.
+   - CLASS TAGS: include "hunter", "titan", or "warlock" whenever that class is mentioned, alongside any subclass tags.
+   - ALWAYS include "performance" if the patch has no major gameplay changes.
+   - NEVER invent tags not in the list above.
+   - Example: "The Last Word damage increased" → ["weapon-buff", ...]
+   - Example: "Gunslinger Golden Gun damage increased" → ["ability-change", "hunter", "gunslinger", ...]
 
-Example of the exact format to return:
-{{"summary": ["Key change one.", "Key change two.", "Key change three."], "tags": ["bug-fix", "performance"]}}
+Example format:
+{{"summary": ["Change one.", "Change two.", "Change three."], "tags": ["weapon-buff", "hunter", "gunslinger"]}}
 
 Title: {patch['title']}
 Date: {patch['date']}
@@ -222,7 +234,7 @@ def filter_by_date(articles, game_config):
             filtered.append(a)
     dropped = before - len(filtered)
     if dropped:
-        print(f"  Filtered out {dropped} pre-launch patches (before {date_from}).")
+        print(f"  Filtered out {dropped} pre-date patches (before {date_from}).")
     return filtered
 
 
@@ -231,17 +243,13 @@ def filter_by_date(articles, game_config):
 # ─────────────────────────────────────────────
 
 def compute_hash(articles):
-    url_string = "\n".join(
-        a["url"] if isinstance(a, dict) else a for a in articles
-    )
+    url_string = "\n".join(a["url"] if isinstance(a, dict) else a for a in articles)
     return hashlib.sha256(url_string.encode()).hexdigest()
-
 
 def load_saved_hash(hash_file):
     if hash_file.exists():
         return hash_file.read_text(encoding="utf-8").strip()
     return None
-
 
 def save_hash(hash_file, hash_value):
     hash_file.write_text(hash_value + "\n", encoding="utf-8")
@@ -254,27 +262,21 @@ def save_hash(hash_file, hash_value):
 def fetch_articles_riot(game_config):
     response = requests.get(game_config["list_url"], headers=REQUEST_HEADERS, timeout=30)
     response.raise_for_status()
-
-    soup         = BeautifulSoup(response.text, "html.parser")
-    base_url     = game_config["base_url"]
+    soup = BeautifulSoup(response.text, "html.parser")
+    base_url = game_config["base_url"]
     title_filter = game_config["title_filter"]
-    articles     = []
-    seen_urls    = set()
+    articles = []
+    seen_urls = set()
 
     next_data = soup.find("script", id="__NEXT_DATA__")
     if next_data and next_data.string:
         page_data = json.loads(next_data.string)
-        blades = (
-            page_data.get("props", {})
-            .get("pageProps", {})
-            .get("page", {})
-            .get("blades", [])
-        )
+        blades = page_data.get("props", {}).get("pageProps", {}).get("page", {}).get("blades", [])
         for blade in blades:
             if blade.get("type") != "articleCardGrid":
                 continue
             for item in blade.get("items", []):
-                href  = item.get("action", {}).get("payload", {}).get("url")
+                href = item.get("action", {}).get("payload", {}).get("url")
                 title = item.get("title")
                 if not href or not title:
                     continue
@@ -308,19 +310,16 @@ def fetch_articles_riot(game_config):
 def scrape_patch_content_riot(url, game_config):
     response = requests.get(url, headers=REQUEST_HEADERS, timeout=30)
     response.raise_for_status()
-
-    soup     = BeautifulSoup(response.text, "html.parser")
+    soup = BeautifulSoup(response.text, "html.parser")
     title_el = soup.select_one('[data-testid="title"]')
-    title    = title_el.get_text(strip=True) if title_el else ""
-    time_el  = soup.find("time")
-    date     = time_el.get("datetime", "") if time_el else ""
-
+    title = title_el.get_text(strip=True) if title_el else ""
+    time_el = soup.find("time")
+    date = time_el.get("datetime", "") if time_el else ""
     paragraphs = [
         p.get_text(strip=True)
         for p in soup.select('[data-testid="rich-text-html"] p')
         if p.get_text(strip=True)
     ]
-
     if not title or not date or not paragraphs:
         next_data = soup.find("script", id="__NEXT_DATA__")
         if next_data and next_data.string:
@@ -342,18 +341,10 @@ def scrape_patch_content_riot(url, game_config):
                         continue
                     cs = BeautifulSoup(html, "html.parser")
                     paragraphs.extend(
-                        p.get_text(strip=True)
-                        for p in cs.find_all("p")
+                        p.get_text(strip=True) for p in cs.find_all("p")
                         if p.get_text(strip=True)
                     )
-
-    return {
-        "game":    game_config["name"],
-        "title":   title,
-        "url":     url,
-        "date":    date,
-        "content": " ".join(paragraphs),
-    }
+    return {"game": game_config["name"], "title": title, "url": url, "date": date, "content": " ".join(paragraphs)}
 
 
 # ─────────────────────────────────────────────
@@ -362,44 +353,28 @@ def scrape_patch_content_riot(url, game_config):
 
 STEAM_NEWS_URL = "https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/"
 
-
 def fetch_articles_steam(game_config):
-    app_id       = game_config["steam_app_id"]
+    app_id = game_config["steam_app_id"]
     title_filter = game_config["title_filter"]
-    date_from    = game_config.get("date_from")
-    articles     = []
-    seen_gids    = set()
-
+    date_from = game_config.get("date_from")
+    articles = []
+    seen_gids = set()
     cutoff_ts = None
     if date_from:
-        cutoff_ts = int(
-            datetime.fromisoformat(date_from)
-            .replace(tzinfo=timezone.utc)
-            .timestamp()
-        )
-
-    end_date  = int(datetime.now(tz=timezone.utc).timestamp())
-    page      = 0
+        cutoff_ts = int(datetime.fromisoformat(date_from).replace(tzinfo=timezone.utc).timestamp())
+    end_date = int(datetime.now(tz=timezone.utc).timestamp())
+    page = 0
     max_pages = 300
 
-    print(f"  Fetching CS2 news via ISteamNews API...")
+    print(f"  Fetching Steam news via ISteamNews API...")
     if cutoff_ts:
         print(f"  Will stop at {date_from}.")
 
     while page < max_pages:
-        params = {
-            "appid":     app_id,
-            "count":     100,
-            "maxlength": 0,
-            "enddate":   end_date,
-            "feeds":     "steam_community_announcements",
-            "format":    "json",
-        }
+        params = {"appid": app_id, "count": 100, "maxlength": 0, "enddate": end_date,
+                  "feeds": "steam_community_announcements", "format": "json"}
         try:
-            resp = requests.get(
-                STEAM_NEWS_URL, params=params,
-                headers=REQUEST_HEADERS, timeout=30,
-            )
+            resp = requests.get(STEAM_NEWS_URL, params=params, headers=REQUEST_HEADERS, timeout=30)
             resp.raise_for_status()
             data = resp.json()
         except Exception as e:
@@ -410,73 +385,227 @@ def fetch_articles_steam(game_config):
         if not items:
             break
 
-        matched     = 0
+        matched = 0
         oldest_date = end_date
-        hit_cutoff  = False
+        hit_cutoff = False
 
         for item in items:
-            gid     = str(item.get("gid", ""))
-            title   = item.get("title", "").strip()
+            gid = str(item.get("gid", ""))
+            title = item.get("title", "").strip()
             date_ts = int(item.get("date", 0))
-
             if date_ts < oldest_date:
                 oldest_date = date_ts
-
             if cutoff_ts and date_ts < cutoff_ts:
                 hit_cutoff = True
                 continue
-
             if gid in seen_gids:
                 continue
             seen_gids.add(gid)
-
             if not matches_title_filter(title, title_filter):
                 continue
-
             body_html = item.get("contents", "")
-            body_text = ""
-            if body_html:
-                body_text = BeautifulSoup(body_html, "html.parser").get_text(
-                    separator=" ", strip=True
-                )
-
-            date_iso = datetime.fromtimestamp(
-                date_ts, tz=timezone.utc
-            ).strftime("%Y-%m-%dT%H:%M:%S.000Z")
-
-            url = item.get("url") or (
-                f"https://store.steampowered.com/news/app/{app_id}/view/{gid}"
-            )
-
-            articles.append({
-                "game":    game_config["name"],
-                "title":   title,
-                "url":     url,
-                "date":    date_iso,
-                "content": body_text,
-            })
+            body_text = BeautifulSoup(body_html, "html.parser").get_text(separator=" ", strip=True) if body_html else ""
+            date_iso = datetime.fromtimestamp(date_ts, tz=timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.000Z")
+            url = item.get("url") or f"https://store.steampowered.com/news/app/{app_id}/view/{gid}"
+            articles.append({"game": game_config["name"], "title": title, "url": url, "date": date_iso, "content": body_text})
             matched += 1
 
-        print(
-            f"  Page {page:>3} | items={len(items):>3} "
-            f"| matched={matched:>3} | total so far={len(articles)}"
-        )
-
+        print(f"  Page {page:>3} | items={len(items):>3} | matched={matched:>3} | total so far={len(articles)}")
         if hit_cutoff:
             print(f"  Reached {date_from} cutoff — stopping.")
             break
-
         if len(items) < 100:
             print("  Reached beginning of news history.")
             break
-
         end_date = oldest_date - 1
         page += 1
         time.sleep(0.4)
 
-    print(f"  Total CS2 patches collected: {len(articles)}")
+    print(f"  Total patches collected: {len(articles)}")
     articles.sort(key=lambda a: a["date"], reverse=True)
     return articles
+
+
+# ─────────────────────────────────────────────
+#  BUNGIE FETCHER
+#
+#  bungie.net/7/en/News/Article/<slug> is a client-rendered SPA —
+#  plain requests.get() only gets the JS shell.  The official
+#  /Platform/Content/Rss/NewsArticles/ endpoint returns the same
+#  articles as server-side JSON (with full HTML body) and only
+#  requires a free X-API-Key (register at bungie.net/en/Application).
+#
+#  Add BUNGIE_API_KEY=<your key> to your .env file.
+#
+#  The fetcher iterates through RSS pages until every slug in
+#  game_config["bungie_patch_slugs"] has been found, then returns
+#  them in newest-first order.
+# ─────────────────────────────────────────────
+
+BUNGIE_RSS_URL = "https://www.bungie.net/Platform/Content/Rss/NewsArticles/{page}/"
+BUNGIE_ARTICLE_BASE = "https://www.bungie.net/7/en/News/Article/"
+
+
+def _bungie_headers() -> dict:
+    """Return request headers including the Bungie API key from env."""
+    api_key = os.environ.get("BUNGIE_API_KEY", "")
+    if not api_key:
+        raise RuntimeError(
+            "BUNGIE_API_KEY is not set in your .env file.\n"
+            "Register a free key at https://www.bungie.net/en/Application"
+        )
+    headers = dict(REQUEST_HEADERS)
+    headers["X-API-Key"] = api_key
+    return headers
+
+
+def _parse_bungie_body(html_body: str) -> str:
+    """Strip HTML tags from a Bungie article body and return plain text."""
+    if not html_body:
+        return ""
+    soup = BeautifulSoup(html_body, "html.parser")
+    # Remove script/style noise
+    for tag in soup.select("script, style"):
+        tag.decompose()
+    parts = []
+    for tag in soup.find_all(["p", "li", "h2", "h3", "h4"]):
+        text = tag.get_text(" ", strip=True)
+        if len(text) > 10:
+            parts.append(text)
+    return " ".join(parts)[:6000]
+
+
+def fetch_articles_bungie(game_config: dict) -> list[dict]:
+    """
+    Fetch Destiny 2 patch notes from the Bungie Platform RSS API.
+
+    Pages through /Platform/Content/Rss/NewsArticles/{page}/?includebody=true
+    until all slugs in game_config["bungie_patch_slugs"] are found or we
+    exhaust all pages.  Returns articles newest-first.
+    """
+    target_slugs: list[str] = game_config.get("bungie_patch_slugs", [])
+    if not target_slugs:
+        print("  No bungie_patch_slugs defined — nothing to fetch.")
+        return []
+
+    headers = _bungie_headers()
+
+    # Load existing patches so we can skip already-scraped slugs
+    output_file: Path = game_config["output_file"]
+    existing: dict[str, dict] = {}
+    if output_file.exists():
+        try:
+            for p in json.loads(output_file.read_text(encoding="utf-8")):
+                # key by slug extracted from URL
+                m = re.search(r"/News/Article/([^/?#]+)", p.get("url", ""))
+                if m:
+                    existing[m.group(1)] = p
+        except Exception:
+            pass
+
+    remaining_slugs = set(target_slugs) - set(existing.keys())
+    found: dict[str, dict] = dict(existing)  # slug → article
+
+    if not remaining_slugs:
+        print(f"  All {len(target_slugs)} slugs already cached — skipping API calls.")
+    else:
+        print(f"  Fetching {len(remaining_slugs)} new slug(s) from Bungie RSS API...")
+        page = 0
+        max_pages = 50  # safety ceiling; there are rarely more than ~10 pages of news
+
+        while remaining_slugs and page < max_pages:
+            url = BUNGIE_RSS_URL.format(page=page)
+            params = {"includebody": "true", "categoryfilter": "Destiny"}
+            try:
+                resp = requests.get(url, headers=headers, params=params, timeout=30)
+                resp.raise_for_status()
+                data = resp.json()
+            except Exception as e:
+                print(f"  API error on page {page}: {e}")
+                break
+
+            # Response shape: {"Response": {"NewsArticles": [...], "CurrentPaginationToken": N, "ResultCountThisPage": N}}
+            response_body = data.get("Response", {})
+            news_items = response_body.get("NewsArticles", [])
+
+            if not news_items:
+                print(f"  Page {page}: no articles returned — stopping.")
+                break
+
+            matched_this_page = 0
+            for item in news_items:
+                # The article URL slug lives in item["Properties"]["Url"] or item["Url"]
+                props = item.get("Properties", item)  # some API versions nest under Properties
+                raw_url = props.get("Url", "") or item.get("Url", "")
+                # Extract just the slug: e.g. "destiny_update_9_5_0_5"
+                slug_match = re.search(r"/News/Article/([^/?#\s]+)", raw_url)
+                if not slug_match:
+                    # Some items use a bare slug without the full path prefix
+                    slug = raw_url.strip().rstrip("/").split("/")[-1]
+                else:
+                    slug = slug_match.group(1)
+
+                if slug not in remaining_slugs:
+                    continue
+
+                # Parse date
+                date_str = props.get("ArticleDate", "") or item.get("ArticleDate", "")
+                date_iso = ""
+                if date_str:
+                    for fmt in ("%Y-%m-%dT%H:%M:%S", "%Y-%m-%d %H:%M:%S", "%Y-%m-%d"):
+                        try:
+                            dt = datetime.strptime(date_str[:19], fmt).replace(tzinfo=timezone.utc)
+                            date_iso = dt.strftime("%Y-%m-%dT%H:%M:%S.000Z")
+                            break
+                        except ValueError:
+                            continue
+
+                # Parse title
+                title = props.get("Title", "") or item.get("Title", "") or f"Destiny 2 Update {slug}"
+
+                # Parse content body (HTML → plain text)
+                body_html = props.get("Content", "") or item.get("Content", "")
+                content = _parse_bungie_body(body_html)
+
+                article_url = f"{BUNGIE_ARTICLE_BASE}{slug}"
+
+                found[slug] = {
+                    "game":    game_config["name"],
+                    "title":   title,
+                    "url":     article_url,
+                    "date":    date_iso,
+                    "content": content,
+                }
+                remaining_slugs.discard(slug)
+                matched_this_page += 1
+                print(f"    ✓ Found slug '{slug}' | {date_iso[:10] if date_iso else 'no date'} | {title[:50]}")
+
+            print(f"  Page {page}: {len(news_items)} items, {matched_this_page} matched | {len(remaining_slugs)} slug(s) still needed")
+
+            if not remaining_slugs:
+                break
+
+            result_count = response_body.get("ResultCountThisPage", len(news_items))
+            if result_count == 0:
+                break
+
+            page += 1
+            time.sleep(0.4)
+
+        if remaining_slugs:
+            print(f"\n  ⚠ Could not find {len(remaining_slugs)} slug(s) in the RSS feed:")
+            for s in sorted(remaining_slugs):
+                print(f"      • {s}")
+            print("  These may not be published yet, or the slug spelling may differ.")
+
+    # Return in the order defined by bungie_patch_slugs (newest last → reverse for newest-first output)
+    ordered = []
+    for slug in reversed(target_slugs):
+        if slug in found:
+            ordered.append(found[slug])
+
+    print(f"\n  Total Destiny 2 patches collected: {len(ordered)}")
+    return ordered
 
 
 # ─────────────────────────────────────────────
@@ -486,11 +615,12 @@ def fetch_articles_steam(game_config):
 def fetch_articles(game_config):
     if game_config.get("type") == "steam":
         return fetch_articles_steam(game_config)
+    if game_config.get("type") == "bungie":
+        return fetch_articles_bungie(game_config)
     return fetch_articles_riot(game_config)
 
-
 def scrape_patch_content(article, game_config):
-    if game_config.get("type") == "steam":
+    if game_config.get("type") in ("steam", "bungie"):
         return article
     url = article if isinstance(article, str) else article["url"]
     return scrape_patch_content_riot(url, game_config)
@@ -524,8 +654,7 @@ def run_game(game_key, game_config):
         print("No change detected — loading existing file for summarisation.")
     else:
         print("Change detected — saving patches...\n")
-
-        if game_config.get("type") == "steam":
+        if game_config.get("type") in ("steam", "bungie"):
             results = articles
         else:
             results = []
@@ -539,10 +668,7 @@ def run_game(game_key, game_config):
                     print(f"  ERROR: {e} — skipping")
                 time.sleep(0.8)
 
-        output_file.write_text(
-            json.dumps(results, indent=2, ensure_ascii=False) + "\n",
-            encoding="utf-8",
-        )
+        output_file.write_text(json.dumps(results, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
         save_hash(game_config["hash_file"], current_hash)
         print(f"Saved {len(results)} patches → {output_file.name}")
 
@@ -553,24 +679,18 @@ def run_game(game_key, game_config):
     patches = json.loads(output_file.read_text(encoding="utf-8"))
     patches = filter_by_date(patches, game_config)
 
-    # ── Re-queue patches with bad/missing summaries ───────────────
     requeued = 0
     for patch in patches:
         if is_bad_summary(patch):
             patch.pop("summary", None)
             patch.pop("tags", None)
             requeued += 1
-
     if requeued:
         print(f"\nRe-queuing {requeued} patch(es) with bad or missing summaries...")
-    # ─────────────────────────────────────────────────────────────
 
     patches = summarise_all(patches, game_config)
 
-    output_file.write_text(
-        json.dumps(patches, indent=2, ensure_ascii=False) + "\n",
-        encoding="utf-8",
-    )
+    output_file.write_text(json.dumps(patches, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     summarised = sum(1 for p in patches if p.get("summary"))
     print(f"Done! {summarised}/{len(patches)} patches have summaries.")
 
@@ -580,9 +700,16 @@ def run_game(game_key, game_config):
 # ─────────────────────────────────────────────
 
 def main():
-    for game_key, game_config in GAMES.items():
-        run_game(game_key, game_config)
-
+    import sys
+    if len(sys.argv) > 1:
+        key = sys.argv[1]
+        if key in GAMES:
+            run_game(key, GAMES[key])
+        else:
+            print(f"Unknown game key '{key}'. Available: {', '.join(GAMES.keys())}")
+    else:
+        for game_key, game_config in GAMES.items():
+            run_game(game_key, game_config)
 
 if __name__ == "__main__":
     main()

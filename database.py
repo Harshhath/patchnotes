@@ -20,6 +20,7 @@ ROOT = Path(__file__).resolve().parent
 PATCH_FILES = [
     ROOT / "patches_valorant.json",
     ROOT / "patches_cs2.json",
+    ROOT / "patches_destiny2.json",
     # ROOT / "patches_lol.json",
 ]
 
@@ -52,7 +53,9 @@ def insert_patches(conn, patches):
                     """
                     INSERT INTO patches (game, title, url, date, content, summary, tags)
                     VALUES (%s, %s, %s, %s, %s, %s, %s)
-                    ON CONFLICT (url) DO NOTHING
+                    ON CONFLICT (url) DO UPDATE SET
+                        summary = EXCLUDED.summary,
+                        tags = EXCLUDED.tags
                     """,
                     (
                         patch.get("game", ""),
