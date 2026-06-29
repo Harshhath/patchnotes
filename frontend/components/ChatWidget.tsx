@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
-import { animate } from 'framer-motion'
 
 type Message = { role: 'user' | 'assistant'; text: string }
 
@@ -17,46 +16,60 @@ interface ChatWidgetProps {
   exampleQuestion?: string
 }
 
-function useAnimatedText(text: string, shouldAnimate: boolean, onDone?: () => void) {
-  const [cursor, setCursor] = useState(shouldAnimate ? 0 : text.length)
-  const [startingCursor, setStartingCursor] = useState(shouldAnimate ? 0 : text.length)
-  const [prevText, setPrevText] = useState(text)
+// charsPerMs: how fast the typewriter reveals text. Matches the previous
+// 0.03s-per-char pace (~33 chars/sec).
+const MS_PER_CHAR = 30
 
-  if (prevText !== text) {
-    setPrevText(text)
-    setStartingCursor(text.startsWith(prevText) ? cursor : 0)
-  }
-
-  useEffect(() => {
-    if (!shouldAnimate) {
-      setCursor(text.length)
-      return
-    }
-    const chars = text.split('')
-    const controls = animate(startingCursor, chars.length, {
-      duration: chars.length * 0.03,
-      ease: 'linear',
-      onUpdate(latest) { setCursor(Math.floor(latest)) },
-      onComplete() { onDone?.() },
-    })
-    return () => controls.stop()
-  }, [startingCursor, text, shouldAnimate])
-
-  return text.split('').slice(0, cursor).join('')
+// Computes how many characters should be visible right now, purely from
+// wall-clock time. Because this is a pure function of `Date.now()` and a
+// fixed `startedAt` timestamp, it gives the same answer whether anything
+// was mounted/rendering in between or not — so progress keeps advancing
+// even while the panel (and AssistantMessage) is unmounted.
+function charsRevealedByNow(startedAt: number, totalChars: number) {
+  const elapsed = Date.now() - startedAt
+  return Math.max(0, Math.min(totalChars, Math.floor(elapsed / MS_PER_CHAR)))
 }
 
 function AssistantMessage({
   text,
-  accent,
+  startedAt,
   isLatest,
   onAnimationDone,
 }: {
   text: string
-  accent: string
+  startedAt: number
   isLatest: boolean
   onAnimationDone: () => void
 }) {
-  const animated = useAnimatedText(text, isLatest, onAnimationDone)
+  const [, forceTick] = useState(0)
+  const doneRef = useRef(false)
+
+  const cursor = isLatest ? charsRevealedByNow(startedAt, text.length) : text.length
+
+  useEffect(() => {
+    if (!isLatest) return
+    if (cursor >= text.length) {
+      if (!doneRef.current) {
+        doneRef.current = true
+        onAnimationDone()
+      }
+      return
+    }
+    // Re-render every frame while still revealing, so `cursor` above gets
+    // recomputed from the clock. This loop only needs to run while
+    // AssistantMessage is mounted (panel open) — while closed, no frames
+    // run, but `charsRevealedByNow` still advances correctly in the
+    // background because it's driven by Date.now(), not by this loop.
+    let raf: number
+    const tick = () => {
+      forceTick((n) => n + 1)
+      raf = requestAnimationFrame(tick)
+    }
+    raf = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(raf)
+  }, [isLatest, cursor, text.length, onAnimationDone])
+
+  const animated = text.split('').slice(0, cursor).join('')
   return (
     <span>
       {animated.split('\n').map((line, j) => (
@@ -86,6 +99,40 @@ export default function ChatWidget({
   const [animatedIds, setAnimatedIds] = useState<Set<number>>(new Set())
   const bottomRef = useRef<HTMLDivElement>(null)
 
+  // One timestamp per assistant message index, set the moment that message
+  // is added to `messages`. The reveal animation is computed purely from
+  // `Date.now() - startedAt`, so it keeps advancing in real time even while
+  // the panel is closed and AssistantMessage is unmounted — closing the
+  // panel doesn't pause the clock, it just stops rendering frames for it.
+  const startedAtRef = useRef<Map<number, number>>(new Map())
+  function getStartedAt(i: number) {
+    let t = startedAtRef.current.get(i)
+    if (t === undefined) {
+      t = Date.now()
+      startedAtRef.current.set(i, t)
+    }
+    return t
+  }
+
+  // NOTE on the behavior you asked about:
+  // Closing the panel only toggles `open`, which hides the JSX below via
+  // `{open && (...)}`. It does NOT unmount ChatWidget itself — the button
+  // stays mounted at the top level — so `messages`/`loading` state, and any
+  // in-flight `fetch` in `send()`, are untouched by closing. The response
+  // will finish and land in `messages` whether the panel is open or closed,
+  // and you'll see it (already complete, or mid-typewriter) when you reopen.
+  //
+  // The only way this WOULD break is if a parent did `{open && <ChatWidget/>}`
+  // instead, unmounting the whole component on close. This guard below
+  // protects against that case too, in case this component ever gets used
+  // that way, or gets removed from the tree for some other reason (route
+  // change, etc.) while a request is in flight.
+  const isMountedRef = useRef(true)
+  useEffect(() => {
+    isMountedRef.current = true
+    return () => { isMountedRef.current = false }
+  }, [])
+
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [messages, loading])
@@ -103,10 +150,33 @@ export default function ChatWidget({
         body: JSON.stringify({ question: q, game }),
       })
       const data = await res.json()
-      setMessages((m) => [...m, { role: 'assistant', text: data.answer ?? data.error }])
+      // Guard, not a requirement: only matters if ChatWidget itself was
+      // unmounted (see note above). Closing the dropdown alone never
+      // triggers this branch.
+      if (isMountedRef.current) {
+        setMessages((m) => {
+          const next = [...m, { role: 'assistant' as const, text: data.answer ?? data.error }]
+          // Stamp the reveal-animation start time right now, at message
+          // creation, not on first render of AssistantMessage. If the panel
+          // stays closed for a while after this, the animation should
+          // already be (or become) fully revealed by the time it's opened,
+          // not restart fresh from the moment of opening.
+          startedAtRef.current.set(next.length - 1, Date.now())
+          return next
+        })
+      }
     } catch {
-      setMessages((m) => [...m, { role: 'assistant', text: 'Something went wrong.' }])
+      if (isMountedRef.current) {
+        setMessages((m) => {
+          const next = [...m, { role: 'assistant' as const, text: 'Something went wrong.' }]
+          startedAtRef.current.set(next.length - 1, Date.now())
+          return next
+        })
+      }
     } finally {
+      // Always clear loading, regardless of mount state. Skipping this
+      // when unmounted is harmless (React just no-ops/warns), but skipping
+      // it while still mounted is how you get a spinner stuck forever.
       setLoading(false)
     }
   }
@@ -185,7 +255,7 @@ export default function ChatWidget({
                   ? (
                     <AssistantMessage
                       text={m.text}
-                      accent={accent}
+                      startedAt={getStartedAt(i)}
                       isLatest={i === messages.length - 1 && !animatedIds.has(i)}
                       onAnimationDone={() => setAnimatedIds((s) => new Set(s).add(i))}
                     />
