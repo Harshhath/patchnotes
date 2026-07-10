@@ -2,13 +2,30 @@
   {
     "game": "CS2",
     "title": "Counter-Strike 2 Update",
+    "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1836506165584645",
+    "date": "2026-07-09T21:46:16.000Z",
+    "content": "[p]\\[ GAMEPLAY ][/p][list][*][p]Removed map-wide minimum one point of damage from new C4 explosions.[/p][/*][*][p]Fixed a case where new C4 damage was calculated incorrectly near boundaries to other map areas.[/p][/*][*][p]New C4 explosions now apply more force to dropped weapons.[/p][/*][/list][p][/p][p]\\[ ARMORY ][/p][list][*][p]Adjusted the \"Sniper Ahead\" sticker visibility when scraped.[/p][/*][/list][p][/p][p]\\[ MISC ][/p][list][*][p]Fixed a case where season medals were missing their gold tint on one of the bars.[/p][/*][*][p]Fixed a case where the scoreboard wouldn't update while open.[/p][/*][*][p]Various stability improvements.[/p][/*][/list]",
+    "summary": [
+      "Removed map-wide minimum one point of damage from new C4 explosions.",
+      "Fixed a case where new C4 damage was calculated incorrectly near boundaries to other map areas.",
+      "New C4 explosions now apply more force to dropped weapons."
+    ],
+    "tags": [
+      "bug-fix",
+      "performance",
+      "gameplay"
+    ]
+  },
+  {
+    "game": "CS2",
+    "title": "Counter-Strike 2 Update",
     "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1836506165581827",
     "date": "2026-07-08T22:51:31.000Z",
     "content": "[p]\\[ PREMIER ][/p][list][*][p]Premier Season Five has begun[/p][/*][*][p]Added Cache to the Active Duty Map Pool[/p][/*][*][p]Removed Overpass from the Active Duty Map Pool[/p][/*][/list][p][/p][p]\\[ GAMEPLAY ][/p][list][*][p]Re-designed effective range and extent of C4 explosion damage on all official defusal-mode maps.[/p][list][*][p]Damage is now applied according to precomputed simulation values, baked into the compiled map.[/p][/*][*][p]Explosion shockwave damage now rapidly expands from the center of the explosion instead of being applied instantly.[/p][/*][/list][/*][*][p]Fixed case where picking up dropped weapons through the Buy Menu would fail to complete.[/p][/*][/list][p][/p][p]\\[ ARMORY ][/p][list][*][p]Added two new weapon collections based on the recent Call to Arms community announcement: Spy Tech + Arabesque[/p][/*][*][p]Added two new sticker collections based on the recent Call to Arms community announcement: Fruits & Vegetables + Auto Racing[/p][/*][*][p]Train 2025 and Sport & Field weapon collections are no longer available in the Armory[/p][/*][*][p]Sugarface 2 and Elemental Craft sticker collections are no longer available in the Armory[/p][/*][/list][p][/p][p]\\[ WORKSHOP ][/p][list][*][p]Updated \"Custom Paint Job Extended\" [/p][list][*][p]Added option to include a dedicated overlay mask texture [/p][/*][*][p]Added option to set unique overlay UV randomization separate from albedo UV randomization [/p][/*][/list][/*][/list][p][/p][p]\\[ MISC ][/p][list][*][p]Reduced the performance cost of showing the scoreboard.[/p][/*][*][p]Fixed a case where material blending effects would disappear when you got too close (e.g. the dirt on the barrels in Inferno Banana).[/p][/*][*][p]Increased sticker rotation precision to allow half-degree increments on application screen.[/p][/*][/list][p][/p][p]\\[ MAP SCRIPTING ][/p][list][*][p]Added Instance.QueueAfterThinks[/p][/*][*][p]Added Instance.OnWeaponDrop[/p][/*][*][p]Added CSWeaponBase.GetOriginalOwner[/p][/*][*][p]Fixed a crash when the name passed to Instance.RegisterCheatCommand collided with an existing command.[/p][/*][*][p]Added file name and line number to errors caught during the CompileModule step of script loading.[/p][/*][*][p]Removed support for deprecated vts assets.[/p][/*][/list][p][/p][p]\\[ ENGINE ][/p][list][*][p]Updated engine code to the latest version of Source 2[/p][/*][/list][p][/p][p]\\[ MAPS ][/p][list][*][p]Removed community maps: Warden, Stronghold, Alpine, and Sanctum from all game modes[/p][/*][*][p]Added community maps Boulder, Fachwerk, and Shelter to Competitive, Casual, and Deathmatch modes[/p][/*][*][p]Added community maps Debris and El Dorado to Wingman mode[/p][/*][/list][p]Cache[/p][list][*][p]Various clipping adjustments[/p][/*][/list][p]Dust II[/p][list][*][p]Fixed pixel gap Outside Tunnel[/p][/*][*][p]Clipping adjustment Outside Tunnel[/p][/*][/list][p]Inferno[/p][list][*][p]Clipping fix to prevent pixel boost at Top of Mid[/p][/*][/list]",
     "summary": [
       "Premier Season Five has begun",
       "Cache and Overpass map pool changes",
-      "C4 explosion damage re-designed"
+      "C4 explosion damage re-design"
     ],
     "tags": [
       "map-change",
@@ -29,8 +46,8 @@
     "date": "2026-07-01T02:57:57.000Z",
     "content": "[p]\\[ COLOGNE 2026 MAJOR ][/p][list][*][p]Champions Autograph Stickers are now available for purchase in the Major Shop, congratulations to the Falcons![/p][/*][*][p]Highlight Souvenir Charms are now available for purchase in the Major Shop, featuring 10 highlights for each of the six stages of the Cologne 2026 Major, and the Falcons' trophy-lifting moment.[/p][/*][/list]",
     "summary": [
-      "Champions Autograph Stickers are available for purchase in the Major Shop",
-      "Highlight Souvenir Charms are available for purchase in the Major Shop",
+      "Champions Autograph Stickers are now available for purchase in the Major Shop",
+      "Highlight Souvenir Charms are now available for purchase in the Major Shop",
       "New items added to the Major Shop"
     ],
     "tags": [
@@ -70,7 +87,8 @@
     "tags": [
       "ui-change",
       "bug-fix",
-      "performance"
+      "performance",
+      "map-change"
     ]
   },
   {
@@ -115,7 +133,7 @@
     "date": "2026-05-18T23:36:08.000Z",
     "content": "[p]\\[ SPECTATING ][/p][list][*][p]Fixed a case of post-processing glitch when switching spectator targets on maps with different post-processing volumes.[/p][/*][*][p]Fixed a case of stuck x-ray silhouettes when switching spectator targets.[/p][/*][*][p]Fixed spectator damage overlay effect.[/p][/*][/list][p][/p][p]\\[ MISC ][/p][list][*][p]Added weapon_accuracy_stack_boost_limit (default value \"2\") to apply ladder inaccuracy to players boosted by a stack of this many or more players.[/p][/*][*][p]Adjustments to AWP draw to idle animation transition.[/p][/*][*][p]Improved consistency of grenade jump throws and the accuracy of the jump throw preview camera.[/p][/*][/list][p][/p][p]\\[ MAPS ][/p][p]Cache[/p][list][*][p]Adjusted model for window covers to show collision / decals when shot.[/p][/*][*][p]Adjustments to player clipping and grenade clipping around windows, window covers, and vent entrance.[/p][/*][/list][p][/p][p]\\[ MAP SCRIPTING ][/p][list][*][p]Added Instance.RegisterCheatCommand[/p][/*][*][p]Added Instance.GetAllPlayerControllers[/p][/*][*][p]Added Instance.OnBeginRoundRestart[/p][/*][*][p]Added Instance.SetRoundRemainingTime[/p][/*][*][p]Added CSPlayerController.AddMoneySpendableNow[/p][/*][*][p]Added CSPlayerController.GetMoneySpendableNow[/p][/*][*][p]Added CSPlayerController.AddMoneyEarnedForNextRound[/p][/*][*][p]Added CSPlayerController.GetMoneyEarnedForNextRound[/p][/*][*][p]Added CSPlayerPawn.HasHelmet[/p][/*][*][p]Added CSPlayerPawn.SetHasHelmet[/p][/*][*][p]Added CSPlayerPawn.IsScoped[/p][/*][*][p]Added CSWeaponBase.IsSilencerOn[/p][/*][*][p]Changed the activator for OnPlayerUse to always be the player[/p][/*][*][p]Changed the caller for OnPlayerUse to always be the used entity[/p][/*][*][p]Fixed the value of CSInputs.LOOK_AT_WEAPON[/p][/*][*][p]Fixed a potential crash in exception handling[/p][/*][/list]",
     "summary": [
-      "Fixed post-processing glitch when switching spectator targets on maps with different post-processing volumes",
+      "Fixed post-processing glitch when switching spectator targets",
       "Fixed stuck x-ray silhouettes when switching spectator targets",
       "Fixed spectator damage overlay effect"
     ],
@@ -133,12 +151,12 @@
     "content": "[p]\\[ MAPS ][/p][p]Cache[/p][list][*][p]Fixed various holes in map[/p][/*][*][p]Fixed surfacetypes for various materials.[/p][/*][*][p]Added grating to some windows to make them block bullets.[/p][/*][*][p]Tweaks to player and grenade clipping.[/p][/*][/list][p]\\[ MISC ][/p][list][*][p]Fixed a case where it was possible to cancel a grenade throw after the throw was started near the end of the pin pull animation.[/p][/*][*][p]Miscellaneous stability improvements.[/p][/*][/list][p]\\[ TOOLS ][/p][list][*][p]Fixed bug that prevented the asset in use from being selected when model browser was opened.[/p][/*][*][p]Fixed bug with layered materials with same surface property on all layers. [/p][/*][/list][p]\\[ MUSIC KITS ][/p][list][*][p]Added roundmvpanthem_02 for all NIGHTMODE II music kits which plays at 1:5 ratio.[/p][/*][/list][p][/p]",
     "summary": [
       "Fixed various holes in map",
-      "Tweaks to player and grenade clipping",
+      "Added grating to some windows to make them block bullets",
       "Miscellaneous stability improvements"
     ],
     "tags": [
-      "bug-fix",
       "map-change",
+      "bug-fix",
       "performance"
     ]
   },
@@ -149,9 +167,9 @@
     "date": "2026-05-07T22:09:37.000Z",
     "content": "[p]\\[ MAPS ][/p][p]Cache[/p][list][*][p]Fixed various holes in map.[/p][/*][*][p]Simplified grenade clipping in various areas.[/p][/*][*][p]Fixed sounds and surfacetypes for various materials.[/p][/*][*][p]Orange wire spool at Sandbags has been exchanged for white wire.[/p][/*][/list][p]\\[ MUSIC KITS ][/p][list][*][p]NIGHTMODE II Music Kits are now available for purchase in standard and StatTrak versions through the STORE tab.[/p][/*][/list][p]\\[ WORKSHOP ][/p][list][*][p]Fixed progressive refinement rendering Source Film Maker.[/p][/*][/list][p]\\[ MISC ][/p][list][*][p]User Viewmodel FOV now correctly networks to remote clients.[/p][/*][*][p]Adjusted player model occlusion bounds.[/p][/*][*][p]Fixed ragdolls missing death velocity when shot in specific body locations.[/p][/*][*][p]Minor adjustments to ground smoothing transitions when leaving the ground and when landing.[/p][/*][*][p]Fixed a case where post-processing transitions weren't smooth (e.g. at the end of freeze time).[/p][/*][*][p]Fixed a case where map guides for Ancient wouldn't load in the nighttime version[/p][/*][*][p]Adjusted score values for various weapons in Deathmatch.[/p][/*][*][p]Adjusted XP limits in Deathmatch and Arms Race.[/p][/*][/list]",
     "summary": [
-      "Map holes fixed",
-      "Grenade clipping simplified",
-      "Minor adjustments to game stability"
+      "Fixed various holes in map.",
+      "Simplified grenade clipping in various areas.",
+      "Minor adjustments to ground smoothing transitions when leaving the ground and when landing."
     ],
     "tags": [
       "map-change",
@@ -167,8 +185,8 @@
     "content": "[p]\\[ MAPS ][/p][p]Cache[/p][list][*][p]Map-wide clipping fixes and geometry polish.[/p][/*][*][p]Fixed some spots where bomb would be unreachable when dropped.[/p][/*][*][p]Fixed dynamic shadows breaking in some spots.[/p][/*][*][p]Fixed some surface sound types.[/p][/*][/list][p][/p][p]\\[ ANIMGRAPH 2 ][/p][list][*][p]Fixed hand popping when counter-strafing with a grenade equipped.[/p][/*][/list][p][/p][p]\\[ MISC ][/p][list][*][p]Limit aim punch to 90 degrees.[/p][/*][*][p]Added secondary intersection trace for partially-occluded thirdperson weapons.[/p][/*][*][p]Adjusted ground smoothing at locations where sloped ground surfaces join with step-height transitions.[/p][/*][*][p]Fixed issue that caused defuse-cables from completely occluded players to also be occluded.[/p][/*][*][p]Fixed 'FATAL ERROR: Failed to on-demand compile shader' affecting some older GPUs.[/p][/*][/list]",
     "summary": [
       "Map-wide clipping fixes and geometry polish",
-      "Fixed bomb unreachable spots and dynamic shadows",
-      "Multiple bug fixes and performance improvements"
+      "Fixed some spots where bomb would be unreachable when dropped",
+      "Bug fixes and stability improvements"
     ],
     "tags": [
       "map-change",
@@ -184,8 +202,8 @@
     "content": "[p]\\[ MAPS ][/p][p]Cache[/p][list][*][p]Bomb explosion radius increased.[/p][/*][*][p]Lighting Adjustments around Vent.[/p][/*][*][p]Disabled player collision on sign and removed lamp by squeaky.[/p][/*][*][p]Reworked e-box on A-site for better visibility.[/p][/*][*][p]Lowered Checkers entrance frame height at B Main.[/p][/*][*][p]Removed AC unit above Sandbags and moved pipes.[/p][/*][*][p]Fixed lack of footstep sounds on top of crates at A-site.[/p][/*][*][p]Fixed hole in world on door in Sun Room.[/p][/*][*][p]Fixed wall bangs on A Main wall.[/p][/*][*][p]Fixed some z-fighting around Garage.[/p][/*][*][p]Adjusted grenade clipping throughout map.[/p][/*][*][p]Adjusted player clipping throughout map.[/p][/*][/list][p]Dust II[/p][list][*][p]Blocked visibility through corner of Mid Box (Xbox).[/p][/*][/list][p][/p][p]\\[ SOUND ][/p][list][*][p]Speculative fix for a case where all audio drops out.[/p][/*][/list][p][/p][p]\\[ MISC ][/p][list][*][p]Fixed cases where crouch-jumping in confined spaces could cause the player camera to intersect the ceiling.[/p][/*][*][p]Adjusted particle effect sprite opacity for fully occluded flashbangs.[/p][/*][*][p]Improved smoke lighting consistency.[/p][/*][*][p]Minor adjustments to dropped pistol magazine velocity.[/p][/*][*][p]Ambient Occlusion adjustment settings in Environment Blend shader restored.[/p][/*][*][p]Fixed a case where money was subtracted from the wrong player during bot takeover.[/p][/*][/list]",
     "summary": [
       "Bomb explosion radius increased",
-      "Lighting adjustments around Vent",
-      "Multiple bug fixes"
+      "Lighting Adjustments around Vent",
+      "Multiple bug fixes and minor adjustments"
     ],
     "tags": [
       "map-change",
@@ -220,8 +238,8 @@
     "content": "[p]\\[ ANIMGRAPH 2 ][/p][list][*][p]Fixed XM1014 shells flickering when starting a reload.[/p][/*][*][p]Fixed bugs with dual berettas in first person and in spectator mode.[/p][/*][*][p]Fixed inspect/cancel causing multiple worldmodel deploys.[/p][/*][*][p]Fixed a bug where players can get stuck in a planted-turn state.[/p][/*][*][p]Made foot IK transitions smoother.[/p][/*][*][p]Adjusted the firstperson in-air crouch transition time to match the thirdperson animation better.[/p][/*][*][p]Fixed a case where high frequency stutter steps would cause large pose changes.[/p][/*][*][p]Fixed a case where legs would snap when quickly stopping and then continuing in same direction.[/p][/*][*][p]Adjusted thirdperson bomb plant animation to more closely match firstperson animation.[/p][/*][*][p]Minor adjustments to viewmodel animations.[/p][/*][/list][p][/p][p]\\[ MISC ][/p][list][*][p]Fixed random crash on startup when a non-default Audio Device was specified in settings or when sound_device_override was specified in a config file or on the command line.[/p][/*][*][p]Adjusted official map guides to match new surface smoothing.[/p][/*][*][p]Dropped weapons with silencers now correctly reflect the silenced state.[/p][/*][/list]",
     "summary": [
       "Fixed various bugs and stability issues.",
-      "Improved animation smoothness and consistency.",
-      "Minor adjustments to gameplay and visuals."
+      "Improved animations and transitions.",
+      "Minor adjustments to gameplay and UI."
     ],
     "tags": [
       "bug-fix",
@@ -238,12 +256,12 @@
     "summary": [
       "Adjusted ground smoothing at locations where the player can stand on very thin ledges.",
       "Minor adjustments to viewmodel animations.",
-      "Corrected some improper character texture assignments and trade offer limits."
+      "Corrected some improper character texture assignments and limited trade offers to 1,000 items."
     ],
     "tags": [
       "performance",
-      "ui-change",
-      "bug-fix"
+      "bug-fix",
+      "ui-change"
     ]
   },
   {
@@ -254,14 +272,14 @@
     "content": "[p]\\[ GAMEPLAY ][/p][list][*][p]Adjusted camera motion due to recoil to match CS:GO more closely. Bullet trajectories should continue to match CS2.[/p][/*][*][p]Players will now experience the full camera motion due to external sources of aim punch (e.g. getting shot) regardless of network latency. The effects of aim punch on bullet trajectories are still applied immediately on the server.[/p][/*][/list][p][/p][p]\\[ ANIMGRAPH 2 ][/p][list][*][p]Minor adjustments to viewmodel animations.[/p][/*][*][p]Fixed several cases where crouch transitions in the air were instantaneous.[/p][/*][*][p]Fixed a bug where MVP panel characters weren't resetting correctly.[/p][/*][/list]",
     "summary": [
       "Adjusted camera motion due to recoil to match CS:GO more closely.",
-      "Players will now experience the full camera motion due to external sources of aim punch.",
+      "Players now experience full camera motion due to external aim punch regardless of network latency.",
       "Minor adjustments to viewmodel animations and several bug fixes."
     ],
     "tags": [
       "gameplay",
-      "ui-change",
+      "performance",
       "bug-fix",
-      "performance"
+      "ui-change"
     ]
   },
   {
@@ -272,8 +290,8 @@
     "content": "[p]\\[ MISC ][/p][list][*][p]Fixed a bug that removed the delay between burst fire bullets.[/p][/*][/list]",
     "summary": [
       "Fixed a bug that removed the delay between burst fire bullets.",
-      "Minor stability improvements.",
-      "Performance optimizations."
+      "Minor balance adjustments.",
+      "Stability improvements."
     ],
     "tags": [
       "bug-fix",
@@ -287,14 +305,14 @@
     "date": "2026-04-20T22:58:43.000Z",
     "content": "[p]All changes from the animgraph_2_beta build are now live.[/p][p][/p][p]\\[ ANIMGRAPH 2 ][/p][list][*][p]Minor adjustments to viewmodel animations.[/p][/*][*][p]Adjusted general weapon deploy animation logic.[/p][/*][*][p]Fixed issues with transitioning between knife attacks.[/p][/*][*][p]Fixed Elites not shooting in third-person.[/p][/*][/list][p]\n\\[ MISC ][/p][list][*][p]Fixed a bug that allowed silently climbing ladders at run speed by sporadically tapping movement keys.[/p][/*][*][p]Adjusted ground smoothing at locations where sloped ground surfaces transition to flat ground.[/p][/*][*][p]Fixed held grenades inheriting incorrect scale in some circumstances such as after being dropped and picked up.[/p][/*][*][p]Fixed a crash at halftime when transitioning from CT to T.[/p][/*][/list]",
     "summary": [
-      "Minor adjustments to viewmodel animations.",
-      "Adjusted general weapon deploy animation logic.",
-      "Fixed various bugs and stability issues."
+      "Minor adjustments to viewmodel animations",
+      "Adjusted general weapon deploy animation logic",
+      "Fixed several issues with animations and gameplay"
     ],
     "tags": [
-      "ui-change",
       "bug-fix",
-      "performance"
+      "performance",
+      "ui-change"
     ]
   },
   {
@@ -338,13 +356,12 @@
     "summary": [
       "Updated CS2 animation system to Animgraph 2 for reduced CPU and networking costs",
       "Re-authored third-person animations and adjusted in response to player feedback",
-      "Fixed various sound issues and bugs"
+      "Fixed various bugs and issues, including missing ambient sounds and camera shifts"
     ],
     "tags": [
       "performance",
       "bug-fix",
-      "ui-change",
-      "gameplay"
+      "ui-change"
     ]
   },
   {
@@ -354,9 +371,9 @@
     "date": "2026-03-18T22:35:27.000Z",
     "content": "[ GAMEPLAY ][list]\n[*]Reloading has been refactored to encourage more careful consideration of the use of ammo. When you reload a magazine-fed weapon, all remaining ammo in the magazine is discarded and a new, full magazine is taken from the reserves.\n[*]Reserve ammunition is now represented either as number of magazines, shells, or bullets, depending on the weapon.\n[*]The fill-level of the current weapon is now displayed below the ammo count. \n[*]Tuned reserve magazine counts per-weapon.[/list]\n[ MAP GUIDES ][list]\n[*]Limited map guides are now available in Competitive and Retakes (first 5 rounds of the half, 30 node max).\n[*]sv_allow_annotations_access_level supports 3 values: 0 – disabled. 1 – limited view. 2 – full and editable. \n[*]sv_annotation_limits_max_rounds_per_half (default 5) determines how many rounds into the half guides are allowed. -1 for unlimited.\n[*]Minimal starter map guides have been added for all Active Duty maps.[/list]\n[ WORKSHOP MAPS ]\n[list]\n[*]Friends playing a Practice or Workshop map can be joined through the friends menu if they have Open Party set.[/list]",
     "summary": [
-      "Reloading mechanics have been changed to encourage more careful ammo use.",
-      "Reserve ammunition is now displayed in a more detailed format.",
-      "Map guides have been added to Competitive and Retakes modes."
+      "Reloading mechanics have been refactored to encourage more careful ammo use.",
+      "Reserve ammunition display has been updated to show magazine, shell, or bullet counts.",
+      "Map guides are now available in Competitive and Retakes, with limited view and full editable options."
     ],
     "tags": [
       "gameplay",
@@ -373,14 +390,14 @@
     "date": "2026-03-16T22:06:34.000Z",
     "content": "[p]\\[ X-Ray Scanner ][/p][list][*][p]Players in Germany and Netherlands will have an [url=\"https://help.steampowered.com/en/faqs/view/7336-6EBC-1923-EE1B\"]X-Ray Scanner[/url] tab in their Inventory. For those players, containers can only be opened via X-ray Scanner. The X-Ray Scanner will come preloaded with a one-time exclusive non-tradable \"Genuine P250 | X-ray\", which must be claimed before using the X-Ray Scanner to reveal items in other containers.[/p][/*][*][p]Keyless Containers, like Souvenir Packages, can be opened without the X-Ray Scanner.[/p][/*][/list]",
     "summary": [
-      "Players in Germany and Netherlands get X-Ray Scanner tab in Inventory",
+      "X-Ray Scanner tab added for German and Dutch players",
       "X-Ray Scanner required to open containers",
-      "Exclusive 'Genuine P250 | X-ray' item for X-Ray Scanner"
+      "Exclusive 'Genuine P250 | X-ray' skin available"
     ],
     "tags": [
       "ui-change",
-      "bug-fix",
-      "performance"
+      "gameplay",
+      "bug-fix"
     ]
   },
   {
@@ -390,9 +407,9 @@
     "date": "2026-03-11T23:00:06.000Z",
     "content": "[p]\\[ DEAD HAND COLLECTION ][/p][list][*][p]The Dead Hand Collection is now available, featuring 17 finishes from community contributors, and including 22 all-new gloves as rare special items.[/p][/*][*][p]Access items in the Dead Hand Collection via the Dead Hand Terminal, available as a weekly drop.[/p][/*][/list][p][/p][p]\\[ MAPS ][/p][p]Dust II[/p][list][*][p]Fixed a pixel gap in a door Outside Long. [/p][/*][/list][p]Alpine[/p][list][*][p]Updated to the latest version from the Community Workshop ([url=\"https://steamcommunity.com/sharedfiles/filedetails/changelog/3221491619\"]Update Notes[/url])[/p][/*][/list]",
     "summary": [
-      "The Dead Hand Collection is now available, featuring 17 finishes from community contributors, and including 22 all-new gloves as rare special items.",
-      "Access items in the Dead Hand Collection via the Dead Hand Terminal, available as a weekly drop.",
-      "Dust II and Alpine maps have received minor updates."
+      "The Dead Hand Collection is now available with 17 community finishes and 22 new gloves.",
+      "Access items via the Dead Hand Terminal, available weekly.",
+      "Dust II and Alpine maps have been updated with bug fixes and community workshop changes."
     ],
     "tags": [
       "new-feature",
@@ -408,15 +425,15 @@
     "date": "2026-03-04T22:51:40.000Z",
     "content": "[p]\\[ MISC ][/p][list][*][p]Starting today, items listed for sale on Steam Community Market will remain in your inventory for use while they are listed (e.g., your weapon can be equipped in your loadout while it is listed). While listed, items cannot be consumed or modified. You can cancel your listings at any time.[/p][/*][*][p]Added ability to set your max offer limit for items in the Terminal, and the Arms Dealer will only show offers up to that limit.[/p][/*][*][p]Fixed a slight tilt in the chicken running animation.[/p][/*][/list][p][/p][p]\\[ MAPS ][/p][p]Inferno[/p][list][*][p]Balcony at Bombsite A has been extended.[/p][/*][*][p]Graveyard at Bombsite A has been closed to the public. [/p][/*][*][p]Clipping adjusted at small window next to Second Mid Balcony.[/p][/*][/list][p]Warden[/p][list][*][p]Updated to the latest version from the Community Workshop ([url=\"https://steamcommunity.com/sharedfiles/filedetails/changelog/3256988376\"]Update Notes[/url])[/p][/*][/list][p]Sanctum[/p][list][*][p]Updated to the latest version from the Community Workshop ([url=\"https://steamcommunity.com/sharedfiles/filedetails/changelog/3643331442\"]Update Notes[/url])[/p][/*][/list][p][/p][p]\\[ MAP SCRIPTING ][/p][list][*][p]Added hitEntity to OnBulletImpact event data[/p][/*][*][p]Added Entity.GetAbsAngularVelocity()[/p][/*][*][p]Added Entity.GetLocalAngularVelocity()[/p][/*][*][p]Added angularVelocity to Entity.Teleport()[/p][/*][*][p]Added CSWeaponBase.GetClipAmmo()[/p][/*][*][p]Added CSWeaponBase.SetClipAmmo()[/p][/*][*][p]Added CSWeaponBase.GetReserveAmmo()[/p][/*][*][p]Added CSWeaponBase.SetReserveAmmo()[/p][/*][*][p]Added CSWeaponData.GetMaxClipAmmo()[/p][/*][*][p]Added CSWeaponData.GetMaxReserveAmmo()[/p][/*][*][p]Fixed missing CSPlayerPawn.IsDucking()[/p][/*][*][p]Fixed missing CSPlayerPawn.IsDucked()[/p][/*][*][p]Fixed a bug where JUMP wouldn't trigger for WasInputJustPressed() and WasInputJustReleased() if the press didn't cross a tick boundary.[/p][/*][*][p]Fixed a bug where Entity methods GetEyePosition(), GetEyeAngles(), GetHealth(), GetMaxHealth(), and SetMaxHealth() would only work on CSPlayerPawns.[/p][/*][/list]",
     "summary": [
-      "Items listed on Steam Community Market remain in inventory for use",
-      "Max offer limit for items can be set in the Terminal",
-      "Several bug fixes and map changes"
+      "Items listed on Steam Community Market will remain in inventory for use",
+      "Max offer limit can be set for items in the Terminal",
+      "Several map changes and bug fixes"
     ],
     "tags": [
       "ui-change",
       "performance",
-      "bug-fix",
-      "map-change"
+      "map-change",
+      "bug-fix"
     ]
   },
   {
@@ -426,9 +443,9 @@
     "date": "2026-02-25T22:53:52.000Z",
     "content": "[p]\\[ MAP SCRIPTING ][/p][list][*][p]Added Instance.SetSaveData[/p][/*][*][p]Added Instance.GetSaveData[/p][list][*][p]Workshop maps can write up to 1MB of save data.[/p][/*][*][p]Workshop saves leverage Steam Cloud and persist across installs.[/p][/*][*][p]Save data size limit can be configured with sv_workshop_map_save_data_max_filesize_mb.[/p][/*][/list][/*][*][p]Added Instance.OnModifyPlayerDamage[/p][list][*][p]Called after all damage properties have been calculated, just before armor and health are modified[/p][/*][*][p]Replaces Instance.OnBeforePlayerDamage[/p][/*][*][p]Includes hitgroup in event data[/p][/*][/list][/*][*][p]Added hitgroup to OnPlayerDamage event data[/p][/*][*][p]Added CSDamageFlags.IGNORE_ARMOR[/p][/*][*][p]Added CSPlayerPawn.IsInputPressed[/p][/*][*][p]Added CSPlayerPawn.WasInputJustPressed[/p][/*][*][p]Added CSPlayerPawn.WasInputJustReleased[/p][/*][*][p]Added enum CSInputs[/p][/*][*][p]Fixed bug where CSDamageTypes was exported under the name CSDamageType[/p][/*][/list][p]\\[ MISC ][/p][list][*][p]Map guides for de_ancient can now be used on de_ancient_night and vice versa.[/p][/*][/list]",
     "summary": [
-      "Added Instance.SetSaveData and Instance.GetSaveData for workshop maps",
-      "Added Instance.OnModifyPlayerDamage for damage calculation",
-      "Fixed bug with CSDamageTypes export"
+      "Added Instance.SetSaveData and Instance.GetSaveData for workshop maps.",
+      "Added Instance.OnModifyPlayerDamage event with hitgroup data.",
+      "Fixed bug where CSDamageTypes was exported under the wrong name."
     ],
     "tags": [
       "map-change",
@@ -443,15 +460,14 @@
     "date": "2026-02-23T23:38:41.000Z",
     "content": "[p]\\[ MISC ][/p][list][*][p]Mitigated a performance issue that primarily affected Windows 10 users with recent Intel CPUs.[/p][/*][*][p]Fixed a case where the Delete Item inventory option wasn't working.[/p][/*][*][p]Fixed a case of visual corruption using iron sights on AMD GPUs.[/p][/*][*][p]Expanding list of console variables addons are allowed to change.[/p][/*][/list][p][/p][p]\\[ MAPS ][/p][p]Overpass[/p][list][*][p]Fixed the Party balloons.[/p][/*][/list]",
     "summary": [
-      "Mitigated a performance issue on Windows 10 with Intel CPUs.",
-      "Fixed Delete Item inventory option.",
-      "Fixed visual corruption on AMD GPUs and Overpass Party balloons."
+      "Mitigated a performance issue on Windows 10 with Intel CPUs",
+      "Fixed Delete Item inventory option",
+      "Fixed visual corruption on AMD GPUs"
     ],
     "tags": [
       "performance",
       "bug-fix",
-      "ui-change",
-      "map-change"
+      "ui-change"
     ]
   },
   {
@@ -461,14 +477,14 @@
     "date": "2026-02-09T22:59:17.000Z",
     "content": "[p]\\[ MISC ][/p][list][*][p]Localization code and text changes.[/p][/*][/list]",
     "summary": [
-      "Localization code and text changes",
-      "Miscellaneous updates",
-      "Stability improvements"
+      "Localization code and text changes.",
+      "Miscellaneous updates.",
+      "No major gameplay changes."
     ],
     "tags": [
       "ui-change",
-      "bug-fix",
-      "performance"
+      "performance",
+      "bug-fix"
     ]
   },
   {
@@ -478,9 +494,9 @@
     "date": "2026-02-04T23:33:53.000Z",
     "content": "[p]\\[ MISC ][/p][list][*][p]Fixed a case where switching firstperson spectator targets would cause viewmodel animations to reset.[/p][/*][*][p]Fixed a case where physics calculations far from the origin were causing performance issues.[/p][/*][/list][p][/p][p]\\[ MAPS ][/p][p]Anubis[/p][list][*][p]Adjusted player clipping around new drop.[/p][/*][*][p]Adjusted grenade clipping around connector (e-box :P) hole and old drop.[/p][/*][/list][p]Poseidon[/p][list][*][p]Updated to the latest version from the Community Workshop ([url=\"https://steamcommunity.com/sharedfiles/filedetails/changelog/3522144043\"]Update Notes[/url])[/p][/*][/list]",
     "summary": [
+      "Fixed viewmodel animations resetting when switching firstperson spectator targets",
       "Fixed performance issues with physics calculations far from the origin",
-      "Adjusted player clipping around new drop on Anubis",
-      "Updated Poseidon to the latest Community Workshop version"
+      "Adjusted player clipping around new drop on Anubis and grenade clipping around connector hole and old drop on Anubis"
     ],
     "tags": [
       "bug-fix",
@@ -502,8 +518,7 @@
     "tags": [
       "gameplay",
       "bug-fix",
-      "performance",
-      "ui-change"
+      "performance"
     ]
   },
   {
@@ -514,13 +529,13 @@
     "content": "[p]\\[ GAMEPLAY ][/p][list][*][p]Molotov/incendiary grenades that bounce off an enemy player have a one-time fuse extension added to prevent them from air-bursting when their has-never-hit-the-world timer elapses.[/p][/*][/list][p][/p][p]\\[ SOUND ][/p][list][*][p]Fixed a performance issue when running CS2 without a sound device.[/p][/*][*][p]Various knife sound adjustments.[/p][/*][/list][p][/p][p]\\[ MISC ][/p][list][*][p]Fixed broken cl_ent_bbox visualization for some classes of rigid dynamic entities.[/p][/*][*][p]Various stability improvements.[/p][/*][/list][p][/p][p]\\[ MAPS ][/p][p]Nuke[/p][list][*][p]Adjusted hanging hard hat model render bounds to prevent shadow popping when model exited the view frustum.[/p][/*][/list][p]Warden[/p][list][*][p]Updated to the latest version from the Community Workshop ([url=\"https://steamcommunity.com/sharedfiles/filedetails/changelog/3256988376\"]Update Notes[/url])[/p][/*][/list][p]Sanctum[/p][list][*][p]Updated to the latest version from the Community Workshop ([url=\"https://steamcommunity.com/sharedfiles/filedetails/changelog/3643331442\"]Update Notes[/url])[/p][/*][/list]",
     "summary": [
       "Molotov/incendiary grenades have a one-time fuse extension added.",
-      "Performance issue fixed when running CS2 without a sound device.",
-      "Various stability improvements and bug fixes."
+      "Various knife sound adjustments.",
+      "Fixed various stability issues and a performance issue when running CS2 without a sound device."
     ],
     "tags": [
       "bug-fix",
       "performance",
-      "map-change"
+      "ui-change"
     ]
   },
   {
@@ -549,13 +564,15 @@
     "content": "[p]\\[ PREMIER ][/p][list][*][p]Premier Season Four has begun[/p][/*][*][p]Added Anubis to the Active Duty Map Pool[/p][/*][*][p]Removed Train from the Active Duty Map Pool[/p][/*][/list][p][/p][p]\\[ COMPETITIVE ][/p][list][*][p]Adjusted underlying per-map competitive matchmaking rank values. Existing per-map competitive Skill Groups have been expired, and will be displayed again once the player obtains the required number of wins[/p][/*][/list][p][/p][p]\\[ GAMEPLAY ][/p][list][*][p]Minor adjustments to the MP7 and MP5-SD:[/p][list][*][p]Slightly increased damage[/p][/*][*][p]Slightly reduced damage fall-off[/p][/*][*][p]Reduced price by $100.[/p][/*][/list][/*][*][p]Reduced price of the PP-Bizon by $100.[/p][/*][*][p]Jump changes:[/p][list][*][p]Landing time is now calculated with subtick precision[/p][/*][*][p]Jumping and landing no longer affect stamina. The landing speed penalty is now a simple function of landing time[/p][/*][*][p]Any jump press within sv_bhop_time_window centered on the landing time that hasn't been penalized by sv_jump_spam_penalty_time will be treated as a successful bunnyhop[/p][/*][*][p]Legacy jump behavior can be restored on private servers with sv_legacy_jump[/p][/*][/list][/*][*][p]Map Guides can now be loaded in online games of casual and retakes (via the ESC menu)[/p][/*][/list][p][/p][p]\\[ SOUND ] [/p][list][*][p]Reduced audio output latency[/p][/*][*][p]Higher fidelity knife draw and inspect sounds[/p][/*][*][p]Weapon, knife and utility draw sounds no longer overlap when switching quickly between them[/p][/*][*][p]Knife impact sounds are now unique based on primary fire or alt fire swings as well as front and rear attacks. This reflects the different damage amounts dealt with each attack [/p][/*][*][p]Ambient sounds no longer restart from the beginning when transitioning between zones[/p][/*][/list][p][/p][p]\\[ WEEKLY CARE PACKAGE ][/p][list][*][p]Added two all-new weapon collections to the Weekly Care Package drop list: Harlequin, Achroma[/p][/*][*][p]Removed four weapon collections from the Weekly Care Package drop list: Safehouse, Dust 2, 2018 Nuke Collection, and the 2018 Inferno Collection[/p][/*][/list][p][/p][p]\\[ ARMORY ][/p][list][*][p]Added a new Limited Edition Item: the AK47 | Aphrodite[/p][/*][/list][p][/p][p]\\[ MISC ][/p][list][*][p]Increased material fidelity on some of the base guns:[/p][list][*][p]Ak47[/p][/*][*][p]Aug[/p][/*][*][p]AWP[/p][/*][*][p]Berettas[/p][/*][*][p]Deagle[/p][/*][*][p]Galil[/p][/*][*][p]Mac-10[/p][/*][*][p]MP7[/p][/*][*][p]P250[/p][/*][*][p]Tec9[/p][/*][*][p]USP-S[/p][/*][*][p]Bizon[/p][/*][*][p]Cz75a[/p][/*][*][p]Famas[/p][/*][*][p]MP9[/p][/*][/list][/*][/list][list][*][p]Changed voice status behavior to always show a mic for local player if mic is open [/p][/*][*][p]Fixed a bug related to Deathcam intersection[/p][/*][*][p]Fixed some cases where the player would collide with internal edges while sliding along a ramp in surf mode[/p][/*][*][p]Improved the resolution of the PVS for some static level geometry[/p][/*][*][p]Fixed some small interpenetrations in Butterfly Knife animations[/p][/*][*][p]Fixed a case where blood decals weren't appearing[/p][/*][/list][p][/p][p]\\[ MAP SCRIPTING ][/p][list][*][p]Fixed a bug where activator was sometimes incorrect for func_door outputs OnOpen, OnFullyOpen, OnClose, and OnFullyClosed[/p][list][*][p]Added BaseModelEntity.GetModelName[/p][/*][*][p]Added BaseModelEntity.GetModelScale[/p][/*][*][p]Added BaseModelEntity.GetColor[/p][/*][*][p]Added BaseModelEntity.IsGlowing[/p][/*][/list][/*][/list][p][/p][p]\\[ ENGINE ][/p][list][*][p]Updated engine code to the latest version of Source 2.[/p][/*][/list][p]\n\\[ MAPS ][/p][list][*][p]Removed community maps: Golden, Palacio, Agency, and Rooftop from all game modes[/p][/*][*][p]Added community maps Warden, Stronghold, and Alpine to Competitive, Casual, and Deathmatch modes[/p][/*][*][p]Added community maps Sanctum and Poseidon to Wingman mode[/p][/*][/list][p][/p][p]Anubis[/p][list][*][p]Bridge drop moved near Mid Doors[/p][/*][*][p]Mid doors orientation reversed[/p][/*][*][p]Hole added between E-box and Back of B[/p][/*][*][p]Bombsite A crates moved up steps on to Walkway[/p][/*][*][p]Scaffolding added to pillar on Bombsite A[/p][/*][/list]",
     "summary": [
       "Premier Season Four has begun",
-      "Added Anubis to the Active Duty Map Pool",
-      "Removed Train from the Active Duty Map Pool"
+      "Minor adjustments to the MP7 and MP5-SD",
+      "Jump changes"
     ],
     "tags": [
       "map-change",
-      "performance",
+      "weapon-buff",
       "gameplay",
+      "performance",
+      "jump-change",
       "bug-fix"
     ]
   },
@@ -567,8 +584,8 @@
     "content": "[p]\\[ MAJOR ][/p][list][*][p]Champions Autographs Capsule is now available for purchase, congratulations to Team Vitality![/p][/*][*][p]Highlight Souvenir Packages can now be acquired for the Playoff matches.[/p][/*][/list]",
     "summary": [
       "Champions Autographs Capsule is now available for purchase",
-      "Highlight Souvenir Packages can now be acquired for Playoff matches",
-      "Minor balance and stability changes"
+      "Highlight Souvenir Packages can now be acquired for the Playoff matches",
+      "Minor balance changes"
     ],
     "tags": [
       "new-feature",
@@ -600,7 +617,7 @@
     "content": "[p]\\[ MISC ][/p][list][*][p]Fixed a case of observers experiencing incorrect post-processing effects when switching observer targets.[/p][/*][*][p]Disabled TrueView while watching a live playcast to match on-server observing experience.[/p][/*][*][p]Fixed a wiggle at the end of SG 556 deploy animation.[/p][/*][*][p]Stability improvements.[/p][/*][/list]",
     "summary": [
       "Fixed observer post-processing effects",
-      "Disabled TrueView for live playcasts",
+      "Disabled TrueView for live playcast",
       "Stability improvements"
     ],
     "tags": [
@@ -618,8 +635,7 @@
     "summary": [
       "Fixed ability to plant C4 while standing on top of a teammate.",
       "Fixed rendering bug on transparent charms.",
-      "Fixed replay bug causing infinite shell casing effects.",
-      "Fixed bug with Budapest 2025 Coin in scoreboard."
+      "Fixed replay bug causing infinite shell casing effects."
     ],
     "tags": [
       "bug-fix",
@@ -635,14 +651,14 @@
     "summary": [
       "The StarLadder Budapest Major Hub is now available.",
       "New 'Sticker Slab' item added, allowing stickers to be sealed and attached to weapons.",
-      "Performance improvements and bug fixes."
+      "Performance improvements and bug fixes, including jump button and apex prediction fixes."
     ],
     "tags": [
       "map-change",
-      "new-feature",
+      "ui-change",
       "bug-fix",
       "performance",
-      "ui-change"
+      "gameplay"
     ]
   },
   {
@@ -653,18 +669,13 @@
     "content": "[p]\\[ GAMEPLAY ][/p][list][*][p]Fixed a case where air acceleration was clamped incorrectly while surfing.[/p][/*][*][p]Fixed a case where slowly surfing up a ramp was handled incorrectly due to misidentification as a jump apex.[/p][/*][*][p]Fix a bug causing \"Delay Sniper Rifle Un-Scope after Shot\" to be inconsistent.[/p][/*][/list][p][/p][p]\\[ DEMO ][/p][list][*][p]Added TrueView demo playback, which reconstructs the observed player's original experience more accurately by re-running client-side prediction.[/p][/*][*][p]TrueView playback will show the effects of Damage Prediction, if it was enabled by the observed player at the time.[/p][/*][*][p]TrueView does not reconstruct the precise timings of rendered frames, so some differences between the original player's experience and TrueView playback will remain, especially in very slow motion playback.  The player's frame at the time when the mouse was clicked, which is used for hit registration, is shown accurately to the nearest demo playback frame. However, reaction effects such as recoil, muzzle flash, blood splatter, and ragdoll are delayed while playing the game by one or two frames due to the way CPU and GPU work is pipelined, and will not appear at the same time during demo playback.[/p][/*][*][p]TrueView demo playback might not work properly on old demos and is disabled by default if the playback client version does not match the client version when the demo was recorded. You can set cl_demo_predict 2 to override this.[/p][/*][*][p]Fixed a bug causing third person models to not animate smoothly.[/p][/*][*][p]Fixed a bug causing time to lurch forward by one tick when unpausing a demo.[/p][/*][/list][p][/p][p]\\[ MISC ][/p][list][*][p]Animation fixes for G3SG1 bolt.[/p][/*][*][p]Fixed developer console scrollbar to accept mouse clicks.[/p][/*][/list]",
     "summary": [
       "Fixed air acceleration clamping while surfing",
-      "Fixed surfing up ramps",
-      "Fixed inconsistent sniper rifle un-scope delay",
-      "Added TrueView demo playback",
-      "Fixed third person model animation",
-      "Fixed demo playback time lurch",
-      "Fixed developer console scrollbar"
+      "Fixed slowly surfing up a ramp",
+      "Fixed 'Delay Sniper Rifle Un-Scope after Shot' inconsistency"
     ],
     "tags": [
       "bug-fix",
       "performance",
-      "ui-change",
-      "new-feature"
+      "ui-change"
     ]
   },
   {
@@ -680,7 +691,8 @@
     ],
     "tags": [
       "performance",
-      "bug-fix"
+      "bug-fix",
+      "ui-change"
     ]
   },
   {
@@ -707,16 +719,15 @@
     "date": "2025-10-22T23:00:20.000Z",
     "content": "[p]\\[ GAMEPLAY ][/p][list][*][p]Adding Retakes as official game mode supporting Defusal Group Alpha and Defusal Group Delta maps on official matchmaking servers.[/p][/*][*][p]Fixed Molotov and Smoke interaction logic in cases when multiple smokes are active in the map.[/p][/*][/list][p]\\[ MAPS ][/p][list][*][p]Updated Golden to the latest version from Steam Community Workshop ([url=\"https://steamcommunity.com/sharedfiles/filedetails/changelog/3286163323\"]Update Notes[/url])[/p][/*][*][p]Updated Palacio to the latest version from Steam Community Workshop ([url=\"https://steamcommunity.com/sharedfiles/filedetails/changelog/3249860053\"]Update Notes[/url])[/p][/*][*][p]Updated Rooftop to the latest version from Steam Community Workshop ([url=\"https://steamcommunity.com/sharedfiles/filedetails/changelog/3536622725\"]Update Notes[/url])[/p][/*][/list][p]Inferno[/p][list][*][p]Adjustments to top of Quad and under Balcony to improve visibility.[/p][/*][*][p]Various optimizations.[/p][/*][/list][p]\\[ CONTRACTS ][/p][list][*][p]Extended functionality of the \"Trade Up Contract\" to allow exchanging 5 items of Covert quality as follows:[/p][list][*][p]5 StatTrak™ Covert items can be exchanged for one StatTrak™ Knife from a collection of one of the items provided[/p][/*][*][p]5 regular Covert items can be exchanged for one regular Knife item or one regular Gloves item from a collection of one of the items provided[/p][/*][/list][/*][/list][p]\\[ MISC ][/p][list][*][p]Performance optimizations when the game is in the main menu and item inspect UI[/p][/*][*][p]Fixed inventory item icons sometimes rendering in blurry state or not rendering[/p][/*][*][p]Fixed several server-only sound events to not start multiple times[/p][/*][*][p]Stability improvements[/p][/*][/list]",
     "summary": [
-      "Retakes game mode added",
+      "Retakes added as official game mode",
       "Molotov and Smoke interaction logic fixed",
-      "Map updates: Golden, Palacio, Rooftop, and Inferno"
+      "Inferno map adjustments and optimizations"
     ],
     "tags": [
-      "new-feature",
       "gameplay",
-      "map-change",
       "bug-fix",
-      "performance"
+      "performance",
+      "map-change"
     ]
   },
   {
@@ -732,8 +743,8 @@
     ],
     "tags": [
       "bug-fix",
-      "ui-change",
-      "performance"
+      "performance",
+      "ui-change"
     ]
   },
   {
@@ -748,7 +759,6 @@
       "Improved core utilization of some client particle and sound effects processing, reducing overall CPU usage when players are shooting."
     ],
     "tags": [
-      "engine-change",
       "performance",
       "bug-fix"
     ]
@@ -785,8 +795,8 @@
       "map-change",
       "weapon-change",
       "ui-change",
-      "performance",
-      "bug-fix"
+      "bug-fix",
+      "performance"
     ]
   },
   {
@@ -796,16 +806,16 @@
     "date": "2025-10-01T23:43:04.000Z",
     "content": "[p]\\[ ARMORY ][/p][list][*][p]Added Missing Link Community Charms collection featuring 23 new charms created by Counter-Strike Workshop community artists.[/p][/*][*][p]Added Dr. Boom Charms collection featuring 22 new charms.[/p][/*][*][p]Added 2025 Community Stickers collection featuring 29 new stickers created by Counter-Strike Workshop community artists.[/p][/*][*][p]Added Sugarface 2 Stickers collection featuring 9 new stickers with the Sugarface theme.[/p][/*][*][p]Removed Gallery Case, Graphic Collection, and Character Craft stickers from The Armory.[/p][/*][/list][p]\\[ GAMEPLAY ][/p][list][*][p]Death count in scoreboard will now increment when players die to C4 bomb detonation.[/p][/*][*][p]Limited Zeus-x27 kill streak bonus in deathmatch.[/p][/*][*][p]Fixed incorrect pixel offset for greater than one pixel width sniper scope.[/p][/*][*][p]Added inaccuracy representation in sniper scopes.[/p][/*][*][p]Keychains will now slightly jolt when a player makes an audible footstep sound.[/p][/*][/list][p]\\[ SPECTATING ][/p][list][*][p]Added support on select maps for new spectator camera transitions that follow the shortest path through the level to the next spectator target player.[/p][/*][*][p]In-game loadout of spectated player will auto-close at the end of the match.[/p][/*][*][p]In-game loadout of spectated player will now show wear and pattern of gloves.[/p][/*][/list][p]\\[ MAPS ][/p][list][*][p]Removed community maps Jura, Grail, Dogtown, and Brewery from all game modes.[/p][/*][*][p]Added community maps Palacio and Golden to Competitive, Casual, and Deathmatch modes.[/p][/*][*][p]Added community maps Rooftop and Transit to Wingman mode.[/p][/*][*][p]Ancient / Shoots[/p][list][*][p]Various player clipping fixes.[/p][/*][/list][/*][/list][p]\\[ MISC ][/p][list][*][p]Minor adjustments to MAC-10 and R8 Revolver skinning.[/p][/*][*][p]Fixed a crash for missing bullet impact effects.[/p][/*][*][p]Added deformers (lattice deformer and simple bend deformer) to Workshop Tools - Hammer.[/p][/*][*][p]Re-enabled example content in train_zoo using lattice and bend deformers.[/p][/*][/list][p]\\[ MAP SCRIPTING ][/p][list][*][p]Updated general error handling for methods. An exception will be thrown when the method is invoked with an incorrect 'this' value. An error will be logged and a default value that matches the declared return type will be returned when the method is invoked with unsupported arguments.[/p][/*][*][p]Improved performance of handling Vector, QAngle, and Color values as arguments and return values.[/p][/*][*][p]When interpreting a Color argument, rgba values will be clamped to a maximum of 255.[/p][/*][*][p]Added an overload for each of the following methods that accepts a single object holding all parameters. Deprecated the previous overload.[/p][list][*][p]Instance.DebugScreenText[/p][/*][*][p]Instance.DebugLine[/p][/*][*][p]Instance.DebugBox[/p][/*][*][p]Instance.DebugSphere[/p][/*][*][p]Instance.EntFireAtName[/p][/*][*][p]Instance.EntFireAtTarget[/p][/*][*][p]Entity.Teleport[/p][/*][/list][/*][*][p]Changed all callbacks to accept a single object holding all parameters.[/p][/*][*][p]Added Instance.OnScriptReload[/p][/*][*][p]Deprecated Instance.OnReload and Instance.OnBeforeReload[/p][/*][*][p]Added Instance.TraceLine[/p][/*][*][p]Added Instance.TraceSphere[/p][/*][*][p]Added Instance.TraceBox[/p][/*][*][p]Added Instance.TraceBullet[/p][/*][*][p]Deprecated Instance.GetTraceHit[/p][/*][*][p]Added Instance.OnPlayerReset[/p][/*][*][p]Added Instance.OnBeforePlayerDamage[/p][/*][*][p]Added Instance.OnPlayerDamage[/p][/*][*][p]Added Instance.OnPlayerJump[/p][/*][*][p]Added Instance.OnPlayerLand[/p][/*][*][p]Added Instance.OnGunReload[/p][/*][*][p]Added Instance.OnBulletImpact[/p][/*][*][p]Added Instance.OnPlayerPing[/p][/*][*][p]Added Instance.OnGrenadeBounce[/p][/*][*][p]Added Instance.OnKnifeAttack[/p][/*][*][p]Added Instance.IsFreezePeriod[/p][/*][*][p]Added Entity.GetOwner[/p][/*][*][p]Added Entity.SetOwner[/p][/*][*][p]Added Entity.GetParent[/p][/*][*][p]Added Entity.SetParent[/p][/*][*][p]Added Entity.IsAlive[/p][/*][*][p]Added Entity.IsWorld[/p][/*][*][p]Added Entity.TakeDamage[/p][/*][*][p]Added CSPlayerPawn.DropWeapon[/p][/*][*][p]Added CSWeaponData.GetDamage[/p][/*][*][p]Added CSWeaponData.GetRange[/p][/*][*][p]Added CSWeaponData.GetRangeModifier[/p][/*][*][p]Added CSWeaponData.GetPenetration[/p][/*][/list]",
     "summary": [
-      "Added Missing Link Community Charms collection",
-      "Death count in scoreboard now increments when players die to C4 bomb detonation",
-      "Removed Gallery Case, Graphic Collection, and Character Craft stickers from The Armory"
+      "Added new community charms and stickers",
+      "Death count in scoreboard now increments for C4 bomb detonation",
+      "Various map and game mode changes"
     ],
     "tags": [
       "new-feature",
       "bug-fix",
-      "ui-change",
-      "performance",
-      "map-change"
+      "map-change",
+      "gameplay",
+      "performance"
     ]
   },
   {
@@ -832,9 +842,9 @@
     "date": "2025-09-25T00:17:51.000Z",
     "content": "[ MAP SCRIPTING ]\n[list][*]Updated tsconfig.json in the script_zoo, setting the target to \"es2022\" for more accurate type analysis.\n[*]Changed point_script entity to no longer remove itself on a failed script load during spawn. Instead it will remain in an inactive state and listen for script changes if the game is running in tools mode.\n[*]Fixed point_script entity to no longer potentially crash after an unsuccessful reload from an invalid script while running the game in tools mode.\n[*]Changed point_script entity to hold onto the memory value returned by an Instance.OnBeforeReload callback until the next successful reload instead of forgetting it if the reload is unsuccessful.\n[*]Changed methods expecting arguments of string type to now error instead of calling toString for arguments of the wrong type.\n[*]Changed Instance.Msg and Instance.DebugScreenText to accept any type for the text value.\n[*]Fixed a bug where RunScriptInput would crash the game when triggered with a null caller or activator.\n[*]Removed Instance.OnGameEvent in favor of per-event registration methods. This gives us tools for stronger API stability and creates a consistent API for events that are not gameevents.\n[*]Added Instance.DebugLine\n[*]Added Instance.DebugBox\n[*]Added Instance.OnPlayerConnect\n[*]Added Instance.OnPlayerActivate\n[*]Added Instance.OnPlayerDisconnect\n[*]Added Instance.OnRoundStart\n[*]Added Instance.OnRoundEnd\n[*]Added Instance.OnBombPlant\n[*]Added Instance.OnBombDefuse\n[*]Added Instance.OnPlayerKill\n[*]Added Instance.OnPlayerChat\n[*]Added Instance.OnGunFire\n[*]Added Instance.OnGrenadeThrow\n[*]Added an overload to Instance.EntFireAtName that allows setting caller and activator\n[*]Added an overload to Instance.EntFireAtTarget that allows setting caller and activator\n[*]Added normal vector to the result of Instance.GetTraceHit\n[*]Added Entity.GetGroundEntity\n[*]Added CSWeaponBase.GetOwner\n[*]Added CSPlayerController.GetName\n[*]Added CSObserverPawn.GetOriginalPlayerController\n[*]Added CSPlayerPawn.GetOriginalPlayerController\n[*]Added CSPlayerPawn.IsCrouching\n[*]Added CSPlayerPawn.IsCrouched\n[*]Added CSPlayerPawn.IsNoclipping\n[*]See maps/editor/zoo/scripts/point_script.d.ts for comprehensive details on the API\n[*]Added \"train_zoo.vmap\" with all de_train assets and examples for mapmakers.[/list]",
     "summary": [
-      "Updated tsconfig.json in the script_zoo",
+      "Updated tsconfig.json for more accurate type analysis",
       "Improved point_script entity stability and functionality",
-      "Added new API methods for map scripting"
+      "Added new API features and tools for mapmakers"
     ],
     "tags": [
       "bug-fix",
@@ -850,9 +860,9 @@
     "date": "2025-09-24T00:54:55.000Z",
     "content": "[ MAPS ]\n[list][*]Ancient[list][*]Various player clipping fixes[/list]\n[*]Train[list][*]Various player clipping fixes[/list][/list]\n[ MISC ]\n[list][*]Fixed a case where you couldn't start moving while wiggling the mouse.\n[*]Fixed a case where velocity was abnormally low while walking up ramps.[/list]",
     "summary": [
-      "Player clipping fixes on Ancient and Train",
-      "Mouse movement fix",
-      "Velocity fix while walking up ramps"
+      "Various player clipping fixes on Ancient and Train",
+      "Fixed issue with starting movement while wiggling mouse",
+      "Fixed issue with abnormal velocity while walking up ramps"
     ],
     "tags": [
       "bug-fix",
@@ -884,7 +894,7 @@
     "content": "[p]\\[ GENESIS COLLECTION ][/p][list][*][p]Customers in Belgium, Netherlands, and France can now unseal their Sealed Genesis Terminal items.[/p][/*][*][p]Fixed purchasing errors for users with Steam Wallet funds in Chilean Peso, Colombian Peso, Costa Rican Colón, Indonesian Rupiah, Indian Rupee, Japanese Yen, South Korean Won, Kazakhstani Tenge, New Taiwan Dollar, Ukrainian Hryvnia, Uruguayan Peso, and Vietnamese Dong.[/p][/*][/list][p]\\[ ITEMS ][/p][list][*][p]Fixed position of the nametag and StatTrak module on Shadow Daggers.[/p][/*][/list][p]\\[ MAP SCRIPTING ][/p][list][*][p]Added javascript to the list of asset types.[/p][/*][*][p]Fixed type declaration for the newAngles parameter of Entity.Teleport.[/p][/*][*][p]Fixed a bug where GetTraceHit would crash when the config parameter was not specified.[/p][/*][/list][p]\\[ MISC ][/p][list][*][p]Improved timestep-independence of subtick movement acceleration.[/p][/*][/list]",
     "summary": [
       "Customers in Belgium, Netherlands, and France can now unseal their Sealed Genesis Terminal items.",
-      "Fixed purchasing errors for users with Steam Wallet funds in various currencies.",
+      "Fixed purchasing errors for users with Steam Wallet funds in multiple currencies.",
       "Improved timestep-independence of subtick movement acceleration."
     ],
     "tags": [
@@ -900,15 +910,14 @@
     "date": "2025-09-16T23:24:32.000Z",
     "content": "[p]\\[ GENESIS COLLECTION ][/p][list][*][p]The Genesis Collection is now available, featuring 17 finishes from community contributors.[/p][/*][*][p]Access items in the Genesis Collection via the Genesis Uplink Terminal, available as a weekly drop.[/p][/*][/list][p]\\[ MAP SCRIPTING ][/p][list][*][p]Added cs_script, a JavaScript based scripting system for Counter-Strike maps.[/p][/*][*][p]Added script_zoo.vmap to demonstrate cs_script usage and functionality.[/p][/*][/list][p]\\[ UI ][/p][list][*][p]Added ability to inspect another player's loadout when spectating.[/p][/*][*][p]Added zoom (mousewheel) and pan (shift+drag) to all inspect panels.[/p][/*][/list][p]\\[ SOUND ][/p][list][*][p]Each grenade now has unique higher-fidelity sounds for draw, inspect, pin-pull, and throw.[/p][/*][/list][p]\\[ MISC ][/p][list][*][p]Various improvements to subtick shooting consistency.[/p][/*][/list]",
     "summary": [
-      "Genesis Collection available with 17 community finishes",
-      "Map scripting system added with cs_script and script_zoo.vmap",
-      "Inspect loadout and zoom/pan added to spectate panels"
+      "The Genesis Collection is now available with 17 community finishes.",
+      "Map scripting system cs_script has been added for Counter-Strike maps.",
+      "New UI features include inspecting another player's loadout and improved inspect panels."
     ],
     "tags": [
       "new-feature",
-      "map-change",
       "ui-change",
-      "performance"
+      "map-change"
     ]
   },
   {
@@ -919,8 +928,8 @@
     "content": "[p][ MISC ][/p][list][*][p]Fixed an issue that would allow exec_async to continue executing in cheat protected servers resulting in random user input dropout.[/p][/*][*][p]Last chance to pick up the Gallery Case, Graphic Collection, and Character Craft stickers from The Armory.[/p][/*][/list]",
     "summary": [
       "Fixed issue with exec_async in cheat protected servers",
-      "Gallery Case and Graphic Collection stickers available until next patch",
-      "Bug fixes and stability improvements"
+      "Gallery Case, Graphic Collection, and Character Craft stickers removed",
+      "Minor bug fixes and stability improvements"
     ],
     "tags": [
       "bug-fix",
@@ -934,9 +943,9 @@
     "date": "2025-09-08T23:17:19.000Z",
     "content": "[p]\\[ MAPS ][/p][p]Agency[/p][list][*][p]Updated to the latest version from the Community Workshop ([url=\"https://steamcommunity.com/sharedfiles/filedetails/changelog/3339983232\"]Update Notes[/url])[/p][/*][/list][p]Grail[/p][list][*][p]Updated to the latest version from the Community Workshop ([url=\"https://steamcommunity.com/sharedfiles/filedetails/changelog/3246527710\"]Update Notes[/url])[/p][/*][/list][p]\\[ ANIMATION ][/p][list][*][p]Viewmodel animation fixes for the Bowie, Bayonet, Kukri, Nomad, Paracord, and Skeleton knives.[/p][/*][/list][p]\\[ MISC ][/p][list][*][p]Improved performance when firing weapons.[/p][/*][*][p]Fixed a case where viewmodel motion due to view angle changes depended on the direction you were facing.[/p][/*][/list]",
     "summary": [
-      "Updated Agency and Grail maps to latest Community Workshop versions",
+      "Updated Agency and Grail maps to the latest Community Workshop versions",
       "Viewmodel animation fixes for Bowie, Bayonet, Kukri, Nomad, Paracord, and Skeleton knives",
-      "Improved performance when firing weapons"
+      "Improved performance when firing weapons and fixed viewmodel motion issue"
     ],
     "tags": [
       "map-change",
@@ -953,7 +962,7 @@
     "summary": [
       "Fixed sound dropouts while playing Agency.",
       "Stability improvement.",
-      "Minor bug fix."
+      "Minor bug fixes."
     ],
     "tags": [
       "bug-fix",
@@ -967,9 +976,9 @@
     "date": "2025-09-03T23:18:02.000Z",
     "content": "[p][ MISC ][/p][list][*][p]Fixed an issue where player sounds would not visualize correctly on the minimap.[/p][/*][*][p]Fixed a crash when changing sound devices.[/p][/*][*][p]Fixed a case where sounds would play incorrectly as players move through water.[/p][/*][*][p]Fixed a case where viewmodel motion due to view angle changes misbehaved at certain frame rates.[/p][/*][/list][p][ UI ][/p][list][*][p]Minor fixes to the Loadout UI layout on certain resolutions.[/p][/*][*][p]Trade-protected and rental items now allow \"Unfavorite for CT\" action.[/p][/*][/list][p][/p][p][ MAPS ][/p][p]Ancient[/p][list][*][p]Various grenade and player clipping fixes.[/p][/*][/list][p]Shoots[/p][list][*][p]Various grenade and player clipping fixes.[/p][/*][/list][p]Grail[/p][list][*][p]Updated to the latest version from the Community Workshop ([url=\"https://steamcommunity.com/sharedfiles/filedetails/changelog/3246527710\"]Update Notes[/url])[/p][/*][/list][p]Agency[/p][list][*][p]Updated to the latest version from the Community Workshop ([url=\"https://steamcommunity.com/sharedfiles/filedetails/changelog/3339983232\"]Update Notes[/url])[/p][/*][/list][p]Dogtown[/p][list][*][p]Updated to the latest version from the Community Workshop ([url=\"https://steamcommunity.com/sharedfiles/filedetails/changelog/3414036782\"]Update Notes[/url])[/p][/*][/list][p]\n[/p]",
     "summary": [
-      "Fixed player sound visualization on minimap",
-      "Fixed crash when changing sound devices",
-      "Minor UI fixes and grenade clipping fixes on various maps"
+      "Fixed player sounds on minimap",
+      "Fixed crash on sound device change",
+      "Minor UI fixes and grenade clipping on maps"
     ],
     "tags": [
       "bug-fix",
@@ -1037,7 +1046,7 @@
     "content": "[ MAPS ]\n\nAncient and Shoots\n[list]\n[*]Added nighttime versions.\n[*]Refreshed all ancient materials to use latest CS2 shaders.\n[*]Added new blending options for ancient materials including wetness and moss.\n[*]Added \"ancient_zoo.vmap\" with all assets and blending examples for mapmakers.\n[/list]\n[ ITEMS ]\n[list]\n[*]Deluge Music Kit Box is now available for purchase in standard and StatTrak versions.\n[*]New Limited Time Item, the M4A1-S | Solitude, is now available in The Armory.\n[/list]\n[ ANIMATION ]\n[list]\n[*]Sawed-off shotgun deploy modified and fixed shell penetration on reload.\n[*]Improved deploy +quick inspect animations for all knives.\n[*]Improved deploy +quick inspect animations for the AK, Galil, AUG, PP-Bizon.\n[*]Improved deploy animations for the AWP, M4A4, M4A1-S.\n[*]Improved animations for legacy SSG08 models.\n[*]Removed the deploy inspect delay for most weapons.\n[*]Fixed XM1014 blocking crosshair during reload.\n[/list]\n[ MISC ]\n[list]\n[*]Rendering performance improvements across most maps.\n[*]Rendering resolution and aspect ratio can now be changed in fullscreen windowed mode.\n[*]fps_max can no longer be changed while connected to a server.\n[*]Fixed a case where certain weapons could be fired sooner after a re-deploy.\n[/list]",
     "summary": [
       "Added nighttime versions of Ancient and Shoots maps.",
-      "Refreshed ancient materials with latest CS2 shaders.",
+      "Refreshed ancient materials to use latest CS2 shaders.",
       "Improved deploy and inspect animations for various weapons."
     ],
     "tags": [
@@ -1054,14 +1063,14 @@
     "date": "2025-08-01T22:34:13.000Z",
     "content": "[ GAMEPLAY ] \n[list]\n[*] Fixed a bug that would allow you to inspect a grenade after priming.\n[*] Fixed a bug that would prevent firstperson viewmodel lag.\n[*] Molotov again uses the correct fire particle.\n[*] Incendiary and smoke grenades now play the correct sounds.\n[*] Adjusted firstperson molotov audio and particle event timing.\n[*] Fixed a bug that would cause bhopping penalty to continue to accumulate even when jump had not been pressed.\n[*] Bhopping jump spam clock now starts at the instant the input is registered, rather than then end of the subtick where that command was processed.\n[/list]\n\n[ MAPS ]\nJura\n[list]\n[*] Updated to the latest version from the Community Workshop.\n[/list]",
     "summary": [
-      "Bug fixes and stability improvements.",
-      "Minor map update.",
-      "Audio and particle effects adjustments."
+      "Fixed several bugs related to grenade inspection, viewmodel lag, and bhopping.",
+      "Adjusted molotov audio and particle timing.",
+      "Updated Jura map to the latest Community Workshop version."
     ],
     "tags": [
       "bug-fix",
-      "map-change",
-      "performance"
+      "performance",
+      "map-change"
     ]
   },
   {
@@ -1071,9 +1080,9 @@
     "date": "2025-07-31T01:07:38.000Z",
     "content": "[ GAMEPLAY ] \n[list]\n[*] Fixed a case where weapons (including dropped bombs) would appear in the wrong location.\n[*] Weapons can be fired immediately after a redeploy if reloading was cancelled before adding ammo.\n[/list]",
     "summary": [
-      "Fixed a case where weapons would appear in the wrong location.",
-      "Weapons can be fired immediately after redeploy if reloading was cancelled.",
-      "Bug fixes and stability improvements."
+      "Fixed a case where weapons (including dropped bombs) would appear in the wrong location.",
+      "Weapons can be fired immediately after a redeploy if reloading was cancelled before adding ammo.",
+      "Minor balance adjustments"
     ],
     "tags": [
       "bug-fix",
@@ -1087,14 +1096,14 @@
     "date": "2025-07-30T00:29:41.000Z",
     "content": "[ GAMEPLAY ]\n[list]\n[*] Fixed a case where weapons could be fired prematurely due to a redeploy after a reload\n[*] Fixed a case where movement button changes were ignored while adjusting view angles at very high frame rates\n[*] Fixed a case where air strafing would result in higher than usual velocities\n[*] Speculative fix for a rare case where the dropped bomb appears in the wrong location\n[/list]\n\n[ MISC ]\n[list]\n[*] Various bug fixes and and changes to first-person animations and sounds\n[*] Fixed various nametag and StatTrak positions\n[*] Various fixes for AWP materials\n[*] Speculative fix for a rare case where holstered weapons appear attached to the deployed weapon\n[*] Fixed a bug where the CS2 music kit was replaced by the CS:GO music kit\n[*] Fixed a vote UI bug sometimes displaying vote result of another team's vote\n[/list]\n\n[ MAPS ]\nInferno\n[list]\n[*] Fixed a gap on the first stack at bombsite B\n[/list]\nOverpass\n[list]\n[*] Fixed clipping on the T fountain stairs\n[/list]",
     "summary": [
-      "Fixed weapon firing issue after redeploy",
+      "Fixed premature weapon firing after reload",
       "Fixed movement button changes at high frame rates",
       "Fixed air strafing velocities"
     ],
     "tags": [
       "bug-fix",
       "performance",
-      "gameplay"
+      "ui-change"
     ]
   },
   {
@@ -1105,8 +1114,8 @@
     "content": "[ ANIMATION ]\n[list]\n[*] The animation system in CS2 is in the process of being upgraded to AnimGraph2, which requires reauthoring existing game content. Today's update replaces all first-person animations, including weapon deploy, firing, reload, and inspect animations\n[*] Replaced/updated all chicken animations\n[/list]\n\n[ GAMEPLAY ]\n[list]\n[*] Improvements to damage prediction when shooting while moving\n[*] Shotgun reloads will no longer resume automatically after being interrupted\n[*] Fixed several cases where a player would get stuck on map geometry while surfing (i.e., on surf maps)\n[/list]\n\n[ AUDIO ]\n[list]\n[*] Fixed a case where individual player voice volume adjustments weren't working correctly\n[*] Various improvements to weapon reload and draw sounds in conjunction with AnimGraph2 updates.\n[*] Added new speed-sensitive sounds that play while surfing (can be turned on with sv_surf_sounds, and can be adjusted via snd_surf_volume_inair, snd_surf_volume_map, snd_surf_volume_slide)\n[*] Various improvements to ambient sound content for community map makers\n[/list]\n\n[ MISC ]\n[list]\n[*] The Community Server Browser will now open in the Steam Overlay when playing in fullscreen exclusive mode\n[/list]\n\n[ MAPS ]\nOverpass\n[list]\n[*] Breakable glass added to B doors\n[*] Adjusted Heaven railing\n[*] Adjusted angle of truck on A site\n[*] Blocked view from truckbed to stairs\n[*] Moved up wall behind dumpster, by A stairs\n[*] Adjusted texturing on dumpster back wall\n[*] Removed some grass near A site\n[*] Flattened tops of broken walls near B site\n[*] Re-enabled wires around the map\n[/list]\nTrain\n[list]\n[*] Added new cover on A site by Hell train\n[*] Added new cover and adjusted platform on B site outside of Z\n[*] Added new cover in Upper B halls\n[*] Adjusted cover in Ivy\n[*] Removed horizontal stripes on large doors in A site\n[*] Raised CT side platform in B\n[*] Adjusted lighting on B site\n[*] Adjusted clipping throughout\n[/list]\nInferno\n[list]\n[*] Church windows opened above Coffins\n[*] Church garden pathway narrowed by entrance door and widened by Coffins\n[*] Adjusted shape of first box on B site\n[*] Repairs on A site balcony railing have been completed\n[*] Curbs removed along Mid\n[*] Arch light moved to ceiling\n[*] Adjusted Banana visuals to improve player legibility\n[*] Adjusted props throughout\n[/list]\nDogtown\n[list]\n[*] Updated to the latest version from the Community Workshop ([url=https://steamcommunity.com/sharedfiles/filedetails/changelog/3414036782]Update Notes[/url])\n[/list]",
     "summary": [
       "Upgraded animation system to AnimGraph2",
-      "Improved damage prediction while shooting while moving",
-      "Fixed several cases of player getting stuck on map geometry"
+      "Improved damage prediction while moving",
+      "Fixed several surf-related issues"
     ],
     "tags": [
       "animation-change",
@@ -1121,18 +1130,14 @@
     "date": "2025-07-16T00:01:30.000Z",
     "content": "[ Premier Season Three ]\n[list]\n[*]Premier Season Three is now open for business\n[*]Added Overpass to the Active Duty Map Pool\n[*]Removed Anubis from the Active Duty Map Pool\n[/list]\n[ GAMEPLAY ]\n[list]\n[*]Incendiary Grenade - incendiary grenade fire spreads more rapidly\n[*]MP9 - increased recoil magnitude and substantially reduced jumping accuracy\n[*]In Competitive modes, Counter-Terrorists now receive a $50 team award for each Terrorist eliminated in a round\n[/list]",
     "summary": [
-      "Premier Season Three is now open.",
-      "Overpass added to Active Duty Map Pool.",
-      "Anubis removed from Active Duty Map Pool.",
-      "Incendiary Grenade fire spreads more rapidly.",
-      "MP9 recoil increased and jumping accuracy reduced."
+      "Premier Season Three is now open for business",
+      "Overpass added to Active Duty Map Pool",
+      "Anubis removed from Active Duty Map Pool"
     ],
     "tags": [
       "map-change",
-      "weapon-nerf",
       "gameplay",
-      "ui-change",
-      "performance"
+      "bug-fix"
     ]
   },
   {
@@ -1142,9 +1147,9 @@
     "date": "2025-07-03T22:45:41.000Z",
     "content": "[ MISC ]\n[list]\n[*]Added a description note to Souvenir Highlight Packages explaining that they will become tradable and marketable after 7 days.\n[*]Various stability improvements.\n[/list]",
     "summary": [
-      "Added description note to Souvenir Highlight Packages.",
-      "Souvenir Highlight Packages will become tradable and marketable after 7 days.",
-      "Various stability improvements."
+      "Added description note to Souvenir Highlight Packages",
+      "Stability improvements",
+      "No major gameplay changes"
     ],
     "tags": [
       "ui-change",
@@ -1179,7 +1184,7 @@
     "summary": [
       "Rendered viewangle adjustments due to recoil are now calculated per frame.",
       "This change affects gameplay.",
-      "Minor balance adjustments"
+      "Minor balance adjustments."
     ],
     "tags": [
       "gameplay",
@@ -1193,14 +1198,13 @@
     "date": "2025-05-19T21:42:12.000Z",
     "content": "[ MAPS ]\nJura:\n[list]\n[*] Updated to the latest version from the Community Workshop ([url=https://steamcommunity.com/sharedfiles/filedetails/changelog/3261289969]Update Notes[/url]).\n[/list]",
     "summary": [
-      "Updated Jura map to latest Community Workshop version",
-      "Minor balance changes",
-      "Stability improvements"
+      "Jura map updated to latest Community Workshop version",
+      "Minor balance changes not specified",
+      "Performance improvements"
     ],
     "tags": [
       "map-change",
-      "performance",
-      "bug-fix"
+      "performance"
     ]
   },
   {
@@ -1211,13 +1215,13 @@
     "content": "[ GAMEPLAY ]\n[list]\n[*] Deathmatch mode now allows unbalanced teams.\n[/list]\n[ GRAPHICS ]\n[list]\n[*] Fixed a case where molotov and incendiary fire was visible through the AK-47 viewmodel.\n[*] Fixed a case where stickers covering the gap on the front grip of the AK-47 weren't lit correctly in left hand mode.\n[*] Fixed a case where inventory item icons rendered incorrectly while scoped in-game.\n[/list]\n[ AUDIO ]\n[list]\n[*] Shortened front end of the AK-47 fire sound.\n[*] Reduced delay for body shot impact sounds from the attacker perspective.\n[*] Body shot impact sounds from the attacker perspective will momentarily reduce the volume of weapon fire and ambience to help ensure feedback remains audible.\n[/list]",
     "summary": [
       "Deathmatch mode now allows unbalanced teams.",
-      "Fixed various visual bugs with the AK-47 viewmodel and inventory icons.",
+      "Fixed various visual bugs with the AK-47 viewmodel and inventory item icons.",
       "Sound effects for the AK-47 and body shots have been adjusted."
     ],
     "tags": [
-      "gameplay",
       "bug-fix",
-      "performance"
+      "performance",
+      "gameplay"
     ]
   },
   {
@@ -1227,9 +1231,9 @@
     "date": "2025-05-13T22:13:02.000Z",
     "content": "[ GAMEPLAY ]\n[list]\n[*] Fixed a bug where weapons purchased with \"Buy & Throw\" could be refunded after firing.\n[/list]\n[ PREMIER ]\n[list]\n[*] Season Two world and regional leaderboards are now populated.\n[/list]\n[ MISC ]\n[list]\n[*] Added HUD \"Glow Weapon with Rarity Color\" setting.\n[*] Minimally scraped stickers now cover over the gap on the front grip of the AK-47.\n[/list]",
     "summary": [
-      "Fixed a bug with 'Buy & Throw' refunds",
-      "Season Two leaderboards populated",
-      "Added 'Glow Weapon with Rarity Color' HUD setting"
+      "Fixed a bug where weapons purchased with 'Buy & Throw' could be refunded after firing.",
+      "Season Two world and regional leaderboards are now populated.",
+      "Added HUD 'Glow Weapon with Rarity Color' setting and minimally scraped stickers on the AK-47."
     ],
     "tags": [
       "bug-fix",
@@ -1244,14 +1248,14 @@
     "date": "2025-05-12T22:58:23.000Z",
     "content": "[ MAPS ]\n[list]\n[*] Fixed a bug where searching for Defusal Group Alpha would lead to Anubis and Defusal Group Delta would lead to Vertigo.\n[/list]\nJura:\n[list]\n[*] Updated to the latest version from the Community Workshop ([url=https://steamcommunity.com/sharedfiles/filedetails/changelog/3261289969]Update Notes[/url]).\n[/list]\nGrail:\n[list]\n[*] Updated to the latest version from the Community Workshop ([url=https://steamcommunity.com/sharedfiles/filedetails/changelog/3246527710]Update Notes[/url]).\n[/list]\nBrewery:\n[list]\n[*] Updated to the latest version from the Community Workshop ([url=https://steamcommunity.com/sharedfiles/filedetails/changelog/3070290240]Update Notes[/url]).\n[/list]\nDogtown:\n[list]\n[*] Updated to the latest version from the Community Workshop ([url=https://steamcommunity.com/sharedfiles/filedetails/changelog/3414036782]Update Notes[/url]).\n[/list]\n[ AUDIO ]\n[list]\n[*] Remastered various UI sounds.\n[/list]\n[ MISC ]\n[list]\n[*] Various crash fixes and stability improvements.\n[*] Various fixes for running on Linux with SDL_VIDEODRIVER=wayland.\n[/list]",
     "summary": [
-      "Fixed bug in map search.",
-      "Updated Community Workshop versions.",
-      "Remastered UI sounds and fixed crashes."
+      "Fixed a bug where searching for Defusal Group Alpha would lead to Anubis and Defusal Group Delta would lead to Vertigo.",
+      "Remastered various UI sounds.",
+      "Various crash fixes and stability improvements."
     ],
     "tags": [
       "bug-fix",
-      "performance",
-      "ui-change"
+      "ui-change",
+      "performance"
     ]
   },
   {
@@ -1286,8 +1290,8 @@
       "new-feature",
       "map-change",
       "bug-fix",
-      "ui-change",
-      "performance"
+      "performance",
+      "ui-change"
     ]
   },
   {
@@ -1299,11 +1303,10 @@
     "summary": [
       "Added three new weapon collections to the Weekly Care Package drop list",
       "Removed four weapon collections from the Weekly Care Package drop list",
-      "Added new Armory Content, including the Train 2025 Collection, the Fever Case, and a new Limited Edition Item"
+      "Added new Armory Content, including the Train 2025 Collection, the Fever Case, and the XM1014 | Solitude Limited Edition Item"
     ],
     "tags": [
       "map-change",
-      "weapon-change",
       "bug-fix",
       "performance"
     ]
@@ -1315,14 +1318,13 @@
     "date": "2025-03-20T23:07:56.000Z",
     "content": "[ MAPS ]\n[list]\n[*]Updated Basalt to the latest version from Steam Workshop ([url=https://steamcommunity.com/sharedfiles/filedetails/changelog/3329258290]Update Notes[/url])[/list]\n\n[ WORKSHOP ]\n[list]\n[*]Added ability to author and submit patterns for the Missing Link Charm to Counter-Strike 2 Steam Workshop.[/list]",
     "summary": [
-      "Updated Basalt map to latest Steam Workshop version",
-      "Added ability to author and submit patterns for Missing Link Charm",
-      "No major gameplay changes"
+      "Updated Basalt map to the latest version from Steam Workshop",
+      "Added ability to author and submit patterns for the Missing Link Charm",
+      "Minor balance changes not specified"
     ],
     "tags": [
       "map-change",
       "ui-change",
-      "performance",
       "new-feature"
     ]
   },
@@ -1333,12 +1335,11 @@
     "date": "2025-02-28T00:38:11.000Z",
     "content": "[ MAPS ]\n[list]\n[*]Inferno[list]\n[*]Fixed roof geometry at church that was visible from boiler entrance.[/list][/list]\n\n[ MISC ]\n[list]\n[*]Fixed a case where voice chat would break after unloading a Steam Workshop map.\n[*]Fixed a case where game client would crash if certain community server plugins were restricting networking of player entities.\n[*]Fixed several bugs in applying patches UI.[/list]",
     "summary": [
-      "Fixed roof geometry at church on Inferno map.",
-      "Fixed voice chat breaking after unloading a Steam Workshop map.",
-      "Fixed several bugs in applying patches UI and game client crashes due to community server plugins."
+      "Fixed roof geometry at church on Inferno",
+      "Fixed voice chat breaking after unloading Steam Workshop map",
+      "Fixed game client crashing with community server plugins"
     ],
     "tags": [
-      "map-change",
       "bug-fix",
       "performance"
     ]
@@ -1369,13 +1370,12 @@
     "summary": [
       "Adjusted matchmaking logic for Premier Season Two",
       "Added 'Get Service Medal' UI element",
-      "Updated Dust II radar image"
+      "Fixed prediction errors and display medal issues"
     ],
     "tags": [
-      "map-change",
+      "performance",
       "ui-change",
-      "bug-fix",
-      "performance"
+      "bug-fix"
     ]
   },
   {
@@ -1387,7 +1387,7 @@
     "summary": [
       "Fixed various bugs and stability issues.",
       "Improved dynamic radar scale.",
-      "Updated UI and radar scale settings."
+      "Enhanced UI rendering and performance."
     ],
     "tags": [
       "bug-fix",
@@ -1402,15 +1402,14 @@
     "date": "2025-01-30T01:29:17.000Z",
     "content": "[ MAPS ]\n[list]\n[*]Basalt - updated to the latest version from the Community Workshop ([url=https://steamcommunity.com/sharedfiles/filedetails/changelog/3329258290]Update Notes[/url]).[/list]\n[ MISC ]\n[list]\n[*]Activated Premier Season Two progress indicator in the play menu.\n[*]Fixed regressions with AUG/SG scope graphics.[/list]",
     "summary": [
-      "Basalt map updated to latest Community Workshop version",
+      "Basalt map updated to the latest community version",
       "Premier Season Two progress indicator added",
       "AUG/SG scope graphics regression fixed"
     ],
     "tags": [
       "map-change",
       "ui-change",
-      "bug-fix",
-      "performance"
+      "bug-fix"
     ]
   },
   {
@@ -1421,16 +1420,14 @@
     "content": "[ PREMIER ]\n[list]\n[*]Premier Season Two is here, and Premier matchmaking has resumed\n[*]Every player who earned a CS Rating during Season One will receive a commemorative Premier Season One Medal which includes detailed Season Statistics\n[*]Every player will have their CS Rating recalibrated based on their Season One performance, and will need to re-establish their CS Rating by winning 10 matches\n[*]Train has been added to the Active Duty map pool\n[*]Vertigo has been removed from the Active Duty map pool\n[/list]\n\n[ GAMEPLAY ]\n[list]\n[*]M4A4 price reduced to $2,900\n[*]FAMAS accuracy improved and price reduced to $1,950\n[*]Reduced crouching accuracy for the MP9, MP5-SD, and MP7\n[*]Adjusted scope dot on AUG/SG to be more useable at range\n[/list]\n\n[ UI ]\n[list]\n[*]Added a new radar dynamic zoom option that will grow or shrink the radar to include your team mates, bomb and other detected elements\n[*]Adjusted grenade order in spectator UI to match weapon selection order\n[*]Increased brightness of carried C4 in UI\n[/list]\n\n[ MAPS ]\nTrain\n[list]\n[*]Removed a boost angle from Long Dog to Bombsite A\n[*]Fixed lighting artifacts on double-sided materials\n[/list]\n\n[ MISC ]\n[list]\n[*]Added fallback logic to allow playing incomplete demo files, either copied from an ongoing live match or recovered after a game server crash\n[*]Fixed an exploit where users could use secondary fire on R8 Revolver and then sell it back\n[*]Counter-strafe summaries are now available in game server log data distributed via log address in addition to console logs\n[/list]",
     "summary": [
       "Premier Season Two has begun, with Premier matchmaking resumed and commemorative medals awarded to Season One players.",
-      "CS Rating recalibration and re-establishment required for all players.",
-      "New map Train added to Active Duty pool, replacing Vertigo."
+      "CS Ratings have been recalibrated based on Season One performance, requiring players to re-establish their ratings by winning 10 matches.",
+      "New map Train has been added to the Active Duty pool, replacing Vertigo."
     ],
     "tags": [
       "new-feature",
       "gameplay",
-      "map-change",
-      "ui-change",
-      "bug-fix",
-      "performance"
+      "performance",
+      "map-change"
     ]
   },
   {
@@ -1442,7 +1439,7 @@
     "summary": [
       "Premier Season One has ended.",
       "Premier matchmaking is temporarily disabled.",
-      "Minor balance adjustments not specified."
+      "Minor balance adjustments are implied by the Premier season conclusion."
     ],
     "tags": [
       "gameplay",
@@ -1457,14 +1454,14 @@
     "date": "2025-01-22T00:46:28.000Z",
     "content": "[ MISC ]\n[list]\n[*]Minor performance optimization for some CPU-bound cases.\n[*]Follow recoil setting during spectating will now obey spectator target's crosshair setting if target's crosshair is shown.\n[*]Added support for updating existing map annotations on Steam Workshop. For example use \"workshop_annotation_submit 123456\" to update your submission ID=123456 found in the workshop URL. Passing an ID that does not belong to you will create a brand new submission. After the first update the ID will get embedded in the annotation file and you can submit more changes without having to provide the ID again.[/list]",
     "summary": [
-      "Minor performance optimization",
-      "Follow recoil setting during spectating updated",
-      "Map annotation update feature added"
+      "Minor performance optimization for some CPU-bound cases.",
+      "Follow recoil setting during spectating will now obey spectator target's crosshair setting if target's crosshair is shown.",
+      "Added support for updating existing map annotations on Steam Workshop."
     ],
     "tags": [
       "performance",
-      "ui-change",
-      "bug-fix"
+      "bug-fix",
+      "ui-change"
     ]
   },
   {
@@ -1475,7 +1472,7 @@
     "content": "[ MISC ]\n[list]\n[*]Updating Steam libraries for Linux game servers to the latest version of Steam Client Beta\n[*]Improved Linux game servers ability to reconnect to Steam after a disconnection\n[*]Stability improvements[/list]",
     "summary": [
       "Updated Steam libraries for Linux game servers",
-      "Improved Linux game server reconnection",
+      "Improved Linux game server reconnection to Steam",
       "Stability improvements"
     ],
     "tags": [
@@ -1491,13 +1488,14 @@
     "date": "2025-01-15T01:27:09.000Z",
     "content": "[ SHANGHAI MAJOR ]\n[list][*]Shanghai 2024 Major sticker capsules are now on sale for 75% off[/list]\n[ ARMORY ]\n[list][*][i]Desert Eagle | Heat Treated[/i] is no longer available to claim from The Armory[/list]\n[ MISC ]\n[list]\n[*]Fixed finger placement during Huntsman knife in-game inspect animation\n[*]Fixed a bug where grenade icons weren't disappearing on the spectator map\n[*]Fixed a case when spectator icon could show up at the wrong time on the radar\n[*]Fixed a bug related to changing inspect scenery while inspecting knives[/list]",
     "summary": [
-      "Shanghai 2024 Major sticker capsules are now 75% off",
+      "Shanghai 2024 Major sticker capsules are on sale for 75% off",
       "Desert Eagle | Heat Treated is no longer available to claim",
-      "Multiple bug fixes"
+      "Several bug fixes"
     ],
     "tags": [
-      "ui-change",
+      "map-change",
       "bug-fix",
+      "ui-change",
       "performance"
     ]
   },
@@ -1508,9 +1506,9 @@
     "date": "2025-01-10T01:26:01.000Z",
     "content": "[ MAPS ]\n[list]\n[*]\nTrain\n[list]\n[*]Fixed various minor visual bugs and gaps in world\n[*]Added dirt and wetness onto crates and tarps where appropriate\n[*]Widened opening on A site between Hell and Tunnels\n[*]Opened container door on back of the train near Ivy/Tunnels\n[*]Added dumpster by Ivy\n[*]Added barrels in A site cubby\n[*]Pushed back T spawns a little\n[/list]\n[/list][ MISC ]\n[list]\n[*]Fixed a case where ragdolls could get created with extreme initial velocities\n[*]Added markup for individual matches in Steam Game Recording timeline\n[*]Fixed a regression where deploying weapons weren't allowing immediate inspecting\n[*]Fixed fingers crossing into butterfly knife geometry during inspect animation\n[*]Fixed weekly care package preview of weapon cases not having a close button\n[*]When moving away from annotation nodes, required grenade is no longer removed[/list]",
     "summary": [
-      "Fixed various minor visual bugs and gaps in world",
-      "Added new details to crates and tarps",
-      "Made changes to Train map layout"
+      "Minor visual bug fixes on Train map",
+      "Added details to Train map",
+      "Fixed various minor issues"
     ],
     "tags": [
       "map-change",
@@ -1527,7 +1525,7 @@
     "summary": [
       "Adjusted clipping on stairs under balcony in Inferno map",
       "Fixed offset discrepancy in legacy SSG08 model",
-      "Multiple bug fixes including grenade interactions and silencer state"
+      "Multiple bug fixes for legacy models and grenade interactions"
     ],
     "tags": [
       "map-change",
@@ -1542,15 +1540,15 @@
     "date": "2024-12-19T23:21:37.000Z",
     "content": "[ MAPS ]\n[list]\n[*]\nInferno\n[list]\n[*]Adjusted clipping on scaffolding on B site[/list]\n[/list][ MISC ]\n[list]\n[*]Fixed a problem on team select screen for servers with no auto-select time limit.\n[*]Fixed a regression with annotation_load command.\n[*]Fixed a crash for give item_assaultsuit command.\n[*]Adjusted the rarity of the rare AK-47 inspect animation.\n[*]Fixed a regression with the rare Desert Eagle inspect animation.[/list]",
     "summary": [
-      "Adjusted clipping on scaffolding on B site in Inferno",
-      "Fixed multiple bugs on team select screen and annotation_load command",
-      "Adjusted AK-47 and Desert Eagle inspect animations"
+      "Adjusted clipping on scaffolding on B site in Inferno map",
+      "Fixed several issues on team select screen and with commands",
+      "Adjusted rarity of AK-47 and Desert Eagle inspect animations"
     ],
     "tags": [
       "map-change",
       "bug-fix",
-      "ui-change",
-      "performance"
+      "performance",
+      "ui-change"
     ]
   },
   {
@@ -1562,14 +1560,14 @@
     "summary": [
       "Shanghai 2024 Major Champions Capsule is now available for purchase.",
       "Adjusted death notice display threshold.",
-      "Improved collision fidelity on Train map props."
+      "Improved collision fidelity on Train map."
     ],
     "tags": [
       "ui-change",
       "gameplay",
-      "performance",
+      "map-change",
       "bug-fix",
-      "map-change"
+      "performance"
     ]
   },
   {
@@ -1580,7 +1578,7 @@
     "content": "[ SHANGHAI MAJOR ]\n[list]\n[*] Updated MIBR player sticker items autographed by Lucaozy with the autographs of brnz4n.\n[*] Fixed a UI bug that allowed dropping Pick'Em team logos outside of Major Pick'Em hub using both mouse buttons.\n[*] Pick'Em challenge picks can now be placed for the upcoming Elimination Stage of Shanghai Major.\n[/list]\n\n[ DAMAGE PREDICTION ]\n[list]\n[*] Predicted ragdolls without a confirmation or correction from the server within a short time window will now revert.\n[/list]\n\n[ MAPS ]\n[list]\n\n[*] Train\n[list]\n[*] Increased collision fidelity of several models\n[/list]\n\n[*] Overpass\n[list]\n[*] Replaced railing inside Heaven with a wall\n[*] Additional visibility improvements in Heaven\n[/list]\n\n[*] Edin\n[list]\n[*] Updated to the latest version from the Community Workshop ([url=https://steamcommunity.com/sharedfiles/filedetails/changelog/3328169568]Update Notes[/url])\n[/list]\n\n[*] Palais\n[list]\n[*] Updated to the latest version from the Community Workshop ([url=https://steamcommunity.com/sharedfiles/filedetails/changelog/3257582863]Update Notes[/url])\n[/list]\n[/list]\n[ MISC ]\n[list]\n[*] Fixed 'boost player contrast' visibility rendering option sometimes revealing parts of players or weapons through thin surfaces.\n[*] Added r_allow_low_gpu_memory_mode setting to allow running CS2 Workshop Tools in low memory GPU conditions.\n[*] Fixed various bugs in Hammer.\n[/list]",
     "summary": [
       "Updated MIBR player sticker items",
-      "Fixed a UI bug with Pick'Em team logos",
+      "Fixed UI bug with Pick'Em team logos",
       "Predicted ragdolls will now revert"
     ],
     "tags": [
@@ -1598,14 +1596,13 @@
     "summary": [
       "Shanghai Major Hub is now available",
       "New music kit 'Ay Hey' by Perfect World is available",
-      "Added 'sv_quantize_movement_input' setting to prevent analog binds"
+      "Added 'sv_quantize_movement_input' setting to prevent analog binds from moving at fractional speeds"
     ],
     "tags": [
       "new-feature",
       "ui-change",
       "performance",
-      "gameplay",
-      "map-change"
+      "gameplay"
     ]
   },
   {
@@ -1615,14 +1612,14 @@
     "date": "2024-11-20T00:45:04.000Z",
     "content": "[ GAMEPLAY ][list]\n[*] Fixed a case where a disconnected player could cause a poltergeist CT model to appear in the middle of the map\n[*] Player model of a disconnecting player should now immediately suicide when disconnect is detected instead of lingering for 10 additional seconds under certain conditions\n[*] Fixed a case where damage prediction was incorrect due to view angle changes mid-spray\n[*] Lag compensation now runs when shooting at teammates and mp_teammates_are_enemies is enabled even when mp_friendlyfire is disabled\n[/list]\n[ UI ][list]\n[*] Fixed layout inconsistencies for ranks display and player profiles\n[/list]\n[ MAPS ]\n\nTrain[list]\n[*] Updated sounds on main menu background\n[*] Improved movement around ladders\n[*] Fixed various gaps in map\n[*] Fixed z-fighting in various spots\n[/list]\nInferno[list]\n[*] Fixed various holes \n[*] Adjusted clipping in multiple spots\n[*] Fixed various texture bugs\n[/list]\nNuke[list]\n[*] Fixed a spot that players could get stuck on\n[/list]\nOffice[list]\n[*] Fixed a case where a T would spawn in the air\n[/list]",
     "summary": [
-      "Fixed poltergeist CT model appearance issue",
-      "Improved player model behavior on disconnect",
-      "Fixed damage prediction issue due to view angle changes"
+      "Fixed a case where a disconnected player could cause a poltergeist CT model to appear in the middle of the map",
+      "Improved movement around ladders on Train map",
+      "Fixed various texture bugs on Inferno map"
     ],
     "tags": [
       "bug-fix",
       "performance",
-      "ui-change"
+      "map-change"
     ]
   },
   {
@@ -1649,14 +1646,14 @@
     "date": "2024-11-14T23:53:19.000Z",
     "content": "[ MAP GUIDES ][list]\n[*] Fixed a bug where missing text for a user's language wouldn't fall back to English\n[/list]\n[ MAPS ]\n\nTrain[list]\n[*] Fixed various collision issues including a higher fidelity for the orange train on B site\n[*] Minor fixes on textures stretching\n[*] Fixed various gaps in map\n[*] Disabled player collision on radio\n[*] Updated radio sound\n[*] Added vphysics clip to platform gap in T spawn for clumsy players\n[*] Players can now get on top of cratestack outside of longdog\n[/list]\nOverpass[list]\n[*] Fixed lighting bug on Bombsite B\n[*] Fixed footstep sound bug on mud surfaces\n[/list]\nBasalt[list]\n[*] Updated to the latest version from the Community Workshop ([url=https://steamcommunity.com/sharedfiles/filedetails/changelog/3329258290]Update Notes[/url])\n[/list]",
     "summary": [
-      "Fixed a bug where missing text for a user's language wouldn't fall back to English",
       "Fixed various collision issues on Train map",
-      "Minor fixes on textures stretching and gaps in map"
+      "Minor texture fixes on Train map",
+      "Updated radio sound on Train map"
     ],
     "tags": [
       "bug-fix",
-      "performance",
-      "map-change"
+      "map-change",
+      "performance"
     ]
   },
   {
@@ -1666,15 +1663,15 @@
     "date": "2024-11-13T23:21:44.000Z",
     "content": "[ DAMAGE PREDICTION ][list]\n[*] Added damage prediction settings. Damage prediction allows clients to immediately play the audio/visual effects of inflicting damage without waiting for confirmation from the server. Damage prediction can make shooting feel significantly more responsive, but comes with the risk of occasionally being wrong (e.g. due to aim punch, tagging, or a death that your client isn't yet aware of).\n[*] Predicted body shot effects (disabled by default), head shot effects (disabled by default), and kill ragdolls (enabled by default) can each be toggled separately.\n[*] Damage prediction is not active when you have high ping.\n[/list]\n[ ANIMATION ][list]\n[*] Updated the third-person animation that plays when a player is blinded by a flashbang. The animation now accurately represents the player's visibility level, and the pose will only show the player's arm covering their eyes when they are completely blinded.\n[*] Fixed a case where legs weren't animating correctly while taking damage.\n[/list]\n[ GRAPHICS ][list]\n[*] Added ambient occlusion for first person legs to better ground them in the environment.\n[*] Performance optimizations for molotov and incendiary effects.\n[/list]\n[ GRENADES ][list]\n[*] Added axis labels to the grenade line-up reticle tick marks.\n[*] The grenade preview camera now shows the result of a jump throw while the jump button is held.\n[/list]\n[ MAP GUIDES ][list]\n[*] Added a map guide for Train, which demonstrates four simple Terrorist grenade line-ups. To load a map guide, go to Play→Practice and toggle \"Load Map Guides\" on.\n[*]Added concommands annotation_* which enable the creation, saving, and loading of map guide nodes and files, which are stored in /annotations/.\n[/list]\n[ MISC ][list]\n[*] New game settings for radar map blending and background opacity.\n[*] Fixed a case where progress from a previously completed Armory Pass would show during activation of a new pass.\n[*] Fixed a regression with Chinese input via the Microsoft Input Methods.\n[*] CSTV now allows setting tv_delay and tv_delay1 to a value smaller than 6 seconds.\n[*] Charm Template number is now available in Charm descriptions.\n[/list]\n[ MAPS ]\n\nTrain[list]\n[*] Added Train to Competitive, Casual, and Deathmatch modes.\n[/list]\nCommunity Maps[list]\n[*] Added [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3329258290]Basalt[/url] and [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3328169568]Edin[/url] to Competitive, Casual, and Deathmatch modes.\n[*] Added [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3257582863]Palais[/url] and [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3308613773]Whistle[/url] to Wingman mode.\n[*] Removed Thera, Mills, Assembly, and Memento from all game modes.\n[/list]\nAncient[list]\n[*] Fixed some lighting errors.\n[*] Fixed some collision gaps.\n[*] Fixed some bad wall bang spots.\n[*] Fixed a stuck spot.\n[/list]\nItaly[list]\n[*] Fixed some bad boost spots.\n[/list]\nMirage[list]\n[*] Fixed a pixel peek. \n[/list]\nOverpass[list]\n[*] Visual updates to canals area and B-site.\n[*] Rework of heaven drop down mechanics.\n[*] Performance improvements, particularly in canals area and B-site.\n[*] Added a sign that blocks a bad line of sight from long boost to CT spawn.\n[*] Removed small fence at the edge of party/picnic that interfered with visibility to train station.\n[*] Removed some geometry under wrecked truck that looked like player legs.\n[*] Replaced some windows with opaque surfaces in train station to remove bad lines of sight.\n[*] Deleted a tree that interfered with a line of sight.\n[*] Moved one of the crate lids on A-site to block a bad line of sight.\n[*] Removed some lamps that could look like player heads at A-site.\n[*] Removed some trees and objects around park and train station that prevented players from backing into certain useful spaces.\n[*] Removed a chain link fence in alley that made players hard to see.\n[*] Adjustments to fog and decreased the distance at which character models get an increased visibility effect.\n[*] Made shelf in heaven look less like a player.\n[*] Adjusted props and lights in heaven to reduce noise and make players brighter.\n[*] Removed handcart behind barrels at B-site so players can back into the corner.\n[*] Adjusted collision around barrels for better player movement.\n[*] Added light behind barrels for better player visibility.\n[*] Fixed weird collision on barrel that made for inconsistent wall bangs.\n[*] Fixed bad graffiti rendering at B-site.\n[*] Removed concrete block behind the cement bags at B-site for less awkward player movement.\n[*] Set many smaller props to exclude player movement and grenade bounces.\n[*] Fixed some pixel peeks.\n[*] Small visual updates throughout the map.\n[/list]\nShoots[list]\n[*] Performance improvements in some areas.\n[/list]",
     "summary": [
-      "Added damage prediction settings.",
-      "Updated third-person animation for flashbang blindness.",
-      "Added ambient occlusion for first person legs."
+      "Damage prediction settings added, allowing for more responsive shooting.",
+      "Third-person animation updated for blinded players.",
+      "Performance optimizations and bug fixes across various areas of the game."
     ],
     "tags": [
+      "new-feature",
       "performance",
       "ui-change",
-      "bug-fix",
-      "graphics"
+      "bug-fix"
     ]
   },
   {
@@ -1691,7 +1688,7 @@
     "tags": [
       "bug-fix",
       "performance",
-      "ui-change"
+      "gameplay"
     ]
   },
   {
@@ -1702,8 +1699,8 @@
     "content": "[ GAMEPLAY ]\n[list]\n[*] Various adjustments to bullet hit feedback.\n[*] Fixed a case mid-spray where lag compensation would rewind target hitboxes further into the past than what was on screen.\n[*] Jumping in place on a sloped surface will no longer result in players sliding a short distance.\n[*] Fixed a bug where C4 could be defused from any height.\n[/list]\n[ ANIMATION ]\n[list]\n[*] Fixes for IK logic to improve third-person feet posing, especially on slopes.\n[*] Fixed a case where the feet and legs of players could pop out of position when exiting the bomb-plant animation.\n[*] Reduced animation-related network bandwidth usage. \n[/list]\n[ MATCHMAKING ]\n[list]\n[*] Added more detailed matchmaking stats for players who try to find a match at off-peak times of day.\n[/list]\n[ MISC ]\n[list]\n[*] Activating an Armory Pass no longer grants the first Armory Credit immediately. All 40 Armory Credits can be earned by playing and earning XP.\n[/list]\n[ MAPS ]\n\nOffice\n[list]\n[*] Fixed geometry in the problematic jumping corner.\n[/list]\nAncient\n[list]\n[*] Reworked collision on the staircase to A-main for better player movement.\n[*] Removed a tree that was creating a distracting shadow at A site.\n[*] Adjusted collision to better match visible geometry so that players can hug the walls more closely.\n[*] Fixed a few lighting bugs.\n[*] Reduced shadows to increase perf in some areas.\n[*] Fixed some spots in house where you could get stuck.\n[*] Fixed collision gap at the bottom of B ramp.\n[*] Fixed some disappearing mesh.\n[/list]\nNuke\n[list]\n[*] Fixed some lighting errors on lower graphics settings.\n[/list]\nAnubis\n[list]\n[*] Fixed a gap in geometry.\n[/list]",
     "summary": [
       "Various adjustments to bullet hit feedback.",
-      "Fixed several bugs and issues with player movement and collision.",
-      "Matchmaking stats now more detailed for off-peak times."
+      "Fixed several bugs related to animation, collision, and lighting.",
+      "Matchmaking stats are now more detailed."
     ],
     "tags": [
       "bug-fix",
@@ -1721,7 +1718,7 @@
     "summary": [
       "Increased jump tolerance for sliding",
       "Fixed crash in page file usage",
-      "Improved Vulkan initialization"
+      "Improved game stability"
     ],
     "tags": [
       "bug-fix",
@@ -1736,7 +1733,7 @@
     "date": "2024-10-30T00:15:51.000Z",
     "content": "[ MISC ]\n[list]\n[*] First-person inspect animation in Inventory and Loadout will now match in-game viewmodel settings and FOV.\n[*] Fixed a regression with smoke rendering from old demo files.\n[*] Fixed damage report to show correctly in Casual and Deathmatch game modes.\n[*] Added sv_jump_precision_enable so servers running certain custom game modes (e.g. surf) can opt out of jump precision improvements.\n[*] Fixed \"I have to go, my planet needs me.\"\n[/list]",
     "summary": [
-      "First-person inspect animation now matches in-game viewmodel settings and FOV.",
+      "First-person inspect animation in Inventory and Loadout now matches in-game viewmodel settings and FOV.",
       "Smoke rendering regression fixed in old demo files.",
       "Damage report now shows correctly in Casual and Deathmatch game modes."
     ],
@@ -1754,8 +1751,8 @@
     "content": "[ JUMPING ]\n[list]\n[*] Improved jump height consistency to be within 0.015625 of a unit regardless of distance from the map origin at coordinate (0,0,0).\n[list] [*] Previously, in both CS:GO and CS2, jump height could vary by up to 0.03125 of a unit depending on the distance from the map origin.\n[/list] [*] Improved consistency of successfully landing on surfaces very close to the maximum height of a jump.\n[*] Jump height is still affected by stamina; when using cl_showpos 2, stamina at takeoff is reported and output is color coded based on possible jump height.\n[*] Fixed a bug with cl_showpos display sometimes showing incorrect jump height when jumping from sloped surfaces.\n[*] Fixed some cases where the client would be pulled back down during a jump because the server disagreed that the jump had taken place.\n[/list]\n\n[ MISC ]\n[list]\n[*] Adjusted weapon pickup logic while near the C4, prioritizing defusing over accidental weapon pick-up.\n[*] Enemies will now consistently play a flinch animation on the closest hit when the bullet goes through two hitboxes of equal priority (e.g. when both right and left legs get hit).\n[*] HE grenade explosions within smoke now clear the accumulated smoke screen effect on players inside that smoke within range of the HE grenade explosion.\n[*] Stability improvements.\n[/list]\n\n[ MAPS ]\n[list]\n[*] Dust II\n[list]\n[*] Fixed a gap in geometry.\n[/list]\n[/list]",
     "summary": [
       "Improved jump height consistency",
-      "Fixed bug with cl_showpos display",
-      "Stability improvements"
+      "Fixed cl_showpos display issues",
+      "Adjusted weapon pickup logic near C4"
     ],
     "tags": [
       "performance",
@@ -1770,9 +1767,9 @@
     "date": "2024-10-24T23:24:47.000Z",
     "content": "[ MISC ]\n[list]\n[*] Fixed a bug where grenades were generating headshot sounds.\n[*] Fixed a bug where grenades were not bouncing off certain dynamic props.\n[*] Fixed a bug where Copenhagen 2024 winners were not showing up in the Majors tab in the Watch menu.\n[/list]",
     "summary": [
-      "Fixed a bug with grenade sounds",
-      "Fixed a bug with grenade bouncing",
-      "Fixed a bug with Copenhagen 2024 winners"
+      "Fixed a bug where grenades were generating headshot sounds.",
+      "Fixed a bug where grenades were not bouncing off certain dynamic props.",
+      "Fixed a bug where Copenhagen 2024 winners were not showing up in the Majors tab in the Watch menu."
     ],
     "tags": [
       "bug-fix",
@@ -1786,18 +1783,13 @@
     "date": "2024-10-23T22:28:31.000Z",
     "content": "[ MAPS ]\nVertigo\n[list]\n[*] Fixed a bad collision interaction between grenades and a prop.\n[*] Fixed a wall bang exploit.\n[/list]\nMills\n[list]\n[*] Updated to the latest version from the Community Workshop ([url=https://steamcommunity.com/sharedfiles/filedetails/changelog/3152430710]Update Notes[/url]).\n[*] Added localization strings for location callouts.\n[/list]\n\n[ MISC ]\n[list]\n[*] Fixed mouselook inconsistencies when game render dimensions are different from game window dimensions.\n[*] Fixed erroneous target aim punch animation during client-side shooting.\n[*] Fixed erroneous Zeus shock effect during client-side shooting.\n[*] Fixed a bug where Zeus headshots wouldn't emit the death yelp.\n[/list]\n\n[ UI ]\n[list]\n[*] Prior Major results are now available in the Majors tab in the Watch menu.\n[/list]",
     "summary": [
-      "Fixed collision interaction between grenades and props on Vertigo.",
-      "Fixed wall bang exploit on Vertigo.",
-      "Updated Mills map to latest Community Workshop version.",
-      "Fixed mouselook inconsistencies.",
-      "Fixed various client-side shooting issues.",
-      "Added localization strings for Mills location callouts.",
-      "Prior Major results are now available in the Majors tab."
+      "Fixed collision interaction between grenades and props on Vertigo",
+      "Fixed wall bang exploit on Vertigo",
+      "Updated Mills to latest Community Workshop version"
     ],
     "tags": [
       "bug-fix",
       "performance",
-      "ui-change",
       "map-change"
     ]
   },
@@ -1808,9 +1800,9 @@
     "date": "2024-10-15T22:42:26.000Z",
     "content": "[ GRAPHICS ][list]\n[*] Fixed mixed resolution rendering from erroneously resetting during map changes.\n[*] Fixed a known crash when compiling lighting in Counter-Strike 2 Workshop Tools.\n[*] Fixed detail normal UV scaling.\n[*] Fixed several biplanar mapping bugs, added support for nonuniform scale in biplanar mapping mode.\n[*] Added an option to apply albedo color correction to transmissive foliage textures, and adjusted the foliage shader for more accurate color correction.\n[*] Added a startup warning when the game is launched under low available system memory conditions or with a limited pagefile size. These conditions may cause the game to be unstable or crash.\n[*] Various stability improvements.\n[/list]\n\n[ UI ][list]\n[*] Fixed UI checkboxes behaving inconsistently when depositing or extracting a large number of items into and from Storage Units.\n[*] Fixed a regression with loading animated Steam avatars, the cows are mooooving again.\n[/list]",
     "summary": [
-      "Fixed mixed resolution rendering issue",
+      "Fixed mixed resolution rendering issues",
       "Improved stability with lighting compilation",
-      "Added foliage shader adjustments"
+      "Added foliage color correction and biplanar mapping support"
     ],
     "tags": [
       "bug-fix",
@@ -1827,7 +1819,7 @@
     "summary": [
       "Performance optimizations",
       "Various stability improvements",
-      "Mirage map geometry fix"
+      "Mirage map fixes"
     ],
     "tags": [
       "performance",
@@ -1843,7 +1835,7 @@
     "content": "[ GRAPHICS ][list]\n[*] Fixed certain particle effects, like tracers, to fall back to mixed resolution for better performance when using low graphics settings with MSAA disabled.\n[*] Improved lighting artifacts in various interior places when compiling maps.\n[/list]\n\n[ MISC ][list]\n[*] Teammate colors will now be assigned on official servers as soon as all players press ACCEPT. This will ensure that colors are correct during Pick/Ban phase, and during Warmup.\n[*] Improvements in Charms reactivity physics system to better align with weapon animations.\n[/list]",
     "summary": [
       "Fixed particle effects for better performance",
-      "Improved lighting artifacts in interior places",
+      "Improved lighting in interior maps",
       "Teammate colors assigned correctly on official servers"
     ],
     "tags": [
@@ -1866,6 +1858,7 @@
     "tags": [
       "bug-fix",
       "performance",
+      "gameplay",
       "ui-change"
     ]
   },
@@ -1895,7 +1888,7 @@
     "summary": [
       "The Armory is now available in the store",
       "Charms are introduced as dynamic items for weapons",
-      "Inventory and item restrictions are added"
+      "Inventory and item restrictions are implemented"
     ],
     "tags": [
       "new-feature",
@@ -1927,9 +1920,9 @@
     "date": "2024-09-09T23:01:00.000Z",
     "content": "[ MISC ]\n[list]\n[*] Added counter-strafe input automation detection options for non-Valve servers. See the sv_auto_cstrafe family of convar descriptions for details.\n[*] Enabled measurement of network jitter on direct UDP connections to community servers. Previously, jitter measurement was only available for connections relayed over SDR. Jitter data is included in the net_connections_status command output.\n[/list]",
     "summary": [
-      "Added counter-strafe input automation detection options for non-Valve servers",
-      "Enabled measurement of network jitter on direct UDP connections to community servers",
-      "Jitter data is now included in the net_connections_status command output"
+      "Added counter-strafe input automation detection options for non-Valve servers.",
+      "Enabled measurement of network jitter on direct UDP connections to community servers.",
+      "Jitter data is now included in the net_connections_status command output."
     ],
     "tags": [
       "ui-change",
@@ -1944,9 +1937,9 @@
     "date": "2024-09-03T21:41:29.000Z",
     "content": "[ MISC ]\n[list]\n[*] Fixed a case where some commands, including jump, might be ignored under poor network conditions.\n[*] Fixed a bug that could cause inconsistent jump heights.\n[*] Fixed a case where client player collision would remain disabled after ragdoll interaction occurred in the previous round. Thanks for the repro steps, @poggu__.\n[*] Fixed a case for Linux users where the game would hang when opening the pause menu.\n[/list]",
     "summary": [
-      "Fixed commands being ignored under poor network conditions",
-      "Fixed inconsistent jump heights",
-      "Fixed client player collision issue after ragdoll interaction"
+      "Fixed a case where some commands, including jump, might be ignored under poor network conditions.",
+      "Fixed a bug that could cause inconsistent jump heights.",
+      "Fixed several client-side bugs."
     ],
     "tags": [
       "bug-fix",
@@ -1960,9 +1953,9 @@
     "date": "2024-08-22T22:12:21.000Z",
     "content": "[ HUD ]\n[list]\n[*] Fixed a case where the radar background and radar icons were misaligned\n[/list]",
     "summary": [
-      "Fixed HUD radar alignment issue",
-      "Radar background and icons now properly aligned",
-      "Minor HUD stability fix"
+      "Fixed radar background and radar icons alignment issue",
+      "HUD-related bug fix",
+      "Minor stability improvement"
     ],
     "tags": [
       "bug-fix",
@@ -1977,15 +1970,14 @@
     "date": "2024-08-21T23:19:24.000Z",
     "content": "[ MAPS ]\n\nOffice\n[list]\n[*] Fixed a case where a player could get stuck between a prop and the ceiling\n[/list]\nNuke\n[list]\n[*] Fixed a pixel walk\n[*] Fixed some C4 stuck spots\n[/list]\nMirage\n[list]\n[*] Adjusted collision on van for smoother movement\n[*] Fixed wall penetration issues around some arches\n[*] Fixed a view jittering issue when jumping on a crate near palace\n[*] Fixed some collision that allowed smoke grenades to go inside a wall\n[*] Adjustments to grenade clipping\n[*] Adjusted collision on some props\n[*] Fixed some C4 stuck spots\n[/list]\nInferno\n[list]\n[*] Fixed some C4 stuck spots\n[*] Removed a boost spot in pit by A site\n[/list]\nItaly\n[list]\n[*] Perf improvements\n[*] Clipping adjustments\n[/list]\nVertigo\n[list]\n[*] Adjustments to grenade clipping\n[/list]\nAncient\n[list]\n[*] Fixed a bad clip edge that players were getting stuck on at T spawn\n[*] Fixed a pixel peak\n[/list]\nAnubis\n[list]\n[*] Adjustments to grenade clipping\n[*] Fixed a C4 stuck spot\n[*] Fixed some prop collision that could hide C4\n[*] Fixed some lighting issues\n[/list]\nOverpass\n[list]\n[*] Fixed some minor visual bugs near canal\n[*] Some clipping adjustments near park for smoother movement\n[*] Added some missing handrail collision\n[/list]",
     "summary": [
-      "Fixed a case where a player could get stuck between a prop and the ceiling",
-      "Fixed several C4 stuck spots across multiple maps",
-      "Made various clipping and collision adjustments to improve gameplay"
+      "Fixed various map-related bugs",
+      "Improved performance on Italy map",
+      "Made clipping adjustments on multiple maps"
     ],
     "tags": [
       "bug-fix",
-      "performance",
-      "gameplay",
-      "ui-change"
+      "map-change",
+      "performance"
     ]
   },
   {
@@ -1997,7 +1989,7 @@
     "summary": [
       "The Masterminds 2 Music Kit Box is now available for purchase",
       "Fixed garbled audio output on efficiency CPU cores",
-      "Minor HUD style adjustments and performance stutter reduction"
+      "Minor HUD style adjustments and reduced performance stutter"
     ],
     "tags": [
       "new-feature",
@@ -2015,12 +2007,13 @@
     "summary": [
       "Input automation detection added on official servers",
       "Multi-input binds ignored by default",
-      "Jump-throw confirmation sound now audible to others"
+      "Jump-throw confirmation sound audible to nearby players"
     ],
     "tags": [
+      "anti-cheat",
       "bug-fix",
-      "performance",
-      "ui-change"
+      "ui-change",
+      "performance"
     ]
   },
   {
@@ -2031,8 +2024,8 @@
     "content": "[ MAPS ]\n\n[i]Mills[/i]\n[list]\n[*] Updated to the latest version from the Community Workshop ([url=https://steamcommunity.com/sharedfiles/filedetails/changelog/3152430710]Update Notes[/url])\n[/list]\n[i]Pool Day[/i]\n[list]\n[*] Updated to the latest version from the Community Workshop ([url=https://steamcommunity.com/sharedfiles/filedetails/changelog/3263935964]Update Notes[/url])\n[/list]\n\n[ MISC ]\n[list]\n[*] Slightly delayed tagging effects to reduce instances of players experiencing teleportation when taking damage. Delaying tagging results in a smoother experience, however players will have slightly more time to move at full speed when receiving damage. The delay can be adjusted on servers using convar sv_predictable_damage_tag_ticks (default 2)\n[*] Fixed a case where players could start the bomb plant animation outside of bomb sites\n[*] Fixed a case where the revolver barrel would rotate erroneously\n[*] Reduced initial loading times for the Settings and Play menus\n[/list]",
     "summary": [
       "Mills and Pool Day maps updated",
-      "Delayed tagging effects to prevent teleportation",
-      "Fixed several minor bugs"
+      "Delayed tagging effects to reduce teleportation",
+      "Fixed several bugs and improved performance"
     ],
     "tags": [
       "map-change",
@@ -2048,8 +2041,8 @@
     "content": "[ GAMEPLAY ]\n[list]\n[*] In Casual game mode players will earn an additional XP score point for every round in which they dealt damage to enemies.\n[*] Added a server setting \"sv_vote_to_changelevel_rndmin\" to control rounds/time during which voting for a level change is allowed.\n[*] Official game servers in Casual game mode now allow voting for a level change only at the end of the match or during the first round of the match.\n[*] Official game servers in Deathmatch and Arms Race game modes now allow voting for a level change only at the end of the match or during the first minute of the match.\n[*] Restricted upward movement of a player when a teammate is boosted on their head.\n[*] Dead players are no longer allowed to pick up ground weapons.\n[*] Buy menu will automatically close if the switch team menu opens.\n[*] Rescuing a hostage now increments objectives counter in match stats.\n[/list]\n\n[ UI ]\n[list]\n[*] Improved legibility of damage given and taken in post-round damage report.\n[*] Made spec target highlighting more pronounced.\n[*] Player names are now visible on mini scoreboard whenever the mini scoreboard is expanded.\n[/list]\n\n[ MAPS ]\n\n[i]Mills[/i]\n[list]\n[*] Updated to the latest version from the Community Workshop ([url=https://steamcommunity.com/sharedfiles/filedetails/changelog/3152430710]Update Notes[/url])\n[/list]\n[i]Assembly[/i]\n[list]\n[*] Updated to the latest version from the Community Workshop ([url=https://steamcommunity.com/sharedfiles/filedetails/changelog/3071005299]Update Notes[/url])\n[/list]",
     "summary": [
       "Casual game mode players earn additional XP for dealing damage.",
-      "Server setting added to control level change voting.",
-      "Official servers restrict level change voting to specific rounds or times."
+      "Server setting added to control level change voting rounds.",
+      "Voting for level change restricted in certain game modes."
     ],
     "tags": [
       "gameplay",
@@ -2067,12 +2060,12 @@
     "summary": [
       "Modified crate stack on Dust II",
       "Clipping adjustments on Nuke",
-      "Updated Assembly and Memento maps"
+      "Updated maps Assembly and Memento"
     ],
     "tags": [
       "map-change",
-      "performance",
-      "bug-fix"
+      "bug-fix",
+      "performance"
     ]
   },
   {
@@ -2088,8 +2081,7 @@
     ],
     "tags": [
       "bug-fix",
-      "performance",
-      "map-change"
+      "performance"
     ]
   },
   {
@@ -2099,8 +2091,8 @@
     "date": "2024-07-02T22:10:03.000Z",
     "content": "[ MAPS ]\n\n[i]Pool Day[/i]\n[list]\n[*]Updated to the latest version from the Community Workshop [url=https://steamcommunity.com/sharedfiles/filedetails/changelog/3263935964]found here[/url]\n[/list]\n[i]Dust 2[/i]\n[list]\n[*]Fixed hole in brick stack on bombsite B\n[*]Fixed bug preventing custom sounds from being played in community maps\n[/list]",
     "summary": [
-      "Pool Day updated to latest Community Workshop version",
-      "Dust 2 brick stack hole fixed",
+      "Pool Day map updated to latest Community Workshop version",
+      "Dust 2 map hole in brick stack fixed",
       "Custom sounds bug fixed in community maps"
     ],
     "tags": [
@@ -2117,8 +2109,8 @@
     "content": "[ NETWORK ]\n[list]\n[*] Fixed a bug leading to excessive stuttering for some players\n[/list]\n\n[ HUD ]\n[list]\n[*] Fixed case of radar background being incorrectly colored.\n[/list]",
     "summary": [
       "Fixed stuttering bug",
-      "Fixed radar background color bug",
-      "Stability improvements"
+      "Fixed radar background color",
+      "Minor bug fixes"
     ],
     "tags": [
       "bug-fix",
@@ -2135,7 +2127,7 @@
     "summary": [
       "Community maps updated to latest version",
       "G-Sync detection fixed",
-      "Keyboard layout issue fixed"
+      "Radio-command string fixed"
     ],
     "tags": [
       "map-change",
@@ -2151,8 +2143,8 @@
     "content": "[ MAPS ]\n\n[i]Community Maps[/i]\n[list][*] Added community maps [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3121217565]Thera[/url] and [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3152430710]Mills[/url] to Competitive, Casual, and Deathmatch map groups\n[*] Added community maps [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3165559377]Memento[/url] and [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3071005299]Assembly[/url] to the Wingman map pool\n[*] Added community map [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3263935964]Pool Day[/url] to the Arms Race map pool[/list][i]Nuke[/i]\n[list][*] Fixed c4 stuck spots\n[/list][i]Ancient[/i]\n[list][*] Fixed c4 stuck spots, holes in the world, and non-solids causing problems\n[/list] [i]Vertigo[/i]\n[list][*] Fixed c4 stuck spots and clipping\n[/list][i]Anubis[/i]\n[list][*] Fixes for grenade collision and clipping[/list]\n\n[ UI ][list]\n[*] Updated the MVP panel in all game modes\n[*] Added all-new animated MVP panels to Premier matches\n[*] Added several new MVP conditions and adjusted prior MVP rules[/list]\n\n[ GAMEPLAY ][list]\n[*] In Competitive Matchmaking, per-map skill groups are now revealed after you earn two wins on a map.[/list]\n\n[ VIDEO SETTINGS ]\n[list][*]Settings Recommendations[list]\n[*] Added a Settings Recommendation popup if your display's refresh rate is set below its maximum at startup. Using your display's highest refresh rate is generally recommended.\n[*] Added a Settings Recommendation popup if NVIDIA G-Sync support is detected but not enabled at startup. Using G-Sync is generally recommended if your system supports it.\n[*] Added a Settings Recommendation popup if NVIDIA G-Sync is enabled but not V-Sync and/or NVIDIA Reflex. It is generally recommended to enable all three settings together when they are available. Note that applying these settings will limit your frame rate to your display's refresh rate or slightly lower, which is usually the smoothest-looking and lowest input latency settings combination. See [url=https://help.steampowered.com/en/faqs/view/418E-7A04-B0DA-9032]https://help.steampowered.com/en/faqs/view/418E-7A04-B0DA-9032[/url] for technical details.[/list][*] Removed \"Main Menu Background Scenery\" and \"Item Inspect Background Scenery\" settings from the Video Settings page. These settings are still available on the Main Menu and in the Item Inspect screens respectively.\n[*] The \"Refresh Rate\" setting now shows your display's current refresh rate in Windowed and Fullscreen Windowed modes.\n[*] Removed the \"Laptop Power Savings\" setting which has never actually been configurable in CS2.\n[*] Added a \"Frame Pacing\" section to the Advanced Video settings page.\n[*] Added an \"NVIDIA G-Sync\" row to the Frame Pacing section which tells you whether or not G-Sync is active with your current display settings. This row may be hidden if you're using the Vulkan renderer or if you're not using an NVIDIA graphics card.\n[*] Added \"Maximum FPS In Game\" and \"Maximum FPS In Menus\" sliders to the Frame Pacing section. These control the fps_max and fps_max_ui convars respectively.\n[*] Increased the default \"Maximum FPS In Menus\" setting from 120 FPS to 200 FPS.\n[*] The Advanced Video visual preview now uses the \"In Game\" maximum FPS instead of the \"In Menus\" maximum.\n[/list]",
     "summary": [
       "Added community maps Thera, Mills, Memento, Assembly, and Pool Day",
-      "Fixed c4 stuck spots, holes in the world, and non-solids on Ancient and Vertigo",
-      "Updated MVP panel in all game modes"
+      "Fixed various map issues on Nuke, Ancient, Vertigo, and Anubis",
+      "Updated MVP panel and added new MVP conditions"
     ],
     "tags": [
       "map-change",
@@ -2168,14 +2160,14 @@
     "date": "2024-06-21T03:35:22.000Z",
     "content": "[list]\n[*] Fixed a case where the game would think a key was still pressed after it had been released\n[*] More improvements to networking to account for packet loss and jitter\n[/list]",
     "summary": [
-      "Fixed a case where the game would think a key was still pressed after it had been released",
-      "More improvements to networking to account for packet loss and jitter",
-      "Minor stability improvements"
+      "Fixed key press issue",
+      "Improved networking",
+      "Stability and performance improvements"
     ],
     "tags": [
       "bug-fix",
       "performance",
-      "stability"
+      "gameplay"
     ]
   },
   {
@@ -2187,7 +2179,7 @@
     "summary": [
       "Added 'pips only' option to Team ID settings",
       "Improved bomb interaction with water in Overpass",
-      "Fixed various lighting and teleportation issues"
+      "Fixed several bugs and localization updates"
     ],
     "tags": [
       "ui-change",
@@ -2221,13 +2213,13 @@
     "content": "[ GAMEPLAY ]\n[list] \n[*] Fixed one-way visibility for players inside HE grenade explosions\n[/list]\n\n[ HUD ]\n[list] \n[*] When equipment info is shown for players at the top of the HUD (e.g. when spectating), their health bars expand to show numeric health values\n[*] Reduced some hitches caused by HUD elements appearing\n[/list]\n\n[ GRAPHICS ]\n[list] \n[*] Added a separate \"Dynamic Shadows\" Advanced Video setting with the options: \"Sun Only\" or \"All\"\n[/list]\n\n[ ANIMATION ]\n[list] \n[*] Added left hand to Bowie Knife view model\n[/list]",
     "summary": [
       "Fixed one-way visibility for players inside HE grenade explosions",
-      "Health bars in the HUD now show numeric health values",
-      "Reduced some hitches caused by HUD elements appearing"
+      "Health bars expand to show numeric health values when spectating",
+      "Added separate 'Dynamic Shadows' Advanced Video setting"
     ],
     "tags": [
       "bug-fix",
-      "performance",
-      "ui-change"
+      "ui-change",
+      "performance"
     ]
   },
   {
@@ -2237,9 +2229,9 @@
     "date": "2024-06-04T21:33:54.000Z",
     "content": "[ MISC ]\n[list]\n[*] Fixed a case where scores weren't incrementing correctly in Deathmatch and Arms Race\n[*] Fixed a case where players were able to clip their first-person camera through ceilings\n[*] Fixed a case where the C4 could get stuck outside the playable area\n[*] Various stability improvements\n[/list]",
     "summary": [
-      "Fixed score incrementation issues in Deathmatch and Arms Race",
+      "Fixed score incrementation in Deathmatch and Arms Race",
       "Fixed camera clipping through ceilings",
-      "Various stability improvements"
+      "Fixed C4 getting stuck outside playable area"
     ],
     "tags": [
       "bug-fix",
@@ -2271,9 +2263,10 @@
     "date": "2024-05-24T21:05:39.000Z",
     "content": "[ WEAPON FINISHES ]\n[list]\n[*] Fixed the appearance of Doppler, Gamma Doppler, and Marble Fade finishes\n[/list]\n\n[ DEMOS ]\n[list]\n[*] Minor UI changes\n[/list]\n\n[ MAPS ]\n\n[i]Vertigo:[/i]\n[list]\n[*] Clipped the wings of runboosters to B site in Wingman\n[*] Blocked grenades through crane base at A site\n[/list]",
     "summary": [
-      "Fixed Doppler, Gamma Doppler, and Marble Fade finishes",
+      "Fixed Doppler, Gamma Doppler, and Marble Fade finishes appearance",
       "Minor UI changes",
-      "Clipped runboosters on Vertigo and blocked grenades through crane base"
+      "Clipped runboosters on Vertigo",
+      "Blocked grenades through crane base on Vertigo"
     ],
     "tags": [
       "bug-fix",
@@ -2289,14 +2282,14 @@
     "content": "[ GAMEPLAY ]\n[list]\n[*]Height of the 'pillar' of flame for both Molotov and Incendiary grenade now decreases over time\n[*]Reduced the terrorist team award when bomb was planted but defused from $800 to $600, to decrease the impact of the first-round on subsequent rounds\n[*]Reduced the price of the M4A4 from $3100 to $3000\n[*]Minor adjustments to first-person camera movement\n[*]Added explicit \"switchhandsleft\" and \"switchhandsright\" console commands\n[*]Deathmatch bonus weapons are now the same for all players regardless of loadout\n[/list]\n[i]Incendiary Grenade[/i][list]\n[*]Adjusted the explosion and flame visual treatment\n[*]Reduced duration\n[*]Reduced area covered by spreading flames\n[*]Reduced price from $600 to $500\n[/list]\n\n[ RENTALS ]\n[list]\n[*]When players open a Kilowatt case with a key, they will have the option to rent the entire Kilowatt collection (i.e., every weapon in the case, excluding the rare special item) for a week instead of receiving an item from the collection\n[*]Equipped rented weapons will be replaced with the stock version of the weapon when the rental period expires\n[*]Rented weapons cannot be modified (e.g., via stickers or name tags), traded, or sold on the Steam Community Market\n[/list]\n\n[ HUD ]\n[list]\n[*]Fixed a bug where the MVP player name displayed incorrectly during bot takeover\n[*]Fixed a bug where the Refund All button in the Buy Menu would only refund a single flashbang grenade\n[*]Fixed a bug where the ESC menu scoreboard during end-of-match didn't match the TAB scoreboard\n[*]Fixed a bug where the Loss Bonus scoreboard tooltip would get stuck on-screen after closing the scoreboard\n[*]Blocking stranger Steam avatars will now block other user-generated content such name tags and sticker placements\n[/list]\n\n[ CHICKENS ]\n[list]\n[*]Chickens have a few new animations\n[*]Chickens can now walk up hills\n[*]Chickens can now turn right while walking\n[/list]\n\n[ UI ]\n[list]\n[*]Various performance improvements to the Warehouse main menu and item inspect background scenery\n[/list]\n\n[ DEMOS ]\n[list]\n[*]The demo playback timeline now show indicators for kill and death events\n[*]Demo playback can be toggled into \"highlight mode\" which will show only kills and deaths for the active player\n[*]Various minor demo playback UI changes\n[*]Fixed a demo playback crash\n[/list]\n\n[ MAPS ]\n\n[i]Vertigo:[/i][list]\n[*]Added catwalk by bombsite A, connecting to back of A\n[*]Removed connector between back of A and elevators\n[*]Opened up passage between elevators and scaffolding\n[*]Slightly tweaked size of bombsite A\n[*]Tweaked spawn timings slightly\n[*]Changed Wingman layout to feature bombsite A changes\n[/list]\n[i]Baggage:[/i][list]\n[*]Fixed movement hitch on lower conveyor\n[*]Lowered height of central conveyor tray to help open sniper view\n[/list]\n[i]Office:[/i][list]\n[*]Fixed a case where a player could shoot through multiple walls\n[/list]\n[i]Mirage:[/i][list]\n[*]Fixed bad collision on certain props\n[*]Fixed some sticky collision around windows in palace\n[/list]",
     "summary": [
       "Height of the 'pillar' of flame for Molotov and Incendiary grenade now decreases over time",
-      "Minor adjustments to first-person camera movement",
-      "Fixed various bugs in HUD and demo playback"
+      "Terrorist team award reduced from $800 to $600",
+      "M4A4 price reduced from $3100 to $3000"
     ],
     "tags": [
       "gameplay",
-      "performance",
       "bug-fix",
-      "ui-change",
+      "performance",
+      "weapon-nerf",
       "map-change"
     ]
   },
@@ -2324,9 +2317,9 @@
     "date": "2024-05-09T20:55:52.000Z",
     "content": "[ MISC ]\n[list]\n[*] Reduced the opacity of teammate names near the crosshair.\n[*] Made the death experience during bot takeover match the normal death experience.\n[*] Fixed several bugs with looping through bot takeover spectator targets.\n[*] Fixed several bugs with scoreboard buttons not working as designed.\n[*] Fixed a bug where the in-air kill feed icon didn't work with certain weapons (thanks aquaismissing).\n[*] Fixed a bug where the HUD would be offset after watching a demo (thanks again aquaismissing).\n[/list]",
     "summary": [
-      "Reduced opacity of teammate names near crosshair.",
-      "Death experience during bot takeover now matches normal death experience.",
-      "Several bugs fixed with bot takeover spectator targets and scoreboard buttons."
+      "Reduced teammate name opacity near crosshair.",
+      "Death experience during bot takeover match updated.",
+      "Multiple bug fixes for bot takeover and scoreboard."
     ],
     "tags": [
       "ui-change",
@@ -2373,15 +2366,14 @@
     "date": "2024-05-02T00:35:52.000Z",
     "content": "[ MISC ]\n[list]\n[*] Fixed a bug where the game would stop taking keyboard input during the end-of-match map vote.\n[*] Fixed a bug where UI characters always had default gloves equipped.\n[*] Demo playback will pause at the end of a recording instead of returning to the main menu.\n[*] Minor demo playback optimizations.\n[/list]\n[ WORKSHOP ]\n[list]\n[*] Added arms race game mode for workshop map submissions\n[/list]",
     "summary": [
-      "Fixed bug where game would stop taking keyboard input during end-of-match map vote",
-      "Fixed bug where UI characters always had default gloves equipped",
-      "Minor demo playback optimizations and added arms race game mode for workshop map submissions"
+      "Fixed a bug where the game would stop taking keyboard input during the end-of-match map vote.",
+      "Fixed a bug where UI characters always had default gloves equipped.",
+      "Demo playback will pause at the end of a recording instead of returning to the main menu."
     ],
     "tags": [
       "bug-fix",
       "performance",
-      "ui-change",
-      "new-feature"
+      "ui-change"
     ]
   },
   {
@@ -2392,8 +2384,8 @@
     "content": "[ MISC ]\n[list]\n[*] Grenade kills no longer display the \"in-air\" killfeed icon.\n[*] Fixed several cases where clicking on the buy menu or scoreboard would cause the game to stop taking keyboard input.\n[*] Fixed too many usercommands being processed when skipping forward in demos. This reduces the skip time by as much as 80%.\n[*] Added console output that may be helpful for advanced users to diagnose performance problems.  When a very long frame occurs, a brief profile of the frame is printed.  At the end of a match, a summary is printed.\n[/list]",
     "summary": [
       "Grenade kills no longer display the 'in-air' killfeed icon.",
-      "Fixed several cases of keyboard input issues.",
-      "Fixed demo skipping performance issues and added console output for advanced users."
+      "Fixed several cases of keyboard input issues in the buy menu and scoreboard.",
+      "Fixed demo skipping performance issues, reducing skip time by up to 80%."
     ],
     "tags": [
       "ui-change",
@@ -2409,15 +2401,12 @@
     "content": "[ MISC ][list]\n[*] Fixed a bug where grenade throw animations would get stuck when switching hands.\n[*] Fixed a bug where the same grenade type couldn't be thrown multiple times without switching to another weapon first.\n[*] Fixed a bug that allowed picking up grenades beyond the normal maximum.\n[*] Fixed a bug where smoke grenades would sometimes appear lit as if a flashbang detonated inside them.[/list]\n[ MAPS ][list]\n[*] Fixed a spot in Dust 2 above mid doors where grenades would fall through the world.\n[*] Fixed a spot in Inferno where weapons could fall through the world.\n[/list]",
     "summary": [
       "Fixed grenade throw animations getting stuck when switching hands.",
-      "Fixed bug allowing multiple grenade throws without switching weapons.",
-      "Fixed bug allowing grenade pickup beyond maximum limit.",
-      "Fixed bug with smoke grenades appearing lit after flashbang detonation.",
-      "Fixed world collision issues in Dust 2 and Inferno."
+      "Fixed bug where same grenade type couldn't be thrown multiple times without switching to another weapon first.",
+      "Fixed bug that allowed picking up grenades beyond the normal maximum."
     ],
     "tags": [
       "bug-fix",
-      "performance",
-      "map-change"
+      "performance"
     ]
   },
   {
@@ -2428,16 +2417,14 @@
     "content": "[ VIEWMODEL ]\n[list]\n[*] Adjusted viewmodel bob movement\n[*] Added \"Preferred Viewmodel Left/Right Handedness\" setting\n[*] Added \"Switch Viewmodel Left/Right Hand\" key binding (default: US keyboard letter H) to switch hands temporarily during gameplay\n[*] Viewmodel position setting and left/right hand state are now networked and visible to first-person spectators.\n[*] Deprecated \"Couch\" viewmodel position setting\n[/list]\n[ HUD ]\n[list]\n[*] Added \"Radar Map Alternate Zoom\" setting and \"Toggle Radar Zoom\" key binding to toggle between zoom levels during gameplay\n[*] Added a radar icon for the local player when free cam spectating\n[*] Added a grenade line-up reticle that appears shortly after pulling the pin. The timing can be configured for each grenade type independently\n[*] Changed weapon Swap text (when pointing at a dropped weapon) to always show the gameplay name of the weapon instead of any customized name it might have.\n[*] Added a kill feed icon for \"in-air\" kills\n[*] Added the scoreboard to the ESC menu\n[*] Added an icon to indicate bots on the scoreboard\n[/list]\n[ BUY MENU ]\n[list]\n[*] Added a \"Dropped Weapons\" panel, which shows (and allows the direct pickup of) weapons that have been dropped by teammates that are standing in the buy zone\n[*] Added the minimum amount of money that a player is guaranteed to have in the next round to the buy menu title bar. (thanks, Kadomos)\n[/list]\n[ GAMEPLAY ]\n[list]\n[*] Increased Zeus movement speed and adjusted the attack cone\n[*] Increased Zeus kill reward from $0 to $100 ($50 in Casual)\n[*] Increased CZ75-Auto kill reward from $100 to $300 ($150 in Casual)\n[*] Reduced XM1014 kill reward from $900 to $600 ($300 in Casual)\n[/list]\n[ INVENTORY ]\n[list]\n[*] Lighting adjustments in Inspect background maps\n[*] Added Wear Category to the info tooltip in the Inspect screen\n[*] Added gameplay name in panels that used to only show customized name. E.g., Inspect screen, inventory tile\n[/list]\n[ MAPS ]\n[list]\n[*] Replaced Overpass with Dust 2 in the Active Duty Group, current competition map pool, and Premier matchmaking\n[*] Baggage\n[list]\n[*]Opened roll-up doors at spawns\n[*] Updated models for some conveyors\n[*] Solidified stairs\n[*] Various bug fixes\n[/list]\n[*] Inferno: \n[list]\n[*] Removed overhanging building at top mid\n[*] Removed overhangs at bottom of banana\n[*] Various map tweaks to improve player collision and readability\n[/list]\n[*] Overpass, Nuke, Vertigo, Mirage and Office\n[list]\n[*] Bug and exploit fixes\n[*] Collision and line of sight adjustments\n[*] Minor performance improvements\n[/list]\n[/list]\n[ WEAPON FINISHES ]\n[list]\n[*] AK-47 | Inheritance: Texture and mask adjustments\n[*] USP-S | Jawbreaker: Corrected ambient occlusion texture\n[/list]\n[ MISC ]\n[list]\n[*] Decoupled demo playback camera movement from playback speed. This allows moving the camera even if playback is paused\n[*] Added ability to launch practice matches and workshop maps with party members\n[*] Added Overwatch system to enable match demo review by trusted partners\n[*] Copenhagen 2024 Major sticker capsules are on sale now -75% off\n[*] Added ability to adjust brightness in windowed modes\n[/list]",
     "summary": [
       "Adjusted viewmodel bob movement",
-      "Added various HUD settings and key bindings",
-      "Increased Zeus movement speed and adjusted attack cone"
+      "Added various HUD and UI elements",
+      "Made changes to multiple maps and game modes"
     ],
     "tags": [
       "ui-change",
       "performance",
-      "gameplay",
-      "weapon-buff",
-      "hunter",
-      "zeus"
+      "map-change",
+      "bug-fix"
     ]
   },
   {
@@ -2449,7 +2436,7 @@
     "summary": [
       "Fixed a bug where bomb can sometimes disappear from the radar",
       "Allow scraping or removing stickers by selecting the sticker icons under the weapon",
-      "Fixed Workshop tools from crashing when compiling maps that contain instances"
+      "Allow deleting empty storage units that have an assigned label"
     ],
     "tags": [
       "bug-fix",
@@ -2464,9 +2451,9 @@
     "date": "2024-04-03T00:18:16.000Z",
     "content": "[ COPENHAGEN 2024 MAJOR ]\n[list][*] Congratulations to Natus Vincere for winning the PGL Copenhagen Major!\n[*] The Copenhagen 2024 Champions Autograph Capsule is now available for purchase in the Copenhagen 2024 Major Hub[/list]\n[ MISC ]\n[list][*] Fixed several cases of sticky collisions when jumping against surfaces\n[*] Fixed another threading bug that could lead to a frame rate hitch, especially if all CPUs were busy\n[*] Purchased and traded Counter-Strike items will not be visible to other users who view your Steam Inventory for 10 days[/list]",
     "summary": [
-      "Copenhagen 2024 Major winners announced",
-      "New Champions Autograph Capsule available",
-      "Several bug fixes"
+      "Copenhagen 2024 Major concluded with Natus Vincere as the winner.",
+      "Copenhagen 2024 Champions Autograph Capsule is available for purchase.",
+      "Several sticky collision and threading bugs fixed."
     ],
     "tags": [
       "map-change",
@@ -2500,14 +2487,14 @@
     "content": "[COPENHAGEN 2024 MAJOR]\n[list][*] The Copenhagen Major Hub is now available. Visit the hub to purchase tournament items, play the Pick'Em Challenge and more.\n[*] Purchase a Copenhagen 2024 Viewer Pass to receive an upgradable Copenhagen 2024 Coin. With an active pass, you can upgrade your coin and earn extra souvenir packages by playing the Pick'Em Challenge. Additionally, you will show up on the Active Pass Leaderboard where you can compare your Pick'Em Challenge performance to your friends.\n[*] All players with Prime status can place Pick'Em picks for free! However, to complete challenges and earn rewards from an event stage, you will have to activate a Viewer Pass before that stage begins.\n[/list]\n[GAMEPLAY]\n[list]\n[*] Adjusted molotov fire to address a case where a player who could see through fire could not be seen by their opponent.\n[/list]",
     "summary": [
       "Copenhagen Major Hub is now available.",
-      "Viewer Pass added for Copenhagen 2024.",
-      "Molotov fire adjusted to fix visibility issue."
+      "Viewer Pass and Copenhagen 2024 Coin system introduced.",
+      "Molotov fire visibility adjusted."
     ],
     "tags": [
       "map-change",
       "new-feature",
-      "bug-fix",
-      "performance"
+      "gameplay",
+      "bug-fix"
     ]
   },
   {
@@ -2519,7 +2506,7 @@
     "summary": [
       "Spawn position is now determined at the beginning of the map and saved/restored from round backup files",
       "Players will respawn in their assigned spawn point after disconnecting and reconnecting during freeze time",
-      "Multiple bugs were fixed, including black screen issues and incorrect bot spawning"
+      "Several bugs have been fixed, including black screen issues, incorrect bot spawning, and music playback problems"
     ],
     "tags": [
       "bug-fix",
@@ -2534,8 +2521,8 @@
     "date": "2024-02-17T00:14:14.000Z",
     "content": "[ MISC ]\n[list]\n[*]50% throw-strength grenades are now guaranteed if both attack buttons are held long enough then released within a short time from each other\n[*]Fixed in-game bot avatar images not reloading correctly after pause menu was opened\n[*]Fixed behaviour of previous round button during demo playback\n[*]Fixed inability to clear a button binding in game settings\n[*]Improved performance of telemetry display HUD element\n[*]Normalized volume of NIGHTMODE music kits\n[*]Stability improvements\n[/list]",
     "summary": [
-      "50% throw-strength grenades are now guaranteed under specific button input",
-      "Fixed in-game bot avatar images",
+      "50% throw-strength grenades are now guaranteed if both attack buttons are held long enough then released within a short time from each other",
+      "Fixed in-game bot avatar images not reloading correctly after pause menu was opened",
       "Improved performance of telemetry display HUD element"
     ],
     "tags": [
@@ -2551,14 +2538,16 @@
     "date": "2024-02-16T01:22:28.000Z",
     "content": "[ ANIMATION ]\n[list]\n[*]Fix for animations when climbing ladders\n[*]Fix for menu agents wielding tasers\n[*]Fix for Kukri knife hold animation during team intro sequence\n[/list]\n\n[ SPECTATING ]\n[list]\n[*]spec_lock_to_accountid and spec_lock_to_current_player commands are now available for casters/observers\n[*]spec_player and spec_goto now works in CSTV and demo playback\n[*]tv_secure_bypass server setting now allows connecting HLAE observers to VAC secure CSTV servers\n[/list]\n\n[ GAMEPLAY ]\n[list]\n[*] In Deathmatch, the Zeus can be bought each life and will rebuy if not in random weapon mode\n[*] In Deathmatch, getting a second Zeus kill in the same life will earn double points\n[*] mp_modify_timeouts server-side command allows adding/subtracting a tactical timeout from CT/T team if backup file is restored or a team incorrectly took a tactical timeout instead of a technical timeout\n[/list]\n\n\n[ LOGGING ]\n[list]\n[*]Start of warmup and end of warmup will now produce a log message in the game server log\n[*]Reported damage no longer has a rounding error when reported in the game server log\n[/list]\n\n[ MISC ]\n[list]\n[*]Improved viewmodel animation smoothness when client framerates get low or unstable\n[*]Fixed issues with implementation of scancode-based key bindings. Bindings are now independent of input locales.\n[*]Added performance diagnostic HUD element that can be configured in Game Settings menu (\"Telemetry\")\n[*]Deleted cq_netgraph and cq_netgraph_problem_show_auto.  Instead, use cl_hud_telemetry_serverrecvmargin_graph_show.\n[*]Fix for sometimes failing to connect to a local practice server without Steam connectivity\n[*]Fixed a bug with Skill Group animation at the end of competitive matches\n[*]Fixed sniper scope performance hitch and adjusted visual treatment. \n[*]Various performance improvements\n[/list]\n\n[ MAPS ]\n\n[i]Vertigo:[/i][list]\n[*]Fixed grenade clipping around AC unit at B-site\n[*]Fixed clipping of pillar at T-Start that would potentially allow bomb to be thrown into unreachable area\n[/list]\n[i]Nuke:[/i][list]\n[*]Adjusted clipping around Vents entrance to prevent players' feet clipping through the vent geo\n[*]Improved collision of sliding door meshes at Ramp\n[/list]\n[i]Anubis:[/i][list]\n[*]Added and removed a ladder near boost spot by T spawn\n[*]Fixed a couple of spots where bomb could be thrown out of the map\n[/list]\n[i]Overpass:[/i][list]\n[*]Clipping improvements\n[*]Fixed some disappearing mesh\n[/list]",
     "summary": [
-      "Fix for animations when climbing ladders",
-      "spec_lock_to_accountid and spec_lock_to_current_player commands are now available for casters/observers",
-      "Various performance improvements"
+      "Fixes for animation issues",
+      "New spectating commands",
+      "Gameplay changes in Deathmatch mode"
     ],
     "tags": [
       "bug-fix",
       "performance",
-      "ui-change"
+      "gameplay",
+      "ui-change",
+      "map-change"
     ]
   },
   {
@@ -2573,8 +2562,9 @@
       "Enhanced demo file accuracy"
     ],
     "tags": [
+      "bug-fix",
       "performance",
-      "bug-fix"
+      "ui-change"
     ]
   },
   {
@@ -2584,9 +2574,9 @@
     "date": "2024-02-09T02:24:14.000Z",
     "content": "[ MISC ]\n[list]\n[*] Fixed a bug where some inputs were acting as if they were released prematurely\n[/list]",
     "summary": [
-      "Fixed a bug where some inputs were acting as if they were released prematurely",
-      "Miscellaneous bug fixes",
-      "Stability improvements"
+      "Fixed a bug with premature input release.",
+      "Stability improvements.",
+      "Minor bug fixes."
     ],
     "tags": [
       "bug-fix",
@@ -2602,7 +2592,7 @@
     "summary": [
       "Fixed a bug where an extra kill with a shotgun before the knife level counted as the winning knife kill",
       "Adjusted visibility of player silhouettes in smoke",
-      "Fixed various inspect animation bugs"
+      "Fixed various inspect animations bugs"
     ],
     "tags": [
       "bug-fix",
@@ -2636,11 +2626,10 @@
     "summary": [
       "Arms Race game mode added",
       "New weapon finishes and Kukri Knife",
-      "Improved sticker placement and support"
+      "Sticker placement and zoom feature added"
     ],
     "tags": [
       "new-feature",
-      "map-change",
       "weapon-change",
       "ui-change",
       "performance"
@@ -2653,8 +2642,8 @@
     "date": "2024-01-18T23:49:46.000Z",
     "content": "[ MAPS ]\n[i]Vertigo:[/i][list]\n[*]Fixed a gap in geometry\n[/list]",
     "summary": [
-      "Fixed a gap in geometry on Vertigo map",
-      "Minor map stability improvements",
+      "Fixed a gap in geometry on Vertigo",
+      "Stability and minor balance changes",
       "Bug fixes"
     ],
     "tags": [
@@ -2708,12 +2697,13 @@
     "summary": [
       "Added shell eject effects for shotguns",
       "Dropped weapons caused by buy menu purchasing are now dropped below the buyer",
-      "Multiple exploits fixed, including adding non-text data into UI labels"
+      "Multiple exploits fixed"
     ],
     "tags": [
       "gameplay",
       "ui-change",
-      "bug-fix"
+      "bug-fix",
+      "performance"
     ]
   },
   {
@@ -2723,9 +2713,9 @@
     "date": "2023-12-07T23:52:20.000Z",
     "content": "[ GAMEPLAY ]\n[list]\n[*] Fixed a bug where explicit weapon switches right after grenade throws were delayed slightly\n[/list]\n[ MAPS ]\n\n[i]Inferno:[/i][list]\n[*] Fixed a bug where you could plant C4 in planter\n[/list]",
     "summary": [
-      "Fixed bug with delayed explicit weapon switches after grenade throws",
-      "Fixed bug allowing C4 planting in planter on Inferno",
-      "Minor bug fixes and stability improvements"
+      "Fixed delayed explicit weapon switches after grenade throws",
+      "Fixed C4 planting bug in Inferno planter",
+      "Bug fixes and stability improvements"
     ],
     "tags": [
       "bug-fix",
@@ -2740,13 +2730,13 @@
     "content": "[ GAMEPLAY ]\n[list]\n[*]Fixed an issue where the player's shadow would sometimes show the incorrect animation state\n[*]Weapon switching after releasing the fire button(s) will no longer cancel grenade throws (but round restart will)\n[*]Various animation system optimizations\n[*]Various minor bug fixes to demo playback\n[/list]\n[ UI ]\n[list]\n[*]Fixed a bug where starting pistols weren't showing in the Pistols tab of the Equipment view\n[*]Fixed an issue where silencers would not be shown on weapons when held by characters in the UI\n[/list]\n[ MAPS ]\n[i]Mirage:[/i][list]\n[*]Fixed a gap under the door at Middle\n[/list]\n[i]Anubis:[/i][list]\n[*]Added a grenade clip to the wall at Bridge\n[/list]\n[i]Vertigo:[/i][list]\n[*]Changed the collision properties on railings to emit the correct footstep sounds\n[/list]\n[i]Nuke:[/i][list]\n[*]Fix for the sun material not blooming and adjusted the size of the material\n[*]Cleaned up redundant skins on metal_door models to prevent workshop mappers hitting fatal errors for missing assets\n[*]Fixed a visibility bug at Garage when looking towards Hell\n[*]Changed the collision properties on railings to emit the correct footstep sounds\n[/list]\n[i]Inferno:[/i][list]\n[*]Changed the collision properties on railings to emit the correct footstep sounds\n[*]Fixed an issue where some chimney models would disappear in the skybox\n[/list]\n[i]Dust2:[/i][list]\n[*]Changed the collision properties on railings to emit the correct footstep sounds\n[/list]",
     "summary": [
       "Fixed various minor bug fixes to demo playback",
-      "Fixed various animation system optimizations",
-      "Improved UI with fixes to starting pistols and silencers"
+      "Fixed several UI issues",
+      "Optimized animation system"
     ],
     "tags": [
       "bug-fix",
-      "performance",
-      "ui-change"
+      "ui-change",
+      "performance"
     ]
   },
   {
@@ -2758,13 +2748,12 @@
     "summary": [
       "Fixed grenade throw strength adjustments delay",
       "Fixed grenade throw cancel issue",
-      "Added intermediate strength grenade throw"
+      "Added intermediate grenade throw option"
     ],
     "tags": [
       "bug-fix",
-      "gameplay",
-      "ui-change",
-      "performance"
+      "performance",
+      "gameplay"
     ]
   },
   {
@@ -2774,15 +2763,14 @@
     "date": "2023-11-30T23:57:03.000Z",
     "content": "[ GAMEPLAY ]\n[list]\n[*]Sub-tick timing improvements to various systems including grenade throw animations and revolver firing\n[*]Added a missing fire effect to molotovs that are held by players\n[/list]\n\n[ ANIMATION ]\n[list]\n[*]Reduced the amount that player characters will rotate their torso away from leg orientation\n[*]Improved hit reactions\n[*]Made jump animations directional\n[*]Improved character posing when aiming up and down\n[*]Improved foot placement and posing when running\n[*]Reduced animation posing when deploying\n[*]The timing of a players flashbanged posing now more accurately represents the player's ability to see\n[/list]\n\n[ SOUND ]\n[list]\n[*]Fixed issue with Shadow Daggers playing catch sound during looping inspect animation\n[*]Further refined falloff distance curves and volume of grenade bounces\n[*]Lowered volume of deathmatch bonus period ending\n[*]Lowered volume of lobby chat notification sound\n[*]Fixed missing water drip console errors in Office\n[*]Increased audible distance of breaking glass window sounds\n[*]Fixed an issue where sometimes a Sabre agent would say hostage related lines when cheering\n[/list]\n\n[ MISC ]\n[list]\n[*]Adjusted wear values of most tournament stickers and many other stickers to better match CS:GO\n[*]Changed handling of non-default console key bindings to match CS:GO behavior\n[/list]\n\n[ MAPS ]\n\n[i]Nuke:[/i][list]\n[*]Fixed cubemap issue at Lobby\n[*]Fixed hole at B-site\n[*]Fixed some holes at Ramp Room\n[*]Fixed glass floor material at B-Site not having impact effects\n[*]Fixed up footstep sounds on hazard stripes\n[*]Attempt to fix light leaking through base of doors at B-site\n[*]Brightened red interior walls to help with agent vis\n[*]Fixed pixel boost on chainlink fence outside\n[*]Fix shadows leaking through double doors at B-site\n[*]Made cubemap transitions smoother in some places at b-site\n[/list]\n[i]Mirage:[/i][list]\n[*]Fixed clipping on van at Truck\n[*]Clipped fridge in Apartments to prevent player becoming stuck\n[*]Adjusted bombsite A size and added visual boundaries\n[*]Fixed collision on Scaffolding to provide smooth movement\n[*]Fixed geometry and clipping outside Sniper's Nest to prevent pixel walking\n[/list]\n[i]Office:[/i][list]\n[*]Improved clipping around desks at t-spawn\n[*]Improved clipping on crates at Back Courtyard\n[*]Re-added collision to handrails\n[/list]\n[i]Vertigo:[/i][list]\n[*]Extended staircase and added grenade clip to stairs at near t-spawn to prevent grenades becoming wedged in gap\n[*]Fixed clipping on crate at mid\n[*]Fixed clipping on scaffold at back of A\n[*]Fixed clipping on scaffold at T-start\n[*]Fixed vis bug at A-ramp looking toward Bridge\n[*]Fixed grenade clip on support beam at A-ramp\n[*]Plugged Holes in insulation foam roll model\n[/list]\n[i]Anubis:[/i][list]\n[*]Fixed hole under pillar at A-site\n[*]Fixed clipping above walkway stairs in Palace\n[*]Closed up multiple microgaps throughout the map\n[*]Fixed some clipping on pillar at A-site\n[*]Fixed clipping on doorway at b-site\n[*]Plugged some micro holes\n[*]Fixed gap between two clip brushes that allowed bomb to be thrown on top of building\n[*]Fixed slight wall gap that allowed sniping into bombsite A\n[*]Fixed clipping on doorway at b-site\n[/list]\n[i]Ancient:[/i][list]\n[*]Fixed various gaps in the world\n[*]Fixed various texture seams\n[*]Closed gap that looks into Jaguar area\n[*]Adjusted clipping along fence near A-site\n[*]Adjusted clipping around tree base on A-site boost\n[*]Adjusted position of stone near B-site that player could crouch in\n[*]Added clipping to the top of the map to help minimize player exploits\n[/list]",
     "summary": [
-      "Improved sub-tick timing for grenade throw animations and revolver firing",
-      "Added missing fire effect to molotovs",
-      "Improved character animations and posing"
+      "Sub-tick timing improvements to various systems",
+      "Reduced animation posing when deploying",
+      "Fixed various map issues"
     ],
     "tags": [
-      "gameplay",
       "performance",
       "bug-fix",
-      "ui-change"
+      "map-change"
     ]
   },
   {
@@ -2793,8 +2781,8 @@
     "content": "[ MISC ]\n[list]\n[*]Fixed silencer attach and detach animations\n[*]Fixed a bug that prevented refunding the Bizon\n[*]Fixed a bug where players could respawn into a bad state during reconnect\n[*]Fixed a bug where ramps were not correctly reducing fall damage\n[*]Fixed a case where sub-tick movement timestamps were temporarily incorrect after changing host_timescale\n[*]Various fixes and improvements to de_ancient\n[/list]",
     "summary": [
       "Fixed silencer attach and detach animations",
-      "Fixed various bugs in de_ancient",
-      "Multiple bug fixes"
+      "Fixed various bugs",
+      "Improved de_ancient"
     ],
     "tags": [
       "bug-fix",
@@ -2842,9 +2830,9 @@
     "date": "2023-11-14T00:10:26.000Z",
     "content": "[ GAMEPLAY ]\n[list]\n[*]Fixed a bug where collision between players was sometimes causing players to step up\n[*]Fixed a bug where players could slide up walls in Mirage mid\n[*]Fixed a movement systems bug where players could get stuck on geometry\n[*]Fixed a bug that prevented \"Zoom Button Hold: Repeat Disabled\" from working correctly\n[*]Fixed a case where switching weapons immediately after shooting would result in the shot not registering on the server\n[*]Fixed a case where players could shoot during freeze time at the ends of warmup, halves, and matches\n[/list]",
     "summary": [
-      "Collision bug fixed",
-      "Wall slide bug fixed",
-      "Movement system bug fixed"
+      "Fixed collision bugs between players",
+      "Fixed wall sliding in Mirage mid",
+      "Multiple movement and bug fixes"
     ],
     "tags": [
       "bug-fix",
@@ -2876,16 +2864,14 @@
     "date": "2023-11-09T02:32:23.000Z",
     "content": "[ GAMEPLAY ]\n[list]\n[*]The visual and audio feedback from sub-tick input—such as movement acceleration and muzzle flashes—will now always render on the next frame\n[*]Random numbers used for shooting spread are now synchronized between clients and servers by default. This makes tracers and decals match their server-authoritative trajectories more closely. Note: Spread has been synchronized on Valve official servers since 10/14\n[*]Fixed a bug where pressing a movement key immediately after jumping resulted in an inconsistent jump height\n[/list]\n\n[ MATCHMAKING ]\n[list]\n[*]Parties of four are now able to queue for Premier mode\n[*]Added vote-kick immunity for solo players who get matched on the same team with a party of four players\n[*]Adjusted the algorithm for re-establishing CS Rating after a period of inactivity in Premier mode\n[/list]\n\n[ AUDIO ]\n[list]\n[*]Reduced the maximum audible distance of grenade bounce sounds\n[*]Improved occlusion filter quality\n[*]Addressed issue where sometimes headshot dink sounds playing as feedback for the attacker could be mistaken for incoming damage\n[*]Lowered volume of sound for headshot damage with no armor from a victims perspective to bring it inline with volume of other headshot sounds\n[*]Changed jump land sounds to have the same maximum audible distance as footstep sounds\n[*]Changed volume falloff curve of jump landing sounds to better convey distance\n[*]Improved molotov extinguish effects to sound better when multiple are playing at once\n[*]Brought back spark sound feedback when bomb defuse is cut short due to player spinning\n[*]Fixed issue where at very close proximity, a victims death groan could be mistaken as coming from the attacker\n[*]Fixed a case where unsilenced m4a1-s did not have any distant gunfire sounds\n[/list]\n\n[ MAPS ]\n\nMirage\n[list]\n[*]Fixed clipping on bench in palace\n[*]Lowered the height of box on A site to match CS:GO\n[/list]\n\n[ EFFECTS ]\n[list]\n[*]Improved performance of blood effects at close range\n[*]Improved bomb light visibility from back of bomb\n[*]Reduced muzzle flash during quickswitch from scoped rifles\n[*]Reduced the strength of the kill streak HUD effect after five kills\n[/list]\n\n[ CSTV ]\n[list]\n[*]Added setting \"tv_record_immediate\" to control when CSTV demo file will start recording content. If the setting is enabled then content will start at the moment when tv_record is executed on the server. If the setting is disabled then content will start recording from tv_delay earlier\n[*]CSTV demos can now be recorded without delayed CSTV spectating enabled. Requires setting \"tv_record_immediate 1\" and executing \"tv_record\" at the moment when recording should start\n[/list]\n\n[ MISC ]\n[list]\n[*]Adjusted wear values of some stickers to better match CS:GO\n[*]Fixed a bug with workshop tools that would prevent light_environment from baking static shadows in some circumstances\n[*]Improved quality of 'Performance' HDR rendering mode\n[*]Enabling the upload of workshop maps for Wingman mode\n[/list]",
     "summary": [
-      "Improved visual and audio feedback for sub-tick input",
-      "Synchronized shooting spread between clients and servers",
-      "Fixed inconsistent jump height bug"
+      "Visual and audio feedback from sub-tick input now always renders on the next frame",
+      "Shooting spread is now synchronized between clients and servers",
+      "Fixed bug where inconsistent jump height occurred after pressing a movement key immediately after jumping"
     ],
     "tags": [
       "gameplay",
       "performance",
-      "bug-fix",
-      "ui-change",
-      "audio-change"
+      "bug-fix"
     ]
   },
   {
@@ -2917,10 +2903,11 @@
       "Improved Item Editor and workshop tools"
     ],
     "tags": [
-      "new-feature",
+      "map-change",
       "bug-fix",
       "performance",
-      "ui-change"
+      "ui-change",
+      "new-feature"
     ]
   },
   {
@@ -2937,7 +2924,7 @@
     "tags": [
       "bug-fix",
       "performance",
-      "gameplay"
+      "map-change"
     ]
   },
   {
@@ -2947,8 +2934,8 @@
     "date": "2023-10-20T18:06:12.000Z",
     "content": "[list]\n[*] Added more client information to the screen timestamp label to help investigate reported issues. \n[*] Fixed rendering issue related to GPU UltraWide+ feature. \n[*] Stability improvements.\n[/list]",
     "summary": [
-      "Added more client information to the screen timestamp label",
-      "Fixed rendering issue related to GPU UltraWide+ feature",
+      "Added client information to screen timestamp label",
+      "Fixed GPU UltraWide+ rendering issue",
       "Stability improvements"
     ],
     "tags": [
@@ -2970,7 +2957,8 @@
     ],
     "tags": [
       "bug-fix",
-      "performance"
+      "performance",
+      "ui-change"
     ]
   },
   {
@@ -2981,8 +2969,8 @@
     "content": "[ GAMEPLAY ]\n[list]\n[*] Command aliases now leverage subtick accuracy\n[/list]\n[ SOUND ]\n[list]\n[*] New sound for final 10 seconds of bomb beeping\n[*] Added missing KSK agent voice\n[*] Reduced falloff distance of knife impact and swish sounds\n[*] Various tweaks and bug fixes around occlusion filters and footstep clarity\n[/list]\n[ MISC ]\n[list]\n[*] Fixed missing gamestate integration data regarding flashbangs and damage stats\n[*] Fixed a bug where a defused bomb would block the player from swapping to a gun dropped close by\n[*] Fixed some cases where players could peek through ceilings\n[*] Convar cl_draw_only_deathnotices now blocks match status alerts such as LAST ROUND OF FIRST HALF.\n[*] Added a game server command sv_load_forced_client_names_file. Running tournament servers with +sv_load_forced_client_names_file namesfile.txt allows loading a key-values file where client names are enforced to be the tournament registered player names.\n[*] Added an additional fallback path for game clients to download network configuration.\n[*] Added a game setting cq_netgraph_problem_show_auto that allows players to enable automatic display of network connection issues in top right corner of game HUD.\n[/list]",
     "summary": [
       "Command aliases now leverage subtick accuracy",
-      "New sound effects added for bomb beeping and knife impact",
-      "Multiple bug fixes and stability improvements"
+      "New sound for final 10 seconds of bomb beeping",
+      "Various tweaks and bug fixes around occlusion filters and footstep clarity"
     ],
     "tags": [
       "gameplay",
@@ -2999,8 +2987,8 @@
     "content": "[ MISC ]\n[list]\n[*] Various bug fixes and tweaks to agents, gloves, and stickers\n[*] The Accept Match popup will now show server information if latency is notably high\n[*] Fixed a bug where ping calculations were incorrect in Sydney which resulted in players connecting to distant data centers\n[*] Added a list of nearest official datacenters under the \"Max Acceptable Matchmaking Ping\" setting\n[*] Fixed a bug where the Perfect World region selection popup wouldn't save the last selection state\n[*] Fixed the defuser not showing up on the scoreboard\n[/list]",
     "summary": [
       "Various bug fixes and tweaks to agents, gloves, and stickers",
-      "Added server information to Accept Match popup for high latency",
-      "Fixed ping calculation bug in Sydney data center"
+      "Improved server information display in Accept Match popup",
+      "Fixed ping calculation issues in Sydney data center"
     ],
     "tags": [
       "bug-fix",
@@ -3015,15 +3003,14 @@
     "date": "2023-10-12T21:34:41.000Z",
     "content": "[ GAMEPLAY ]\n[list]\n[*] When a server disagrees about a player's loadout, such as when a match starts during a patch, the buy menu will now reflect the server-authoritative loadout\n[*] Fixed a case where players could clip through ceilings\n[*] Made adjustments to character shaders to improve player visibility\n[/list]\n\n[ ANIMATION ]\n[list]\n[*] Fixed the \"Smooth Criminal\" foot pinning bug\n[*] Adjusted team select and team intro knife animations to work with Shadow Daggers\n[/list]\n\n[ MAPS ]\n[list]\n[*] Various bug fixes and tweaks to Inferno, Mirage, Nuke, Overpass, and Vertigo\n[/list]\n\n[ MISC ]\n[list]\n[*] Added \"Player Color\" option to \"HUD Color\" setting that will make the HUD match your or your spectator target's player color in competitive modes\n[*] Changed \"Use Player Colors on Team ID\" default to \"Yes\"\n[*] Added \"Large Player Count\" setting to replace player avatars with team player count in the mini-scoreboard during the active portion of rounds\n[*] Fixed a bug where graffiti changes mid-match were delayed\n[*] Various bug fixes and tweaks to weapon finishes and stickers\n[/list]\n\n[ WORKSHOP TOOLS ]\n[list]\n[*] New Screenshot button - captures a screenshot of the game window and saves a .png file to disk. Using \"Inspect\" with the gray or green backgrounds saves the .png with the UI elements hidden and a transparent background\n[*] Added Inferno and Ancient preview maps (workshop_preview_inferno and workshop_preview_ancient)\n[*] Workshop Item Editor - Integrated help system contains detailed guides when you see (More Help: Shift+F1) in the tool tip. These detailed guides contain important information about PBR color ranges, wear/durability masking alpha values, and much more\n[/list]",
     "summary": [
-      "Buy menu now reflects server-authoritative loadout",
-      "Various bug fixes and tweaks to maps",
-      "New Screenshot button and Workshop Item Editor features"
+      "Server loadout synchronization implemented.",
+      "Multiple bug fixes and stability improvements.",
+      "Various minor UI and animation tweaks."
     ],
     "tags": [
       "bug-fix",
       "performance",
-      "ui-change",
-      "new-feature"
+      "ui-change"
     ]
   },
   {
@@ -3033,9 +3020,9 @@
     "date": "2023-10-11T00:33:51.000Z",
     "content": "[ MATCHMAKING ]\n[list]\n[*] Matches will now be made with smaller rating differences between the teams at the expense of longer queue times.\n[/list]\n\n[ Premier ]\n[list]\n[*] Relegation and Promotion matches will only occur at color boundaries, i.e. every 5000 CS Rating points.\n[*] Increased possible CS Rating win/loss amounts to move players faster after calibration.\n[/list]",
     "summary": [
-      "Matchmaking now prioritizes smaller rating differences between teams.",
-      "Queue times may be longer.",
-      "Relegation and promotion matches now occur at color boundaries."
+      "Smaller rating differences between teams",
+      "Longer queue times",
+      "Relegation and promotion matches at color boundaries"
     ],
     "tags": [
       "gameplay",
@@ -3049,14 +3036,14 @@
     "date": "2023-10-10T00:55:35.000Z",
     "content": "[ GRAPHICS ]\n[list]\n[*] Fixed a case where feet would appear black when looking down at them through a scope\n[*] Fixed a memory leak due to particles\n[/list]\n\n[ ANIMATION ]\n[list]\n[*] Fixed several hitbox alignment bugs\n[*] Fixed knife spinning not feeling as fast as in CS:GO\n[*] Fixed the bolt not moving during the M4A4 and M4A1-S deployment animations\n[*] Fixed a bug where weapon inspect could interrupt the silencer toggle animation\n[/list]\n\n[ MAPS ]\n[list]\n[*] Various bug fixes and tweaks to Mirage, Vertigo, and Nuke\n[/list]\n\n[ MISC ]\n[list]\n[*] Fixed several bugs with \"Looking to Play\"\n[*] Various bug fixes and tweaks to weapon finishes and stickers\n[*] Fixed a bug where loadout changes weren't saved if the game was closed shortly after making changes\n[*] Fixed a bug where Steam Friends' match status was delayed or missing\n[*] CPU performance improvements for weapon tracers\n[*] Added an official matchmaking datacenter in Chengdu, China\n[/list]",
     "summary": [
-      "Fixed various graphics bugs",
-      "Fixed several animation bugs",
-      "Improved CPU performance"
+      "Fixed several hitbox alignment bugs",
+      "CPU performance improvements for weapon tracers",
+      "Various bug fixes and tweaks to Mirage, Vertigo, and Nuke"
     ],
     "tags": [
       "bug-fix",
       "performance",
-      "ui-change"
+      "map-change"
     ]
   },
   {
@@ -3066,9 +3053,9 @@
     "date": "2023-10-06T22:02:05.000Z",
     "content": "[ GRAPHICS ]\n[list]\n[*] Fixed a case where water would appear black in screenshots and video capture\n[*] For AMD GPU users, shader compilation hitches can now be fixed with a driver update: [url=https://www.amd.com/en/support/kb/release-notes/rn-rad-win-23-20-11-7]https://www.amd.com/en/support/kb/release-notes/rn-rad-win-23-20-11-7[/url]\n[/list]\n\n[ ANIMATION ]\n[list]\n[*] Fixed a case where the grenade throw animation would be canceled by holding the inspect key\n[*] Adjusted M4A4 and M4A1-S draw animation to start from out-of-frame\n[*] Minor animation system performance optimizations\n[/list]\n\n[ MAPS ]\n[list]\n[*] Various bug fixes and tweaks to Nuke, Vertigo, Anubis, and Overpass\n[/list]\n\n[ MISC ]\n[list]\n[*] All surrender votes now require a majority to pass\n[*] Fixed an exploit where players could spam chat during the Premier draft phase\n[*] Fixed a bug where kicked players were receiving the maximum CS Rating penalty. Kicked players will now receive CS Rating based on the final outcome of the match instead\n[*] Fixed a bug where the first character at the beginning of the terrorist team intro wouldn't render\n[*] Configured SDL to prefer X11 over Wayland on Linux\n[*] Paris 2023 items are no longer for sale\n[/list]",
     "summary": [
-      "Fixed various bugs on Nuke, Vertigo, Anubis, and Overpass",
-      "Minor animation system performance optimizations",
-      "Fixed a case where water would appear black in screenshots and video capture"
+      "Fixed graphics issue with water appearing black in screenshots and video capture",
+      "Improved animation system performance",
+      "Various bug fixes and tweaks to Nuke, Vertigo, Anubis, and Overpass"
     ],
     "tags": [
       "bug-fix",
@@ -3083,9 +3070,9 @@
     "date": "2023-10-04T22:29:16.000Z",
     "content": "[ GRAPHICS ]\n[list]\n[*] Removed Model / Texture Detail: Very High setting since it was identical to High. They used to differ by Texture Filtering Mode, but that's a separate setting now\n[/list]\n\n[ ANIMATION ]\n[list]\n[*] Repositioned finger on AWP so it doesn't look as long\n[/list]\n\n[ MAPS ]\n[list]\n[*] Various bug fixes and tweaks to Inferno, Anubis, Vertigo, Ancient, and Mirage\n[/list]\n\n[ MISC ]\n[list]\n[*] Various bug fixes and tweaks to stickers\n[*] Adjusted crosshair outline rendering for fractional values\n[*] Fixed a bug where disconnecting from and reconnecting to a match would result in less XP\n[*] Fixed the \"buy \" command to work with the new flexible loadout system. The command will now find the named item in your loadout instead of assuming a default slot. If the named item isn't in your loadout, the command will fail. To buy by slot, use \"buy secondary0\", \"buy midtier1\", \"buy rifle2\", etc. instead\n[*] Various tweaks to automatic sniper rifle muzzle flashes\n[*] Various tweaks to glass impact effects\n[*] Added sort options to secondary inventory select panel for actions like applying stickers\n[*] Fixed a bug where users in Germany were incorrectly identified as users in China\n[/list]",
     "summary": [
-      "Removed Model / Texture Detail: Very High setting as it was identical to High.",
-      "Repositioned finger on AWP for a more natural look.",
-      "Multiple bug fixes and tweaks to Inferno, Anubis, Vertigo, Ancient, and Mirage."
+      "Removed Model / Texture Detail: Very High setting",
+      "Repositioned finger on AWP",
+      "Various bug fixes and tweaks to Inferno, Anubis, Vertigo, Ancient, and Mirage"
     ],
     "tags": [
       "bug-fix",
@@ -3101,14 +3088,13 @@
     "content": "[ GAMEPLAY ]\n[list]\n[*] Removed movement penalty on mud surfaces\n[/list]\n\n[ GRAPHICS ]\n[list]\n[*] Fixed a bug with shader compilation when connecting to a server that was causing hitches after connecting. Note that these hitches may still exist on AMD GPUs; we are working with AMD to address this\n[/list]\n\n[ ANIMATION ]\n[list]\n[*] Fixed a bug where knife slashing couldn't be interrupted with an inspect\n[/list]\n\n[ MISC ]\n[list]\n[*] Various bug fixes and tweaks to weapon finishes and gloves\n[*] Fixed a case where molotov/incendiary grenades would create a fire ring in the air\n[*] Improved performance of molotov/incendiary fire extinguishing\n[*] Various improvements to weapon dropping and throwing\n[*] Various crash fixes\n[/list]",
     "summary": [
       "Removed movement penalty on mud surfaces",
-      "Fixed shader compilation bug causing hitches",
-      "Fixed bug with knife slashing interrupt"
+      "Fixed shader compilation bug on server connection",
+      "Fixed various bugs and improved performance"
     ],
     "tags": [
       "gameplay",
       "bug-fix",
-      "performance",
-      "ui-change"
+      "performance"
     ]
   },
   {
@@ -3153,8 +3139,8 @@
     "content": "[ SOUND ]\n[list]\n[*] Weapon sounds will no longer sound like they come from the spot you are zoomed into\n[/list]\n\n[ WATER ]\n[list]\n[*] Updated water in Nuke to fix an issue with smoke\n[*] Reduced maximum amount of water refraction since it was looking too noisy/distracting\n[/list]\n\n[ MISC ]\n[list]\n[*] Fixed a case where the death panel wouldn't show\n[*] Fixed a case where the preview crosshair wouldn't show in game settings\n[*] Fixed a case where debug text would appear on the crosshair\n[/list]",
     "summary": [
       "Weapon sounds now originate from the player's position",
-      "Water in Nuke has been updated to fix a smoke issue",
-      "Multiple bug fixes including the death panel, preview crosshair, and debug text"
+      "Water effects updated on Nuke map",
+      "Several minor bug fixes"
     ],
     "tags": [
       "ui-change",
@@ -3170,7 +3156,7 @@
     "content": "[ COUNTER-STRIKE 2 ]\n[list]\n[*] Counter-Strike 2 is now available and free to play\n[*] Season One of Premier has begun\n[/list]\n[ GAMEPLAY ]\n[list]\n[*] Enabled Competitive matchmaking\n[*] Enabled Wingman matchmaking\n[*] Enabled Private Matchmaking\n[*] Added Training Day, a brief introductory experience for brand new players\n[*] Improved player-against-player movement collision\n[*] Improved consistency of bullet penetration\n[*] Player reflections in water are now occluded by smoke\n[*] Molotov fire now floats above the water\n[*] Fixed character ambient occlusion being visible through walls\n[*] C4 bomb lights don't reflect through walls\n[*] Fixed some rare cases of viewmodel lighting corruption\n[*] Adjusted smoke behavior to cover cases where smoke would stop less than a player's height above the ground\n[*] Fix various bugs with switching teams in the middle of offline Deathmatch\n[*] Fixed Famas reloading too early\n[*] Chickens can finally fall off Vertigo\n[/list]\n[ SOUND ]\n[list]\n[*] Added the new CS2 default music kit\n[*] Added new audio customization settings\n[*] Various mix tweaks and adjustments\n[*] Various bug fixes related to music kits\n[*] Updated the game startup sound\n[*] Added background ambience to main menu scenes\n[*] Restored the clutch_mode_toggle function\n[*] Fixed a bug where sometimes c4 defuse and planting sounds could not be heard in certain locations\n[*] Fixed some surfaces being incorrectly tagged causing incorrect footstep sounds in certain locations\n[*] Fixed a bug where attackers could not hear headshot feedback through wallbangs or smokes\n[*] Body damage feedback for attackers will now play within the same distance as it does for onlookers through smokes and wallbangs\n[*] Fixed a bug where scoping in affected directional sound\n[*] First person damage sounds are now more impactful\n[*] Removed several legacy audio convars that existed in CS:GO but never had an effect in CS2\n[/list]\n[ ANIMATION ]\n[list]\n[*] Adjusted character additive lean animation\n[*] Adjusted jump animation, particularly when repeatedly jumping\n[*] Adjusted jiggle-peeking animation\n[*] Adjusted animated character head position relative to camera position\n[*] Added bullet belt to negev\n[*] Reduced foot sliding when carrying slower weapons\n[*] Fixed character momentarily standing during crouch-planting animation\n[*] Fixed incorrect viewmodel deploy speeds\n[*] Fixed pops in some weapon inspect animations\n[*] Inspecting weapons may now interrupt deploy animation\n[/list]\n[ MATCHMAKING ]\n[list]\n[*] When one or more party members get convicted of cheating and permanently banned, all their associates will be penalized with loss of Profile Rank and CS Rating\n[*] In Premier, players with a very high established CS Rating are not allowed to party with accounts that do not have an established CS Rating\n[/list]\n[ MAPS ]\n[list]\n[*] Various bug fixes and tweaks for all shipped maps\n[*] Adjusted vertical audio occlusion boundaries in Nuke and Vertigo\n[*] Added an extra bell in Inferno\n[*] Casual and Deathmatch maps are now separated into multiple map groups\n[/list]\n[ MISC ]\n[list]\n[*] CS:GO Players who started playing more than a week ago will receive a commemorative CS:GO coin and CS:GO Music Kit\n[*] Added Store tab to main menu\n[*] Enabled all interactions with inventory items\n[*] Replaced weekly drops with a weekly Care Package. Choose from weapon cases, weapon finishes, and graffiti\n[*] Added demo playback support\n[*] Added the ability to favorite and shuffle loadout items\n[*] Added new item icons\n[*] Office and Vertigo are available as main menu scenery\n[*] Various updates for weapon finishes, including fixing overly strong wear on several Custom Paint Job finishes\n[*] Reworked Phoenix Street Soldier balaclava texture to resolve visibility issues\n[*] Enabled animated eyes on agent character models\n[/list]\n[ WORKSHOP TOOLS ]\n[list]\n[*] Game clients running in workshop tools mode are not allowed to connect to VAC secure game servers\n[*] Added an all-new help system featuring contextually relevant guides and information. Guides include gray scale value ranges for alpha channel masking, paint-by-number mask color assignments based on current finish type, and much more!\n[*] Removed dynamic props from solid color inspect backgrounds\n[/list]",
     "summary": [
       "Counter-Strike 2 is now available and free to play",
-      "Enabled Competitive matchmaking, Wingman matchmaking, and Private Matchmaking",
+      "Enabled Competitive, Wingman, and Private matchmaking",
       "Added Training Day, a brief introductory experience for brand new players"
     ],
     "tags": [
