@@ -1,6 +1,15 @@
 [
   {
     "game": "Valorant",
+    "title": "VALORANT Patch Notes 13.05",
+    "url": "https://playvalorant.com/en-us/news/game-updates/valorant-patch-notes-13-05",
+    "date": "2026-09-01T13:00:00.000Z",
+    "content": "TLDR; Pick’ Ems for Champs, penalties for stream sniping and instalock tools, and future changes to the Agent Gear system so make sure to grind it out and get all the items now! Heyo, it’s Ash and we’ve got a small-ish patch for you with mostly bug fixes. We’re prepping for a pretty beefy next patch in 13.06 so more to come! Let’s get it.",
+    "summary": [],
+    "tags": []
+  },
+  {
+    "game": "Valorant",
     "title": "VALORANT Patch Notes 13.04",
     "url": "https://playvalorant.com/en-us/news/game-updates/valorant-patch-notes-13-04",
     "date": "2026-08-18T13:00:00.000Z",
@@ -860,15 +869,6 @@
     "url": "https://playvalorant.com/en-us/news/game-updates/valorant-patch-notes-5-03/",
     "date": "2022-08-09T13:00:00.000Z",
     "content": "As players in both ranked and pro play have mastered Chamber, his strengths have started to overshadow his weaknesses, making the counterplay to Rendezvous and his arsenal not as effective as we’d hoped. Chamber’s overall strength has also felt outsized, and we believe that we can reduce the complete power of his kit while still keeping him competitive with the rest of the roster. Rendezvous (E) Trademark (C) Tour De Force (X) Headhunter (Q) We're updating the ultimates for the following Agent so that they follow similar regional damage rules to our weapons—where hitting the head and legs of an enemy applies different damage multipliers. Intent is to reward precision and create intuitive consistency across damage in VALORANT. ForNeonspecifically, it also gives us more tuning levers for balancing her across different skill levels. This change should also add depth to the mastery needed when tracking while sprinting that her ult demands. Overdrive Tour De Force (X) Bladestorm (X)",
-    "summary": [],
-    "tags": []
-  },
-  {
-    "game": "Valorant",
-    "title": "VALORANT Patch Notes 5.01",
-    "url": "https://playvalorant.com/en-us/news/game-updates/valorant-patch-notes-5-01/",
-    "date": "2022-07-12T13:00:00.000Z",
-    "content": "We believe Phoenix's Curveball is the cornerstone of his kit, and as we explored adjustment options it became clear that Curveball being more powerful unlocks his kit as a whole. So we wanted to assess Phoenix in a world where Curveball is more competitive with the rest of the ecosystem to get a sense for the impact of the changes. We view Phoenix as an aggressive entry Agent, so the additional Run It Back and Blaze changes are intended to support his proactive intentions when taking space or fights early on into rounds. Curveball (Q) Blaze (C) Run it Back (X) We’ve noticed you Yoru players having a bit of friction achieving the dream of setting up a master plan while in ultimate. We’re hoping these changes will reduce a bit of that problem, rewarding you for using your flash during ultimate, while still preventing unhealthy play patterns that leave enemies without counterplay. Dimensional Drift (X) KAY/O hasn’t had much of a quality of life pass since we’ve last had some changes so we wanted to reduce some pain and help you access more parts of the kit that haven’t felt as accessible. FRAG/ment (C) NULL/cmd (X)",
     "summary": [],
     "tags": []
   }
