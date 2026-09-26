@@ -2,6 +2,15 @@
   {
     "game": "CS2",
     "title": "Counter-Strike 2 Update",
+    "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1844751498226015",
+    "date": "2026-09-25T21:54:54.000Z",
+    "content": "[p]\\[ RUSH ][/p][list][*][p]Various gap fixes and clipping adjustments.[/p][/*][/list][p][/p][p]\\[ GAMEPLAY ][/p][list][*][p]Fixed some cases where loud reloads would persist while trying to stealth reload.[/p][/*][/list][p][/p][p]\\[ MISC ][/p][list][*][p]Added sv_clantags_enabled option so custom servers can disable clan tags.[/p][/*][*][p]The eggs of background players in main menu lobbies now rest in nests.[/p][/*][/list]",
+    "summary": [],
+    "tags": []
+  },
+  {
+    "game": "CS2",
+    "title": "Counter-Strike 2 Update",
     "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1844751498222773",
     "date": "2026-09-24T21:51:38.000Z",
     "content": "[p]\\[ RUSH ][/p][list][*][p]Added a better description of the rules to the loading screen.[/p][/*][*][p]Adjusted rules for determining when to kick players due to team damage.[/p][/*][*][p]Various clipping adjustments.[/p][/*][/list][p][/p][p]\\[ GAMEPLAY ][/p][list][*][p]Fixed a case where it was possible to get a slightly faster silent reload by tapping the reload button before holding it.[/p][/*][*][p]Fixed a case where it was possible to use silent reload to fire shotguns faster than normal.[/p][/*][/list][p][/p][p]\\[ MISC ][/p][list][*][p]Fixed a case where the AK-47 inspect animation sometimes popped.[/p][/*][/list]",
