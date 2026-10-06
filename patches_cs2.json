@@ -2,6 +2,15 @@
   {
     "game": "CS2",
     "title": "Counter-Strike 2 Update",
+    "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1845383656394875",
+    "date": "2026-10-05T23:39:43.000Z",
+    "content": "[p]\\[ MISC ][/p][list][*][p]Pet photobook pages now have localized text art.[/p][/*][*][p]Added play menu buttons to manage downloaded Workshop maps.[/p][/*][*][p]Adjusted VK shader cache extension flags.[/p][/*][/list]",
+    "summary": [],
+    "tags": []
+  },
+  {
+    "game": "CS2",
+    "title": "Counter-Strike 2 Update",
     "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1845383656387875",
     "date": "2026-10-02T22:24:13.000Z",
     "content": "[p]\\[ MISC ][/p][list][*][p]Agents now wear their equipped gloves during the photobooth photography sessions and in buy menu[/p][/*][*][p]Fixed grenade crosshair rendering when crosshair thickness is set to 3 pixels[/p][/*][*][p]Fixed formatting of titles in commend and report dialogs[/p][/*][*][p]Improved lighting in the Warehouse map[/p][/*][*][p]Updated workshop convars whitelist with the new crosshair settings[/p][/*][*][p]Stability improvements[/p][/*][/list]",
