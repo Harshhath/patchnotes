@@ -2,6 +2,15 @@
   {
     "game": "CS2",
     "title": "Counter-Strike 2 Update",
+    "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1846018067931597",
+    "date": "2026-10-08T22:36:49.000Z",
+    "content": "[p]\\[ MISC ][/p][list][*][p]Added a ping icon for dropped defuse kits[/p][/*][*][p]Reduced the time for AUG reload by half second[/p][/*][*][p]Fixed the sound event during silent reload for Desert Eagle[/p][/*][*][p]Fixed a case of buzzing soundscape sounds during demo playback[/p][/*][*][p]Clipping fixes for Rush maps[/p][/*][*][p]Localization updates[/p][/*][*][p]Stability updates[/p][/*][/list]",
+    "summary": [],
+    "tags": []
+  },
+  {
+    "game": "CS2",
+    "title": "Counter-Strike 2 Update",
     "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1845383656394875",
     "date": "2026-10-05T23:39:43.000Z",
     "content": "[p]\\[ MISC ][/p][list][*][p]Pet photobook pages now have localized text art.[/p][/*][*][p]Added play menu buttons to manage downloaded Workshop maps.[/p][/*][*][p]Adjusted VK shader cache extension flags.[/p][/*][/list]",
