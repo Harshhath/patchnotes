@@ -1,6 +1,15 @@
 [
   {
     "game": "Valorant",
+    "title": "VALORANT Patch Notes 13.09",
+    "url": "https://playvalorant.com/en-us/news/game-updates/valorant-patch-notes-1309",
+    "date": "2026-10-27T13:00:00.000Z",
+    "content": "TL;DR: New Agent Hush is here, along with some updated tooltips, Warden buffs, and a plethora of bug fixes. HELLOOO everybody 🙂Get ready to meet our latest Agent, Hush, as she changes the game. Try her out and let us know what you think! We've been monitoring player feedback on how the Warden has been playing out in games. One thing we'd like to improve is the Warden's base versatility and handling to better fit its current 2900 pricing. We're adding these buffs to help make the gun feel more controllable and comfortable to learn.",
+    "summary": [],
+    "tags": []
+  },
+  {
+    "game": "Valorant",
     "title": "VALORANT Patch Notes 13.08",
     "url": "https://playvalorant.com/en-us/news/game-updates/valorant-patch-notes-13-08",
     "date": "2026-10-13T13:00:00.000Z",
@@ -860,15 +869,6 @@
     "url": "https://playvalorant.com/en-us/news/game-updates/valorant-patch-notes-5-06/",
     "date": "2022-09-20T13:00:00.000Z",
     "content": "Since the launch of Pearl in the summer, the map team has put in work based on months-worth of feedback to make the first major update to the underwater map. There are some good bones here, it just needed a quick fixer upper. The Stinger is also dropping from the rafters with some new facepaint, in the form of primary and alt-fire changes. Pearl is getting a handful of small updates that aim to reduce some complexity and make it easier to move through a few areas for both attackers and defenders. Before: After: Before: After: Before: After: Before: After: Before: After: Before: After: Before: After: Before: After:",
-    "summary": [],
-    "tags": []
-  },
-  {
-    "game": "Valorant",
-    "title": "VALORANT Patch Notes 5.05",
-    "url": "https://playvalorant.com/en-us/news/game-updates/valorant-patch-notes-5-05/",
-    "date": "2022-09-07T13:00:00.000Z",
-    "content": "Keeping this one on the lighter side again while we watch the best VCT teams exchange blows overthe VALORANT Champions 2022 crown. Still some important bug work from our Social & Player Dynamics team below!",
     "summary": [],
     "tags": []
   }
